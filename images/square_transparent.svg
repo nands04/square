@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="82" height="82" viewBox="0 0 82 82">
+  <rect width="82" height="82" rx="12" fill="none" />
+  <image href="square.jpeg" x="12" y="12" width="58" height="58" preserveAspectRatio="xMidYMid meet" />
+  <rect x="6" y="6" width="70" height="70" rx="8" fill="none" stroke="#20A8D8" stroke-width="3" opacity="0.95" />
+</svg>

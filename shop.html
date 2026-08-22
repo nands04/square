@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Catálogo | Square Commerce</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--color-navy:#082957;--color-deep-blue:#061C3A;--color-cyan:#20A8D8;--color-white:#FBFCFE;--color-tech-gray:#EEF2F7;}
+    body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: var(--color-white); color: var(--color-navy); font-size:16px; line-height:1.45; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+    .catalog-layout { display: flex; flex-direction: column; gap: 3rem; padding: 3.5rem 0; }
+    @media(min-width: 1024px) { .catalog-layout { flex-direction: row; gap: 2.5rem; } }
+    .sidebar { width: 100%; background: transparent; }
+    @media(min-width: 1024px) { .sidebar { width: 320px; flex-shrink: 0; position: sticky; top: 2rem; align-self: start; height: calc(100vh - 4rem); overflow-y: auto; padding-right: 1rem; } }
+
+    /* Refined filters: pill style */
+    .filters-panel { background: transparent; padding: 0; }
+    .filter-group { margin-bottom: 1.25rem; }
+    .filter-title { font-weight: 700; margin-bottom: 0.75rem; font-size: 0.95rem; color: var(--color-navy); text-transform: uppercase; letter-spacing: 0.02em; }
+    .filter-label { display: inline-flex; align-items: center; gap: 0.5rem; margin: 0.25rem 0.5rem 0.25rem 0; cursor: pointer; font-size: 0.95rem; color: var(--color-navy); }
+    .filter-label input { position: absolute; left: -9999px; }
+    .filter-pill { display: inline-block; padding: 10px 14px; border-radius: 999px; border: 1px solid var(--color-tech-gray); background: #fff; color: var(--color-navy); font-weight: 700; font-size:0.95rem; transition: all 0.18s ease; }
+    .filter-label:hover .filter-pill { box-shadow: 0 4px 12px rgba(8,41,87,0.04); }
+    .filter-label input:checked + .filter-pill { background: linear-gradient(180deg,#fff,#fbfdff); border-color: var(--color-cyan); box-shadow: 0 6px 18px rgba(32,168,216,0.06); color: var(--color-navy); }
+
+    /* Scrollbar styling for sidebar */
+    .sidebar::-webkit-scrollbar { width: 6px; }
+    .sidebar::-webkit-scrollbar-track { background: transparent; }
+    .sidebar::-webkit-scrollbar-thumb { background: #e0e6ef; border-radius: 10px; }
+
+    .products-grid { flex-grow: 1; display: grid; grid-template-columns: 1fr; gap: 1.25rem; align-content: start; }
+    @media(min-width: 768px) { .products-grid { grid-template-columns: repeat(2,1fr); gap:1.5rem; } }
+    @media(min-width: 1024px) { .products-grid { grid-template-columns: repeat(3,1fr); gap: 2.5rem; } }
+
+    .product-card { background: #fff; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; border: 1px solid rgba(8,41,87,0.03); transition: box-shadow 0.25s ease, transform 0.25s ease; }
+    .product-card:hover { transform: translateY(-3px); box-shadow: 0 6px 14px rgba(8,41,87,0.03); }
+
+    .product-image-wrapper { width: 100%; height: 220px; overflow: hidden; background: #fff; display:block; position: relative; }
+    .product-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.2,0.8,0.2,1); transform-origin: center; }
+    .product-card:hover .product-image { transform: scale(1.03); }
+    @media(min-width:1024px){ .product-image-wrapper { height: 220px; } }
+
+    .accent-line { height: 3px; width: 0%; background: var(--color-cyan); transition: width 0.35s ease; margin-top: -3px; }
+    .product-card:hover .accent-line { width: 22%; }
+
+    .product-info { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+    .product-category { font-size: 0.68rem; text-transform: uppercase; color: var(--color-navy); font-weight: 800; letter-spacing: 0.08em; margin-bottom: 0.5rem; opacity: 0.95; }
+    .product-name { font-size: 1.125rem; font-weight: 800; color: var(--color-navy); margin-bottom: 0.5rem; line-height: 1.15; }
+    .product-chars { list-style: none; padding: 0; margin: 0 0 1rem 0; flex-grow: 1; }
+    .product-chars li { font-size: 0.985rem; color: #425066; margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.45; }
+    .product-chars li::before { content: ""; width:6px; height:6px; background: var(--color-cyan); border-radius: 2px; display:inline-block; margin-right:0.5rem; margin-top:0.6rem; }
+
+    .btn-details { display:inline-flex; align-items:center; gap:10px; justify-content:center; padding:0.7rem 1rem; background:transparent; border: none; color: var(--color-navy); font-weight:700; text-decoration:none; border-radius:6px; transition: color 0.25s ease; margin-top: 0.5rem; }
+    .btn-details .arrow { display:inline-block; transition: transform 0.25s ease; }
+    .btn-details:hover .arrow { transform: translateX(6px); color: var(--color-cyan); }
+
+    /* Mobile Drawer Styles */
+    .mobile-filter-btn { display: none; width: 100%; padding: 0.95rem; background: var(--color-navy); color: white; text-align: center; font-weight: 700; border: none; border-radius: 8px; margin-bottom: 1rem; cursor: pointer; font-size: 1.05rem; }
+    @media(max-width: 1023px) {
+      .mobile-filter-btn { display: block; }
+      .sidebar { display: none; position: fixed; top: 0; left: 0; width: 85%; max-width: 360px; height: 100vh; background: #fff; z-index: 100; padding: 2rem; overflow-y: auto; box-shadow: 4px 0 25px rgba(0,0,0,0.08); }
+      .sidebar.active { display: block; animation: slideIn 0.28s forwards; }
+      .drawer-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.35); z-index: 99; backdrop-filter: blur(2px); }
+      .drawer-overlay.active { display: block; }
+      .close-filters { display: block; background: none; border: none; font-size: 2rem; float: right; cursor: pointer; margin-bottom: 1rem; color: var(--color-navy); line-height: 1; }
+    }
+    @media(min-width: 1024px) { .close-filters { display: none; } }
+
+    @keyframes slideIn { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+
+    /* Header minimal */
+    header { padding: 1.25rem 1.5rem; background: transparent; display: flex; align-items: center; justify-content: space-between; }
+    header a { color: var(--color-navy); text-decoration: none; font-weight: 700; font-size: 1rem; }
+    header a:hover { color: var(--color-cyan); }
+    /* Section rhythm */
+    .section--navy { background: var(--color-navy); color: var(--color-white); }
+    .section--navy .container, .section--navy header a { color: var(--color-white); }
+    .section--white { background: var(--color-white); color: var(--color-navy); }
+    .section--photo { background-image: url('images/hero_new.png'); background-size: cover; background-position: center; color: var(--color-white); }
+    .section--metal { background: linear-gradient(180deg,#3b3f44,#222427); color: #e6e9ee; }
+    .section-pad { padding: 3.5rem 0; }
+    .photo-pad { padding: 6rem 0; }
+  </style>
+</head>
+<body>
+
+  <section class="section--navy section-pad">
+    <header>
+      <a href="index.html" style="font-size: 1.5rem; font-weight: 800; letter-spacing: -0.05em;">SQUARE<span style="color:var(--color-cyan);">COMMERCE</span></a>
+      <a href="index.html">&larr; Voltar para Home</a>
+    </header>
+    <div class="container">
+      <div class="hero-catalog" style="background:transparent; color: #fff; text-align:center; padding:3.5rem 0;">
+        <h1 style="color:#fff; font-size:2.4rem; margin-bottom:0.75rem;">Soluções profissionais para cada necessidade.</h1>
+        <p style="color:rgba(255,255,255,0.85); max-width:760px; margin:0 auto;">Explore nossa linha de equipamentos para lavagem, higienização e operação profissional.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--white section-pad">
+    <div class="container">
+      <!-- white spacer section to provide contrast -->
+    </div>
+  </section>
+
+  <section class="section--photo photo-pad">
+    <div class="container">
+      <!-- photography band (visual rhythm) -->
+    </div>
+  </section>
+
+  <section class="section--navy section-pad">
+    <div class="container" style="text-align:center;">
+      <h2 style="color:#fff; margin:0; font-size:1.25rem; font-weight:700;">Especificações técnicas e soluções para projetos B2B</h2>
+      <p style="color:rgba(255,255,255,0.9); margin-top:0.5rem;">Projetados para durabilidade e compatibilidade com ambientes profissionais.</p>
+    </div>
+  </section>
+
+  <section class="section--white section-pad">
+    <div class="container">
+      <div class="catalog-layout">
+        <button class="mobile-filter-btn" id="openFilters">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline; vertical-align:middle; margin-right:8px;"><path d="M4 6H20M4 12H14M4 18H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Filtrar soluções
+        </button>
+        <div class="drawer-overlay" id="drawerOverlay"></div>
+
+        <aside class="sidebar" id="filterSidebar">
+          <button class="close-filters" id="closeFilters">&times;</button>
+          <h2 style="margin-top:0; color: var(--color-navy); font-size: 1.5rem; margin-bottom: 2rem;">Filtros</h2>
+          <div id="filtersContainer" class="filters-panel"></div>
+        </aside>
+
+        <main class="products-grid" id="productsGrid">
+          <!-- Products injected via JS -->
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--metal section-pad">
+    <div class="container" style="text-align:center;">
+      <h3 style="color: #e6e9ee; margin:0; font-weight:700;">Materiais & acabamentos</h3>
+      <p style="color: rgba(230,233,238,0.9); margin-top:0.5rem;">Especificações em aço inoxidável, grafite e acabamentos técnicos para ambientes severos.</p>
+    </div>
+  </section>
+
+  <section class="section--navy">
+    <div class="container" style="padding:1.25rem 0; text-align:center;">
+      <small style="color:rgba(255,255,255,0.85);">© Square Commerce</small>
+    </div>
+  </section>
+
+  <script src="products.js"></script>
+  <script>
+    const filterConfig = [
+      { id: "category", title: "Categorias", options: ["Esguichos de Pré-Lavagem", "Esguichos com Torneira Extra", "Torneiras Industriais", "Torneiras Clínicas", "Torneiras de Acionamento por Pedal", "Higienizadores e Acessórios"] },
+      { id: "instalacao", title: "Tipo de instalação", options: ["Bancada", "Parede"] },
+      { id: "configuracao", title: "Configuração", options: ["Com misturador", "Sem misturador"] },
+      { id: "formato", title: "Formato", options: ["Padrão", "Mini"] },
+      { id: "complemento", title: "Complemento", options: ["Com torneira extra", "Sem torneira extra"] },
+      { id: "acionamento", title: "Acionamento", options: ["Manual", "Alavanca clínica", "Pedal", "Eletrônico"] },
+      { id: "aplicacao", title: "Aplicação", options: ["Cozinhas", "Clínicas e hospitais", "Indústrias"] }
+    ];
+
+    const state = {
+      category: [],
+      instalacao: [],
+      configuracao: [],
+      formato: [],
+      complemento: [],
+      acionamento: [],
+      aplicacao: []
+    };
+
+    function renderFilters() {
+      const container = document.getElementById('filtersContainer');
+      let html = '';
+
+      filterConfig.forEach(group => {
+        html += `<div class="filter-group"><h3 class="filter-title">${group.title}</h3><div class="filter-options">`;
+        group.options.forEach(opt => {
+          html += `
+            <label class="filter-label">
+              <input type="checkbox" data-group="${group.id}" value="${opt}">
+              <span class="filter-pill">${opt}</span>
+            </label>
+          `;
+        });
+        html += `</div></div>`;
+      });
+      container.innerHTML = html;
+
+      container.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener('change', (e) => {
+          const group = e.target.dataset.group;
+          const val = e.target.value;
+          if(e.target.checked) {
+            state[group].push(val);
+          } else {
+            state[group] = state[group].filter(v => v !== val);
+          }
+          renderProducts();
+        });
+      });
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      
+      const filtered = products.filter(p => {
+        return (state.category.length === 0 || state.category.includes(p.category)) &&
+               (state.instalacao.length === 0 || state.instalacao.includes(p.instalacao)) &&
+               (state.configuracao.length === 0 || state.configuracao.includes(p.configuracao)) &&
+               (state.formato.length === 0 || state.formato.includes(p.formato)) &&
+               (state.complemento.length === 0 || state.complemento.includes(p.complemento)) &&
+               (state.acionamento.length === 0 || state.acionamento.includes(p.acionamento)) &&
+               (state.aplicacao.length === 0 || state.aplicacao.includes(p.aplicacao));
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 4rem; color: #888; font-size: 1.2rem; background: #f9f9f9; border-radius: 12px;">Nenhum produto encontrado com os filtros selecionados.</div>`;
+        return;
+      }
+
+        grid.innerHTML = filtered.map(p => `
+          <div class="product-card">
+            <div class="product-image-wrapper">
+              <img src="${p.image}" alt="${p.name}" class="product-image">
+            </div>
+            <div class="accent-line"></div>
+            <div class="product-info">
+              <div class="product-category">${p.category}</div>
+              <h3 class="product-name">${p.name}</h3>
+              <ul class="product-chars">
+                ${p.characteristics.slice(0, 3).map(c => `<li>${c}</li>`).join('')}
+              </ul>
+              <a href="product.html?id=${p.id}" class="btn-details">Ver detalhes <span class="arrow">→</span></a>
+            </div>
+          </div>
+        `).join('');
+    }
+
+    // Drawer Logic
+    const sidebar = document.getElementById('filterSidebar');
+    const overlay = document.getElementById('drawerOverlay');
+    const openBtn = document.getElementById('openFilters');
+    const closeBtn = document.getElementById('closeFilters');
+
+    function closeDrawer() {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+
+    openBtn.addEventListener('click', () => {
+      sidebar.classList.add('active');
+      overlay.classList.add('active');
+    });
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    // Init
+    renderFilters();
+    renderProducts();
+  </script>
+</body>
+</html>
