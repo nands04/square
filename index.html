@@ -421,8 +421,11 @@
   @media (max-width: 767px) {
     .hero-h1 { font-size: 32px !important; }
     div[style*="height: 85vh"] { height: 100svh !important; min-height: 500px !important; }
-    div[style*="padding: 140px 40px 80px 40px"] { padding: 100px 20px 60px 20px !important; }
-    .hero-btns-anim a { padding: 14px 20px !important; font-size: 14px !important; }
+    div[style*="padding: 140px 40px 80px 40px"] { padding: 80px 20px 48px 20px !important; }
+    .hero-btns-anim { flex-direction: column !important; }
+    .hero-btns-anim a { padding: 14px 20px !important; font-size: 14px !important; text-align: center !important; }
+    .hero-desc-anim { font-size: 16px !important; }
+    span[style*="SOLUÇÕES PROFISSIONAIS"] { font-size: 10px !important; letter-spacing: 0.15em !important; }
   }
   @media (min-width: 768px) and (max-width: 1023px) {
     .hero-h1 { font-size: 46px !important; }
@@ -442,10 +445,15 @@
   /* Benefícios */
   @media (max-width: 767px) {
     .benefits-section { padding: 60px 20px !important; }
+    .benefits-header { margin-bottom: 40px !important; }
     .benefits-header h2 { font-size: 28px !important; }
     .benefits-header p { font-size: 16px !important; }
-    .benefit-item { padding-left: 56px !important; }
-    .benefit-number { font-size: 40px !important; }
+    .benefits-list { gap: 40px !important; }
+    .benefits-list::before { display: none !important; }
+    .benefit-item { padding-left: 0 !important; padding-top: 0 !important; border-left: 3px solid rgba(32,168,216,0.4); padding-left: 20px !important; }
+    .benefit-item::before { display: none !important; }
+    .benefit-number { position: static !important; display: block !important; font-size: 36px !important; margin-bottom: 8px !important; padding: 0 !important; background: transparent !important; }
+    .benefit-title { font-size: 20px !important; margin-bottom: 10px !important; }
   }
 
   /* Seção produtos (catálogo) */
@@ -519,15 +527,15 @@
 <a class="text-navi-big text-white opacity-70 transition-all hover:opacity-100 hover:no-underline" href="shop.html" data-discover="true">Catálogo</a>
 <a class="text-navi-big text-white opacity-70 transition-all hover:opacity-100 hover:no-underline" href="#produtos" data-discover="true">Conheça nossos produtos</a>
 <a class="text-navi-big text-white opacity-70 transition-all hover:opacity-100 hover:no-underline" href="https://wa.me/5582996205266" data-discover="true">Fale com um especialista</a>
-<a class="text-navi-big text-white opacity-70 transition-all hover:opacity-100 hover:no-underline" href="https://squarecommerce.com/about-us" data-discover="true">Sobre Nós</a>
-<a class="text-navi-big text-white opacity-70 transition-all hover:opacity-100 hover:no-underline" href="https://squarecommerce.com/refurbrishing" data-discover="true">Manutenção</a>
-<a class="text-navi-big text-white opacity-70 transition-all hover:opacity-100 hover:no-underline" href="https://squarecommerce.com/journal" data-discover="true">Dicas Técnicas</a>
-<a class="text-navi-big text-white opacity-70 transition-all hover:opacity-100 hover:no-underline" href="https://squarecommerce.com/contact" data-discover="true">Contato</a>
-<a class="text-navi-big text-white opacity-70 transition-all hover:opacity-100 hover:no-underline" href="https://squarecommerce.com/faq" data-discover="true">FAQ</a>
+<a class="text-navi-big text-white opacity-70 transition-all hover:opacity-100 hover:no-underline" href="about.html" data-discover="true">Sobre Nós</a>
+<a class="text-navi-big text-white opacity-70 transition-all hover:opacity-100 hover:no-underline" href="https://wa.me/5582996205266?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20manuten%C3%A7%C3%A3o" data-discover="true">Manutenção</a>
+<a class="text-navi-big text-white opacity-70 transition-all hover:opacity-100 hover:no-underline" href="https://wa.me/5582996205266?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20t%C3%A9cnica" data-discover="true">Dicas Técnicas</a>
+<a class="text-navi-big text-white opacity-70 transition-all hover:opacity-100 hover:no-underline" href="https://wa.me/5582996205266?text=Ol%C3%A1%2C%20gostaria%20de%20entrar%20em%20contato" data-discover="true">Contato</a>
+<a class="text-navi-big text-white opacity-70 transition-all hover:opacity-100 hover:no-underline" href="https://wa.me/5582996205266?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida" data-discover="true">FAQ</a>
 </div>
 <div class="flex justify-end gap-10 items-end flex-col lg:flex-row">
 <div class="flex flex-col items-end gap-2 mt-10 lg:mt-0">
-<a class="text-button-light text-white hover:opacity-70 hover:no-underline transition-all" href="https://squarecommerce.com/account" data-discover="true">Área do Cliente</a>
+<a class="text-button-light text-white hover:opacity-70 hover:no-underline transition-all" href="https://wa.me/5582996205266?text=Ol%C3%A1%2C%20gostaria%20de%20acessar%20minha%20conta" data-discover="true">Área do Cliente</a>
 </div>
 <div class="rounded-2xl w-1/2 overflow-hidden hover:rounded-[30px] transition-all">
 <a class="" href="https://wa.me/5582996205266?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20este%20produto" data-discover="true">
@@ -547,7 +555,7 @@
     <nav class="hidden lg:flex items-center gap-10" style="position: absolute; left: 50%; transform: translateX(-50%); display: flex;" role="navigation">
       <a class="nav-link" href="shop.html">Catálogo</a>
       <a class="nav-link" href="#produtos">Soluções</a>
-      <a class="nav-link" href="#quem-somos">Quem Somos</a>
+      <a class="nav-link" href="about.html">Quem Somos</a>
       <a class="nav-link" href="#certificacoes">Certificações</a>
       <a class="nav-link" href="#manutencao">Manutenção</a>
     </nav>
@@ -564,7 +572,7 @@
         </svg>
       </a>
     </div>
-    <button id="mobile-menu-btn" style="display: none; flex-direction: column; gap: 5px; padding: 8px; background: transparent; border: none; z-index: 50; cursor: pointer;" class="mobile-toggle">
+    <button id="mobile-menu-btn" style="flex-direction: column; gap: 5px; padding: 8px; background: transparent; border: none; z-index: 50; cursor: pointer;" class="mobile-toggle flex lg:hidden">
       <span class="w-6 h-[2px] bg-white transition-all duration-300 origin-center" id="bar1"></span>
       <span class="w-6 h-[2px] bg-white transition-all duration-300 origin-center" id="bar2"></span>
     </button>
@@ -574,7 +582,7 @@
   <nav class="flex flex-col gap-8 text-2xl font-semibold text-white text-center w-full max-w-sm">
     <a href="shop.html" class="nav-link inline-block mx-auto w-fit">Catálogo</a>
     <a href="#produtos" class="nav-link inline-block mx-auto w-fit">Soluções</a>
-    <a href="#quem-somos" class="nav-link inline-block mx-auto w-fit">Quem Somos</a>
+    <a href="about.html" class="nav-link inline-block mx-auto w-fit">Quem Somos</a>
     <a href="#certificacoes" class="nav-link inline-block mx-auto w-fit">Certificações</a>
     <a href="#manutencao" class="nav-link inline-block mx-auto w-fit">Manutenção</a>
   </nav>
@@ -594,41 +602,33 @@
 <div class="hero-overlay-anim" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-color: #082957; opacity: 0.4;"></div>
 <div class="hero-overlay-anim" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; pointer-events: none; background: linear-gradient(to top right, rgba(8, 41, 87, 0.8) 0%, rgba(8, 41, 87, 0.2) 100%);"></div>
 <div class="cyan-flow-curve"></div>
-<div class="relative z-10 mx-auto flex flex-col justify-end h-full" style="width: 100%; max-width: 1400px; padding: 140px 40px 80px 40px; position: relative; z-index: 10;">
-<span class="hero-eyebrow-anim block uppercase" style="color: #20A8D8; font-size: 14px; font-weight: bold; letter-spacing: 0.2em; margin-bottom: 24px;">SOLUÇÕES PROFISSIONAIS • FABRICAÇÃO ITALIANA</span>
-<h1 class="hero-h1 font-extrabold text-white" style="font-size: 60px; line-height: 1.1; max-width: 900px; margin-bottom: 24px; text-wrap: balance; margin-top: 0;">
+<style>
+  @media (max-width: 768px) {
+    .hero-container-resp { padding: 100px 20px 40px 20px !important; align-items: center; text-align: center; }
+    .hero-eyebrow-resp { text-align: center; width: 100%; }
+    .hero-h1-resp { font-size: 36px !important; margin-bottom: 16px !important; text-align: center; }
+    .hero-desc-resp { font-size: 16px !important; margin-bottom: 32px !important; text-align: center; }
+    .hero-btns-resp { justify-content: center; }
+  }
+</style>
+<div class="relative z-10 mx-auto flex flex-col justify-end h-full hero-container-resp" style="width: 100%; max-width: 1400px; padding: 140px 40px 80px 40px; position: relative; z-index: 10;">
+<span class="hero-eyebrow-anim hero-eyebrow-resp block uppercase" style="color: #20A8D8; font-size: 14px; font-weight: bold; letter-spacing: 0.2em; margin-bottom: 24px;">SOLUÇÕES PROFISSIONAIS • FABRICAÇÃO ITALIANA</span>
+<h1 class="hero-h1 font-extrabold text-white hero-h1-resp" style="font-size: 60px; line-height: 1.1; max-width: 900px; margin-bottom: 24px; text-wrap: balance; margin-top: 0;">
 <span class="reveal-wrapper"><span class="hero-h1-line1">Soluções profissionais</span></span><br/>
 <span class="reveal-wrapper"><span class="hero-h1-line2">para lavagem e higienização</span></span>
 </h1>
-<p class="hero-desc-anim font-medium text-white leading-relaxed" style="font-size: 20px; max-width: 650px; opacity: 0.9; margin-bottom: 40px; text-wrap: balance; margin-top: 0;">
+<p class="hero-desc-anim font-medium text-white leading-relaxed hero-desc-resp" style="font-size: 20px; max-width: 650px; opacity: 0.9; margin-bottom: 40px; text-wrap: balance; margin-top: 0;">
 Equipamentos robustos e funcionais para cozinhas industriais, restaurantes, clínicas, hospitais e operações que não podem parar.
 </p>
-<div class="hero-btns-anim flex flex-wrap gap-4" style="margin-bottom: 56px; display: flex; flex-wrap: wrap; gap: 16px;">
-<a href="https://squarecommerce.com/shop" style="padding: 16px 32px; background-color: white; color: #082957; font-weight: bold; font-size: 16px; border-radius: 9999px; text-decoration: none; text-align: center;">
+<div class="hero-btns-anim hero-btns-resp flex flex-wrap gap-4" style="margin-bottom: 56px; display: flex; flex-wrap: wrap; gap: 16px;">
+<a href="shop.html" style="padding: 16px 32px; background-color: white; color: #082957; font-weight: bold; font-size: 16px; border-radius: 9999px; text-decoration: none; text-align: center;">
 Conheça os produtos &rarr;
 </a>
 <a href="https://wa.me/5582996205266" style="padding: 16px 32px; background-color: transparent; border: 1px solid rgba(255,255,255,0.3); color: white; font-weight: bold; font-size: 16px; border-radius: 9999px; text-decoration: none; text-align: center;">
 Fale com um especialista
 </a>
 </div>
-<div class="flex flex-wrap gap-3 max-w-full" style="display: flex; flex-wrap: wrap; gap: 12px; max-width: 100%;">
-<span class="hero-indicator-anim flex items-center text-white px-4 py-3 rounded-xl text-xs lg:text-sm font-medium" style="background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
-<svg class="w-4 h-4 mr-2 text-[#20A8D8]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; margin-right: 8px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-Produto italiano
-</span>
-<span class="hero-indicator-anim flex items-center text-white px-4 py-3 rounded-xl text-xs lg:text-sm font-medium" style="background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
-<svg class="w-4 h-4 mr-2 text-[#20A8D8]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; margin-right: 8px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-Aço inox e latão cromado
-</span>
-<span class="hero-indicator-anim flex items-center text-white px-4 py-3 rounded-xl text-xs lg:text-sm font-medium" style="background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
-<svg class="w-4 h-4 mr-2 text-[#20A8D8]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; margin-right: 8px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-Bancada e parede
-</span>
-<span class="hero-indicator-anim flex items-center text-white px-4 py-3 rounded-xl text-xs lg:text-sm font-medium" title="*Consulte as condições de validação" style="background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
-<svg class="w-4 h-4 mr-2 text-[#20A8D8]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; margin-right: 8px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-Até 10 anos de garantia*
-</span>
-</div>
+
 </div>
 <div class="scroll-explore" style="position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 20;">
 <span style="color: rgba(255,255,255,0.6); font-size: 10px; font-weight: bold; letter-spacing: 0.2em;">SCROLL PARA EXPLORAR</span>
@@ -677,7 +677,7 @@ Até 10 anos de garantia*
 
     <div class="product-showcase-grid">
       <!-- Large Product -->
-      <a href="https://squarecommerce.com/shop" class="editorial-card product-large reveal-up delay-1">
+      <a href="shop.html" class="editorial-card product-large reveal-up delay-1">
         <div class="editorial-img-wrapper">
           <img src="images/product_esguicho_new.png" alt="Esguicho de Pré-Lavagem" class="editorial-img">
         </div>
@@ -689,7 +689,7 @@ Até 10 anos de garantia*
       </a>
 
       <!-- Medium Product 1 -->
-      <a href="https://squarecommerce.com/shop" class="editorial-card product-medium-1 reveal-up delay-2">
+      <a href="shop.html" class="editorial-card product-medium-1 reveal-up delay-2">
         <div class="editorial-img-wrapper">
           <div class="editorial-overlay"></div>
           <img src="images/product_industrial_new.png" alt="Torneira Industrial" class="editorial-img">
@@ -702,7 +702,7 @@ Até 10 anos de garantia*
       </a>
 
       <!-- Medium Product 2 -->
-      <a href="https://squarecommerce.com/shop" class="editorial-card product-medium-2 reveal-up delay-3">
+      <a href="shop.html" class="editorial-card product-medium-2 reveal-up delay-3">
         <div class="editorial-img-wrapper">
           <div class="editorial-overlay"></div>
           <img src="images/product_clinica_new.png" alt="Torneira Clínica" class="editorial-img">
@@ -716,13 +716,13 @@ Até 10 anos de garantia*
     </div>
 
     <div class="editorial-categories-list">
-      <a href="https://squarecommerce.com/shop" class="editorial-category-pill">Sistemas por Pedal</a>
-      <a href="https://squarecommerce.com/shop" class="editorial-category-pill">Higienizadores e Acessórios</a>
-      <a href="https://squarecommerce.com/shop" class="editorial-category-pill">Válvulas de Acionamento</a>
+      <a href="shop.html" class="editorial-category-pill">Sistemas por Pedal</a>
+      <a href="shop.html" class="editorial-category-pill">Higienizadores e Acessórios</a>
+      <a href="shop.html" class="editorial-category-pill">Válvulas de Acionamento</a>
     </div>
 
     <div style="margin-top: 64px; text-align: center;">
-      <a href="https://squarecommerce.com/shop" style="display: inline-flex; align-items: center; justify-content: center; padding: 16px 32px; background-color: #082957; color: white; font-weight: bold; font-size: 16px; border-radius: 9999px; text-decoration: none; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#20A8D8'" onmouseout="this.style.backgroundColor='#082957'">
+      <a href="shop.html" style="display: inline-flex; align-items: center; justify-content: center; padding: 16px 32px; background-color: #082957; color: white; font-weight: bold; font-size: 16px; border-radius: 9999px; text-decoration: none; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#20A8D8'" onmouseout="this.style.backgroundColor='#082957'">
         Ver catálogo completo &rarr;
       </a>
     </div>
@@ -1291,7 +1291,7 @@ const products = [
       <span class="maintenance-eyebrow">Manutenção e suporte</span>
       <h2 class="maintenance-h2">Performance também está nos detalhes.</h2>
       <p class="maintenance-text">A manutenção adequada contribui para preservar o desempenho, a durabilidade e a segurança dos equipamentos ao longo do tempo.</p>
-      <a href="https://squarecommerce.com/manutencao" class="maintenance-cta">Conheça as orientações de manutenção &rarr;</a>
+      <a href="https://wa.me/5582996205266?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20manuten%C3%A7%C3%A3o%20dos%20equipamentos" class="maintenance-cta">Falar com especialista &rarr;</a>
     </div>
     
     <div class="maintenance-visual">
@@ -1454,8 +1454,8 @@ const products = [
 <p class="text-caption text-black-700 text-center">Sobre Nós</p>
 <h2 class="text-center reveal-up">Somos uma empresa líder em soluções hidráulicas profissionais, focada na alta performance e confiabilidade.</h2>
 <p class="text-center text-body">Desenvolvemos produtos robustos projetados especificamente para suportar o rigor de cozinhas industriais e hospitais.</p>
-<a class="hover:no-underline m-auto" href="https://squarecommerce.com/about-us" data-discover="true">
-<button class="flex items-center rounded-lg text-button transition-all disabled:opacity-35  py-3 px-5 text-navy border-solid border-1 border-tech-gray hover:border-cyan justify-between">Saiba mais</button>
+<a class="hover:no-underline m-auto" href="https://wa.me/5582996205266?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20Square%20Commerce" target="_blank" data-discover="true">
+<button class="flex items-center rounded-lg text-button transition-all disabled:opacity-35  py-3 px-5 text-navy border-solid border-1 border-tech-gray hover:border-cyan justify-between">Falar conosco</button>
 </a>
 </div>
 <div class="w-full lg:w-[310px] justify-center lg:justify-normal self-start lg:block flex gap-4 lg:gap-0 mt-5 lg:mt-0">
@@ -1948,7 +1948,7 @@ const products = [
       <a href="index.html" class="footer-nav-link">Início</a>
       <a href="shop.html" class="footer-nav-link">Catálogo</a>
       <a href="#produtos" class="footer-nav-link">Soluções</a>
-      <a href="#quem-somos" class="footer-nav-link">Quem Somos</a>
+      <a href="about.html" class="footer-nav-link">Quem Somos</a>
       <a href="#certificacoes" class="footer-nav-link">Certificações</a>
       <a href="#manutencao" class="footer-nav-link">Manutenção</a>
     </div>

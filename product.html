@@ -79,8 +79,8 @@
         </table>
         
         <div class="cta-container">
-          <a href="#" class="cta-btn cta-primary" onclick="alert('Redirecionando para formulário de orçamento...')">Solicitar orçamento</a>
-          <a href="#" class="cta-btn cta-secondary" onclick="alert('Iniciando chat com especialista via WhatsApp...')">Falar com especialista</a>
+          <a id="btnOrcamento" href="https://wa.me/5582996205266?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento" class="cta-btn cta-primary" target="_blank" rel="noopener">Solicitar orçamento</a>
+          <a id="btnEspecialista" href="https://wa.me/5582996205266?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20especialista" class="cta-btn cta-secondary" target="_blank" rel="noopener">Falar com especialista</a>
         </div>
       </div>
     </div>
@@ -111,6 +111,10 @@
       document.getElementById('pConfig').textContent = product.configuracao;
       document.getElementById('pAplicacao').textContent = product.aplicacao;
       document.getElementById('pAcionamento').textContent = product.acionamento;
+
+      const productName = encodeURIComponent(product.name);
+      document.getElementById('btnOrcamento').href = `https://wa.me/5582996205266?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20o%20produto%3A%20${productName}`;
+      document.getElementById('btnEspecialista').href = `https://wa.me/5582996205266?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20um%20especialista%20sobre%20o%20produto%3A%20${productName}`;
     }
   </script>
 </body>

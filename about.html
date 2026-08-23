@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Quem Somos | Square Commerce</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--color-navy:#082957;--color-deep-blue:#061C3A;--color-cyan:#20A8D8;--color-white:#FBFCFE;--color-tech-gray:#EEF2F7;}
+    body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: var(--color-white); color: var(--color-navy); font-size:16px; line-height:1.6; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    
+    header { padding: 1.25rem 1.5rem; background: transparent; display: flex; align-items: center; justify-content: space-between; }
+    header a { color: var(--color-white); text-decoration: none; font-weight: 700; font-size: 1rem; }
+    header a:hover { color: var(--color-cyan); }
+    
+    .section--navy { background: var(--color-navy); color: var(--color-white); }
+    .section--white { background: var(--color-white); color: var(--color-navy); }
+    .section-pad { padding: 5rem 0; }
+    
+    .hero-about { text-align: center; padding: 4rem 0; }
+    .hero-about h1 { font-size: 3rem; margin-bottom: 1rem; line-height: 1.2; letter-spacing: -0.02em; }
+    .hero-about p { font-size: 1.25rem; color: rgba(255,255,255,0.85); max-width: 700px; margin: 0 auto; }
+    
+    .content-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; }
+    @media(min-width: 768px) { .content-grid { grid-template-columns: 1fr 1fr; } }
+    
+    .content-text h2 { font-size: 2.2rem; margin-top: 0; margin-bottom: 1.5rem; color: var(--color-navy); line-height: 1.2; }
+    .content-text p { margin-bottom: 1.5rem; color: #425066; font-size: 1.1rem; }
+    
+    .image-placeholder { background: linear-gradient(135deg, #e0e6ef, #f4f7fa); border-radius: 12px; height: 100%; min-height: 400px; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+    .image-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .values-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 4rem; }
+    @media(min-width: 768px) { .values-grid { grid-template-columns: repeat(3, 1fr); } }
+    .value-card { background: #fff; padding: 2.5rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(8,41,87,0.05); text-align: center; }
+    .value-card h3 { font-size: 1.25rem; margin-top: 0; margin-bottom: 1rem; color: var(--color-cyan); }
+    .value-card p { color: #425066; margin: 0; font-size: 0.95rem; }
+    
+    .cta-btn { display: inline-block; padding: 1rem 2rem; background: var(--color-cyan); color: #fff; text-decoration: none; font-weight: 700; border-radius: 9999px; transition: background 0.3s; margin-top: 2rem; }
+    .cta-btn:hover { background: #1a8ab2; }
+  </style>
+</head>
+<body>
+
+  <section class="section--navy">
+    <header>
+      <a href="index.html" style="font-size: 1.5rem; font-weight: 800; letter-spacing: -0.05em;">SQUARE<span style="color:var(--color-cyan);">COMMERCE</span></a>
+      <a href="index.html">&larr; Voltar para Home</a>
+    </header>
+    <div class="container">
+      <div class="hero-about">
+        <h1>Quem Somos</h1>
+        <p>Especialistas em equipamentos hidráulicos de alta performance para ambientes que exigem robustez, durabilidade e eficiência extrema.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--white section-pad">
+    <div class="container">
+      <div class="content-grid">
+        <div class="content-text">
+          <h2>Nossa História e Compromisso</h2>
+          <p>A <strong>Square Commerce</strong> nasceu da necessidade de atender um mercado que não pode parar. Sabemos que em cozinhas industriais, hospitais e clínicas, a falha de um equipamento significa tempo perdido e prejuízo.</p>
+          <p>Por isso, nos especializamos em fornecer soluções de fabricação italiana, projetadas com materiais nobres, como aço inoxidável e ligas de alta resistência. Nossos esguichos, torneiras e higienizadores são desenhados não apenas para durar, mas para melhorar a ergonomia e acelerar a operação no dia a dia dos profissionais.</p>
+          <a href="shop.html" class="cta-btn">Conheça nosso catálogo</a>
+        </div>
+        <div class="image-placeholder">
+          <!-- An image representing the company/industry -->
+          <img src="images/hero_industrial_1787071642670.png" alt="Equipamentos industriais" />
+        </div>
+      </div>
+      
+      <div class="values-grid">
+        <div class="value-card">
+          <h3>Qualidade Profissional</h3>
+          <p>Trabalhamos exclusivamente com equipamentos testados e homologados para o uso intensivo B2B, garantindo a tranquilidade do seu negócio.</p>
+        </div>
+        <div class="value-card">
+          <h3>Design Funcional</h3>
+          <p>Cada curva, gatilho e misturador é pensado para facilitar o fluxo de trabalho, economizar água e reduzir o esforço físico da sua equipe.</p>
+        </div>
+        <div class="value-card">
+          <h3>Suporte Especializado</h3>
+          <p>Oferecemos atendimento consultivo para ajudar você a escolher o modelo ideal para a sua estrutura, além de suporte para manutenção.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--navy">
+    <div class="container" style="padding:1.25rem 0; text-align:center;">
+      <small style="color:rgba(255,255,255,0.85);">© Square Commerce. Todos os direitos reservados.</small>
+    </div>
+  </section>
+
+</body>
+</html>
