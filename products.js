@@ -1,116 +1,120 @@
 const products = [
   {
-    id: "esp-001",
-    name: "Esguicho de Pré-Lavagem de Bancada",
+    id: "PDTR1AC200",
+    name: "Torneira modelo PDTR1AC200",
+    category: "Torneiras de Acionamento por Pedal",
+    image: "images/PDTR1AC200.png",
+    instalacao: "Bancada",
+    configuracao: "Sem misturador",
+    formato: "Padrão",
+    complemento: "Pedal Completo",
+    acionamento: "Pedal",
+    aplicacao: "Cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas",
+    characteristics: [
+      "Pedal Completo Sem Misturador",
+      "Feita em material nobre e robusto",
+      "Refil cerâmico",
+      "ECONOMIA 100 % DE ÁGUA"
+    ],
+    materials: "Material nobre",
+    description: "Torneira modelo PDTR1AC200, de PEDAL COMPLETO SEM MISTURADOR, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas. ECONOMIA 100 % DE ÁGUA."
+  },
+  {
+    id: "DBFP90",
+    name: "Modelo DBFP90",
     category: "Esguichos de Pré-Lavagem",
-    image: "images/product_esguicho_1787071652059.png",
+    image: "images/DBFP90.png",
+    description: "Produto com referência DBFP90."
+  },
+  {
+    id: "DBFP9D",
+    name: "Modelo DBFP9D",
+    category: "Esguichos de Pré-Lavagem",
+    image: "images/DBFP9D.png",
+    description: "Produto com referência DBFP9D."
+  },
+  {
+    id: "DMAB90",
+    name: "Modelo DMAB90",
+    category: "Esguichos de Pré-Lavagem",
+    image: "images/DMAB90.png",
+    description: "Produto com referência DMAB90."
+  },
+  {
+    id: "DMAB9D_BANCADA",
+    name: "Modelo DMAB9D BANCADA",
+    category: "Esguichos de Pré-Lavagem",
+    image: "images/DMAB9D_BANCADA.png",
+    description: "Produto com referência DMAB9D BANCADA."
+  },
+  {
+    id: "DMAP90",
+    name: "Modelo DMAP90",
+    category: "Esguichos de Pré-Lavagem",
+    image: "images/DMAP90.png",
+    description: "Produto com referência DMAP90."
+  },
+  {
+    id: "DMAP9D",
+    name: "Modelo DMAP9D",
+    category: "Esguichos de Pré-Lavagem",
+    image: "images/DMAP9D.png",
+    description: "Produto com referência DMAP9D."
+  },
+  {
+    id: "DMERB",
+    name: "Modelo DMERB",
+    category: "Esguichos de Pré-Lavagem",
+    image: "images/DMERB.png",
+    description: "Produto com referência DMERB."
+  },
+  {
+    id: "DMFB90B",
+    name: "Esguicho de Pré-Lavagem Bancada",
+    category: "Esguichos de Pré-Lavagem",
+    image: "images/DMFB9D.png",
     instalacao: "Bancada",
     configuracao: "Com misturador",
-    formato: "Padrão",
-    complemento: "Sem torneira extra",
-    acionamento: "Manual",
     aplicacao: "Cozinhas",
-    characteristics: [
-      "Mola em aço inox de alta resistência",
-      "Mangueira flexível com trama interna",
-      "Gatilho com trava para fluxo contínuo"
-    ],
-    materials: "Aço Inox 304 e Latão Cromado",
-    description: "Ideal para a remoção de resíduos pesados antes da lavagem na máquina. Desenvolvido para suportar rotinas intensas de cozinhas industriais."
+    description: "O Esguicho de Pré-Lavagem modelo DMFB90B, de BANCADA COM MISTURADOR FURO ÚNICO, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Foi desenvolvido especificamente para o trabalho pesado das cozinhas industriais, aumentando a produtividade dos funcionários e economizando tempo, água e dinheiro."
   },
   {
-    id: "esp-002",
-    name: "Esguicho com Torneira Extra",
-    category: "Esguichos com Torneira Extra",
-    image: "images/product_esguicho_graphite.png",
+    id: "DMFBMCB",
+    name: "Modelo DMFBMCB",
+    category: "Esguichos de Pré-Lavagem",
+    image: "images/DMFBMCB.png",
+    description: "Produto com referência DMFBMCB."
+  },
+  {
+    id: "DMFBMD",
+    name: "Modelo DMFBMD",
+    category: "Esguichos de Pré-Lavagem",
+    image: "images/DMFBMD.png",
+    description: "Produto com referência DMFBMD."
+  },
+  {
+    id: "SPBICCH",
+    name: "Modelo SPBICCH",
+    category: "Esguichos de Pré-Lavagem",
+    image: "images/SPBICCH.png",
+    description: "Produto com referência SPBICCH."
+  },
+  {
+    id: "AV10L312",
+    name: "Enrolador 12M",
+    category: "Higienizadores e Acessórios",
+    image: "images/AV10L312.png",
+    description: "GRUPO DE LAVAGEM PROTEGIDO COM ENROLADOR 12 METROS COM DUCHA ANTI-DERRAPANTE. Higienizador de Cozinha."
+  },
+  {
+    id: "BFBDD_MINI_200MM",
+    name: "Mini Esguicho de Pré-Lavagem de Parede",
+    category: "Esguichos de Pré-Lavagem",
+    image: "images/BFBDD_MINI_200MM.png",
     instalacao: "Parede",
-    configuracao: "Sem misturador",
-    formato: "Padrão",
-    complemento: "Com torneira extra",
-    acionamento: "Manual",
-    aplicacao: "Cozinhas",
-    characteristics: [
-      "Torneira bica móvel auxiliar",
-      "Suporte de fixação de parede robusto",
-      "Alcance estendido para grandes cubas"
-    ],
-    materials: "Aço Inox 304 com acabamento grafite",
-    description: "Combina a potência do esguicho de pré-lavagem com a conveniência de uma torneira direcional extra, otimizando o fluxo de trabalho."
-  },
-  {
-    id: "tcl-001",
-    name: "Torneira Clínica de Parede",
-    category: "Torneiras Clínicas",
-    image: "images/product_clinica_1787071664056.png",
-    instalacao: "Parede",
-    configuracao: "Sem misturador",
-    formato: "Padrão",
-    complemento: "Sem torneira extra",
-    acionamento: "Alavanca clínica",
-    aplicacao: "Clínicas e hospitais",
-    characteristics: [
-      "Acionamento por cotovelo ou antebraço",
-      "Design sem frestas para fácil assepsia",
-      "Mecanismo de vedação cerâmico"
-    ],
-    materials: "Latão Cromado de alta densidade",
-    description: "Torneira projetada para atender rigorosas normas de biossegurança, permitindo o acionamento sem o uso das mãos para evitar contaminação cruzada."
-  },
-  {
-    id: "tcl-002",
-    name: "Torneira Clínica Eletrônica",
-    category: "Torneiras Clínicas",
-    image: "images/product_clinical_faucet_graphite.png",
-    instalacao: "Bancada",
-    configuracao: "Sem misturador",
+    configuracao: "Com misturador",
     formato: "Mini",
-    complemento: "Sem torneira extra",
-    acionamento: "Eletrônico",
-    aplicacao: "Clínicas e hospitais",
-    characteristics: [
-      "Sensor infravermelho de alta precisão",
-      "Fechamento automático contra desperdício",
-      "Bivolt com opção de pilha"
-    ],
-    materials: "Aço Inox com acabamento grafite",
-    description: "Máxima higiene e economia de água. O sensor detecta a presença das mãos instantaneamente, ideal para centros cirúrgicos e consultórios."
-  },
-  {
-    id: "tin-001",
-    name: "Torneira Industrial Bica Alta",
-    category: "Torneiras Industriais",
-    image: "images/product_industrial_faucet_graphite.png",
-    instalacao: "Bancada",
-    configuracao: "Sem misturador",
-    formato: "Padrão",
-    complemento: "Sem torneira extra",
-    acionamento: "Manual",
-    aplicacao: "Indústrias",
-    characteristics: [
-      "Bica móvel de longo alcance",
-      "Volante em cruzeta industrial",
-      "Vazão otimizada para enchimento rápido"
-    ],
-    materials: "Latão forjado e Inox",
-    description: "Robustez extrema para aplicações de chão de fábrica e áreas de processamento de alimentos, onde a durabilidade é prioridade."
-  },
-  {
-    id: "tpe-001",
-    name: "Válvula de Acionamento por Pedal",
-    category: "Torneiras de Acionamento por Pedal",
-    image: "images/product_valvula_1787071672807.png",
-    instalacao: "Parede",
-    configuracao: "Sem misturador",
-    formato: "Mini",
-    complemento: "Sem torneira extra",
-    acionamento: "Pedal",
     aplicacao: "Cozinhas",
-    characteristics: [
-      "Acionamento mecânico via pedal duplo ou simples",
-      "Liberação das mãos durante a operação",
-      "Redução de até 60% no consumo de água"
-    ],
-    materials: "Aço Inox escovado",
-    description: "Sistema prático que permite o fluxo de água apenas enquanto o pedal é pressionado. Perfeito para pias de assepsia e cozinhas de alto giro."
+    description: "Mini Esguicho de Pré-Lavagem modelo BFBDD/MINI 200MM, de PAREDE COM MISTURADOR, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Foi desenvolvido especificamente para o trabalho pesado das cozinhas industriais, aumentando a produtividade dos funcionários e economizando tempo, água e dinheiro. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   }
 ];

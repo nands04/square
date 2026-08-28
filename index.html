@@ -158,8 +158,9 @@
     align-items: center;
     justify-content: center;
     box-shadow: none;
-    height: 52px;
-    width: 52px;
+    height: 60px;
+    width: auto;
+    min-width: 60px;
   }
 
   .nav-link {
@@ -307,7 +308,7 @@
   .product-large .editorial-img-wrapper { padding-top: 72%; }
   .product-medium-1 .editorial-img-wrapper, .product-medium-2 .editorial-img-wrapper { padding-top: 60%; }
   
-  .editorial-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.8s ease; }
+  .editorial-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; background-color: #f8f9fc; transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.8s ease; }
   
   .product-large:hover .editorial-img { transform: scale(1.03); filter: brightness(1.08) contrast(1.05); }
   .product-medium-1:hover .editorial-img, .product-medium-2:hover .editorial-img { transform: scale(1.02); }
@@ -318,8 +319,8 @@
     position: absolute; bottom: 0; left: 0; right: 0; padding: 32px; z-index: 2; opacity: 0; transform: translateY(10px); transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
   .product-medium-1:hover .editorial-content, .product-medium-2:hover .editorial-content { opacity: 1; transform: translateY(0); }
-  .product-medium-1 .editorial-title, .product-medium-2 .editorial-title { color: white; font-size: 22px; margin-bottom: 0; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-  .product-medium-1 .editorial-category, .product-medium-2 .editorial-category { color: rgba(255,255,255,0.9); text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+  .product-medium-1 .editorial-title, .product-medium-2 .editorial-title { color: #082957; font-size: 22px; margin-bottom: 0; }
+  .product-medium-1 .editorial-category, .product-medium-2 .editorial-category { color: #082957; }
   .product-medium-1 .editorial-link, .product-medium-2 .editorial-link { display: none; }
   
   .editorial-category { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #20A8D8; margin-bottom: 12px; }
@@ -338,7 +339,7 @@
   .delay-1 { transition-delay: 0.1s; }
   .delay-2 { transition-delay: 0.25s; }
   .delay-3 { transition-delay: 0.4s; }
-  .editorial-categories-list { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+  .editorial-categories-list { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; justify-content: center; }
   .editorial-category-pill { padding: 12px 24px; border: 1px solid rgba(8, 41, 87, 0.1); border-radius: 999px; font-size: 14px; font-weight: 600; color: #082957; transition: all 0.3s ease; text-decoration: none; }
   .editorial-category-pill:hover { background-color: #082957; color: white; border-color: #082957; }
   /* About Us Section Styles */
@@ -412,7 +413,7 @@
   /* Header responsivo */
   @media (max-width: 1023px) {
     .sc-header { height: 64px !important; }
-    .logo-container { height: 44px !important; width: 44px !important; }
+    .logo-container { height: 50px !important; width: auto !important; min-width: 50px !important; }
     .hidden.lg\:flex { display: none !important; }
     .mobile-toggle { display: flex !important; }
   }
@@ -539,7 +540,7 @@
 </div>
 <div class="rounded-2xl w-1/2 overflow-hidden hover:rounded-[30px] transition-all">
 <a class="" href="https://wa.me/5582996205266?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20este%20produto" data-discover="true">
-<img alt="" decoding="async" loading="lazy" src="images/product_esguicho_new.png" width="100" style="width: 100%;">
+<img alt="" decoding="async" loading="lazy" src="images/DMAB90.png" width="100" style="width: 100%;">
 </a>
 </div>
 </div>
@@ -572,9 +573,10 @@
         </svg>
       </a>
     </div>
-    <button id="mobile-menu-btn" style="flex-direction: column; gap: 5px; padding: 8px; background: transparent; border: none; z-index: 50; cursor: pointer;" class="mobile-toggle flex lg:hidden">
-      <span class="w-6 h-[2px] bg-white transition-all duration-300 origin-center" id="bar1"></span>
-      <span class="w-6 h-[2px] bg-white transition-all duration-300 origin-center" id="bar2"></span>
+    <button id="mobile-menu-btn" style="padding: 8px; background: transparent; border: none; z-index: 50; cursor: pointer; color: white;" class="mobile-toggle flex lg:hidden">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </button>
   </div>
 </header>
@@ -675,45 +677,13 @@ Fale com um especialista
       </p>
     </div>
 
-    <div class="product-showcase-grid">
-      <!-- Large Product -->
-      <a href="shop.html" class="editorial-card product-large reveal-up delay-1">
-        <div class="editorial-img-wrapper">
-          <img src="images/product_esguicho_new.png" alt="Esguicho de Pré-Lavagem" class="editorial-img">
-        </div>
-        <div class="editorial-content">
-          <span class="editorial-category">Esguichos de Pré-Lavagem</span>
-          <h3 class="editorial-title">Esguicho de Pré-Lavagem Profissional de Alta Pressão</h3>
-          <span class="editorial-link">Conhecer solução <span class="editorial-link-arrow">&rarr;</span></span>
-        </div>
-      </a>
+    </div> <!-- Fecha o header de "Soluções" para permitir o vídeo full-width -->
 
-      <!-- Medium Product 1 -->
-      <a href="shop.html" class="editorial-card product-medium-1 reveal-up delay-2">
-        <div class="editorial-img-wrapper">
-          <div class="editorial-overlay"></div>
-          <img src="images/product_industrial_new.png" alt="Torneira Industrial" class="editorial-img">
-        </div>
-        <div class="editorial-content">
-          <span class="editorial-category">Torneiras Industriais</span>
-          <h3 class="editorial-title">Misturador Industrial Duplo Comando</h3>
-          <span class="editorial-link">Conhecer solução <span class="editorial-link-arrow">&rarr;</span></span>
-        </div>
-      </a>
-
-      <!-- Medium Product 2 -->
-      <a href="shop.html" class="editorial-card product-medium-2 reveal-up delay-3">
-        <div class="editorial-img-wrapper">
-          <div class="editorial-overlay"></div>
-          <img src="images/product_clinica_new.png" alt="Torneira Clínica" class="editorial-img">
-        </div>
-        <div class="editorial-content">
-          <span class="editorial-category">Torneiras Clínicas</span>
-          <h3 class="editorial-title">Torneira Clínica Alavanca Longa</h3>
-          <span class="editorial-link">Conhecer solução <span class="editorial-link-arrow">&rarr;</span></span>
-        </div>
-      </a>
+    <div style="width: 100%; margin: 2rem 0; overflow: hidden;">
+      <video src="images/Commercial_faucet_product_advert…_202608281420.mp4" autoplay loop muted playsinline style="width: 100%; height: auto; display: block; object-fit: cover;"></video>
     </div>
+
+    <div class="mx-auto" style="max-width: 1400px; margin-top: 3rem;">
 
     <div class="editorial-categories-list">
       <a href="shop.html" class="editorial-category-pill">Sistemas por Pedal</a>
@@ -728,298 +698,54 @@ Fale com um especialista
     </div>
   </div>
 </div>
-<style>
-  /* CSS for Catalog Section */
-  .catalog-section { padding: 4rem 0; background: var(--color-white); }
-  .catalog-header { background: var(--color-deep-blue); color: #fff; padding: 4rem 20px; text-align: center; border-radius: 16px; margin-bottom: 3rem; }
-  .catalog-header h2 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800; }
-  .catalog-header p { font-size: 1.15rem; max-width: 650px; margin: 0 auto; color: #cbd5e1; line-height: 1.6; }
-  .catalog-layout { display: flex; flex-direction: column; gap: 3rem; }
-  @media(min-width: 1024px) { .catalog-layout { flex-direction: row; } }
-  .catalog-sidebar { width: 100%; }
-  @media(min-width: 1024px) { .catalog-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 100px; align-self: start; max-height: calc(100vh - 120px); overflow-y: auto; padding-right: 1rem; } }
-  
-  .catalog-sidebar::-webkit-scrollbar { width: 6px; }
-  .catalog-sidebar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
-  .catalog-sidebar::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+<script src="products.js"></script>
 
-  .products-grid { flex-grow: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; align-content: start; }
-  .product-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; border: 1px solid #eaeaea; transition: transform 0.3s, box-shadow 0.3s; }
-  .product-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); border-color: var(--color-tech-gray); }
-  .product-image { width: 100%; height: 260px; object-fit: cover; background: #fff; border-bottom: 1px solid #f0f0f0; }
-  .product-info { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
-  .product-category { font-size: 0.75rem; text-transform: uppercase; color: #888; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
-  .product-name { font-size: 1.2rem; font-weight: 700; color: var(--color-navy); margin-bottom: 1rem; line-height: 1.3; }
-  .product-chars { list-style: none; padding: 0; margin: 0 0 1.5rem 0; flex-grow: 1; }
-  .product-chars li { font-size: 0.9rem; color: #555; margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.4; }
-  .product-chars li::before { content: "•"; color: var(--color-cyan); font-weight: bold; }
+<style>
+  .premium-video-section { padding: 8rem 5%; background-color: var(--color-white); overflow: hidden; }
+  .video-editorial-layout { display: flex; flex-direction: column; gap: 4rem; align-items: center; }
+  .video-editorial-content { width: 100%; display: flex; flex-direction: column; align-items: flex-start; }
+  .video-editorial-media { width: 100%; position: relative; }
+  .video-identification { position: absolute; bottom: 0; left: 0; right: 0; padding: 2.5rem 2rem 2rem 2rem; background: linear-gradient(to top, rgba(8,41,87,0.85), transparent); color: white; pointer-events: none; }
   
-  .btn-details { width: 100%; padding: 0.75rem; background: transparent; border: 1px solid var(--color-navy); color: var(--color-navy); font-weight: 600; text-align: center; border-radius: 6px; text-decoration: none; transition: all 0.3s; margin-top: auto; display: block; }
-  .btn-details:hover { background: var(--color-navy); color: #fff; }
-  
-  .filter-group { margin-bottom: 1.5rem; border-bottom: 1px solid #eaeaea; padding-bottom: 1.5rem; }
-  .filter-group:last-child { border-bottom: none; }
-  .filter-title { font-weight: 700; margin-bottom: 1rem; font-size: 1rem; color: var(--color-navy); text-transform: uppercase; letter-spacing: 0.02em; }
-  .filter-label { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; cursor: pointer; font-size: 0.9rem; color: #444; transition: color 0.2s; }
-  .filter-label:hover { color: var(--color-cyan); }
-  .filter-label input { width: 18px; height: 18px; cursor: pointer; accent-color: var(--color-cyan); border: 1px solid #ccc; border-radius: 4px; }
-  
-  /* Mobile Drawer Styles */
-  .mobile-filter-btn { display: none; width: 100%; padding: 1rem; background: var(--color-navy); color: white; text-align: center; font-weight: bold; border: none; border-radius: 8px; margin-bottom: 1.5rem; cursor: pointer; font-size: 1.1rem; }
-  @media(max-width: 1023px) {
-    .mobile-filter-btn { display: block; }
-    .catalog-sidebar { display: none; position: fixed; top: 0; left: 0; width: 85%; max-width: 350px; height: 100vh; background: #fff; z-index: 100; padding: 2rem; overflow-y: auto; box-shadow: 4px 0 25px rgba(0,0,0,0.3); }
-    .catalog-sidebar.active { display: block; animation: slideIn 0.3s forwards; }
-    .drawer-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 99; backdrop-filter: blur(2px); }
-    .drawer-overlay.active { display: block; }
-    .close-filters { display: block; background: none; border: none; font-size: 2rem; float: right; cursor: pointer; margin-bottom: 1rem; color: var(--color-navy); line-height: 1; }
-  }
-  @media(min-width: 1024px) {
-    .close-filters { display: none; }
-  }
-  @keyframes slideIn {
-    from { transform: translateX(-100%); }
-    to { transform: translateX(0); }
+  @media (min-width: 1024px) {
+    .video-editorial-layout { flex-direction: row; gap: 6%; align-items: center; justify-content: space-between; }
+    .video-editorial-content { width: 42%; padding-right: 1rem; }
+    .video-editorial-media { width: 52%; }
   }
 </style>
 
-<section class="lg:px-10 px-5 pb-13" id="produtos">
-  <div class="catalog-header">
-    <h2 class="reveal-up text-white" style="color: white !important;">Soluções profissionais para cada necessidade.</h2>
-    <p>Explore nossa linha de equipamentos para lavagem, higienização e operação profissional.</p>
-  </div>
+<section class="premium-video-section">
+  <div class="mx-auto" style="max-width: 1400px;">
+    <div class="video-editorial-layout">
+      <!-- Text Column -->
+      <div class="video-editorial-content reveal-up delay-1 is-visible">
+        <span style="font-size: 0.85rem; font-weight: 800; color: #20A8D8; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.5rem; display: block;">Soluções para operações de alta demanda</span>
+        <h2 style="font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 800; color: #082957; line-height: 1.1; margin-bottom: 1.5rem; text-wrap: balance; letter-spacing: -0.02em;">Desempenho pensado para o uso profissional.</h2>
+        <p style="font-size: 1.15rem; color: #082957; opacity: 0.75; line-height: 1.6; margin-bottom: 2.5rem; max-width: 90%;">Soluções desenvolvidas para acompanhar a rotina de ambientes profissionais que exigem praticidade, resistência e eficiência.</p>
+        <a href="shop.html" style="display: inline-flex; align-items: center; justify-content: center; padding: 1.1rem 2.2rem; background-color: #082957; color: white; font-weight: 700; font-size: 1rem; border-radius: 9999px; text-decoration: none; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#20A8D8'" onmouseout="this.style.backgroundColor='#082957'">
+          CONHEÇA A LINHA DE PRÉ-LAVAGEM
+        </a>
+      </div>
 
-  <div class="catalog-layout">
-    <button class="mobile-filter-btn" id="openFilters">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline; vertical-align:middle; margin-right:8px;"><path d="M4 6H20M4 12H14M4 18H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Filtrar Produtos
-    </button>
-    <div class="drawer-overlay" id="drawerOverlay"></div>
-
-    <aside class="catalog-sidebar" id="filterSidebar">
-      <button class="close-filters" id="closeFilters">&times;</button>
-      <h2 style="margin-top:0; color: var(--color-navy); font-size: 1.5rem; margin-bottom: 2rem;">Filtros</h2>
-      <div id="filtersContainer"></div>
-    </aside>
-
-    <main class="products-grid" id="productsGrid">
-      <!-- Products injected via JS -->
-    </main>
-  </div>
-</section>
-
-<script>
-const products = [
-  {
-    id: "esp-001",
-    name: "Esguicho de Pré-Lavagem de Bancada",
-    category: "Esguichos de Pré-Lavagem",
-    image: "images/product_esguicho_new.png",
-    instalacao: "Bancada",
-    configuracao: "Com misturador",
-    formato: "Padrão",
-    complemento: "Sem torneira extra",
-    acionamento: "Manual",
-    aplicacao: "Cozinhas",
-    characteristics: [
-      "Mola em aço inox de alta resistência",
-      "Mangueira flexível com trama interna",
-      "Gatilho com trava para fluxo contínuo"
-    ],
-    materials: "Aço Inox 304 e Latão Cromado",
-    description: "Ideal para a remoção de resíduos pesados antes da lavagem na máquina. Desenvolvido para suportar rotinas intensas de cozinhas industriais."
-  },
-  {
-    id: "esp-002",
-    name: "Esguicho com Torneira Extra",
-    category: "Esguichos com Torneira Extra",
-    image: "images/product_esguicho_new.png",
-    instalacao: "Parede",
-    configuracao: "Sem misturador",
-    formato: "Padrão",
-    complemento: "Com torneira extra",
-    acionamento: "Manual",
-    aplicacao: "Cozinhas",
-    characteristics: [
-      "Torneira bica móvel auxiliar",
-      "Suporte de fixação de parede robusto",
-      "Alcance estendido para grandes cubas"
-    ],
-    materials: "Aço Inox 304 com acabamento grafite",
-    description: "Combina a potência do esguicho de pré-lavagem com a conveniência de uma torneira direcional extra, otimizando o fluxo de trabalho."
-  },
-  {
-    id: "tcl-001",
-    name: "Torneira Clínica de Parede",
-    category: "Torneiras Clínicas",
-    image: "images/product_clinica_new.png",
-    instalacao: "Parede",
-    configuracao: "Sem misturador",
-    formato: "Padrão",
-    complemento: "Sem torneira extra",
-    acionamento: "Alavanca clínica",
-    aplicacao: "Clínicas e hospitais",
-    characteristics: [
-      "Acionamento por cotovelo ou antebraço",
-      "Design sem frestas para fácil assepsia",
-      "Mecanismo de vedação cerâmico"
-    ],
-    materials: "Latão Cromado de alta densidade",
-    description: "Torneira projetada para atender rigorosas normas de biossegurança, permitindo o acionamento sem o uso das mãos para evitar contaminação cruzada."
-  },
-  {
-    id: "tcl-002",
-    name: "Torneira Clínica Eletrônica",
-    category: "Torneiras Clínicas",
-    image: "images/product_clinica_new.png",
-    instalacao: "Bancada",
-    configuracao: "Sem misturador",
-    formato: "Mini",
-    complemento: "Sem torneira extra",
-    acionamento: "Eletrônico",
-    aplicacao: "Clínicas e hospitais",
-    characteristics: [
-      "Sensor infravermelho de alta precisão",
-      "Fechamento automático contra desperdício",
-      "Bivolt com opção de pilha"
-    ],
-    materials: "Aço Inox com acabamento grafite",
-    description: "Máxima higiene e economia de água. O sensor detecta a presença das mãos instantaneamente, ideal para centros cirúrgicos e consultórios."
-  },
-  {
-    id: "tin-001",
-    name: "Torneira Industrial Bica Alta",
-    category: "Torneiras Industriais",
-    image: "images/product_industrial_new.png",
-    instalacao: "Bancada",
-    configuracao: "Sem misturador",
-    formato: "Padrão",
-    complemento: "Sem torneira extra",
-    acionamento: "Manual",
-    aplicacao: "Indústrias",
-    characteristics: [
-      "Bica móvel de longo alcance",
-      "Volante em cruzeta industrial",
-      "Vazão otimizada para enchimento rápido"
-    ],
-    materials: "Latão forjado e Inox",
-    description: "Robustez extrema para aplicações de chão de fábrica e áreas de processamento de alimentos, onde a durabilidade é prioridade."
-  },
-  {
-    id: "tpe-001",
-    name: "Válvula de Acionamento por Pedal",
-    category: "Torneiras de Acionamento por Pedal",
-    image: "images/product_industrial_new.png",
-    instalacao: "Parede",
-    configuracao: "Sem misturador",
-    formato: "Mini",
-    complemento: "Sem torneira extra",
-    acionamento: "Pedal",
-    aplicacao: "Cozinhas",
-    characteristics: [
-      "Acionamento mecânico via pedal duplo ou simples",
-      "Liberação das mãos durante a operação",
-      "Redução de até 60% no consumo de água"
-    ],
-    materials: "Aço Inox escovado",
-    description: "Sistema prático que permite o fluxo de água apenas enquanto o pedal é pressionado. Perfeito para pias de assepsia e cozinhas de alto giro."
-  }
-];
-
-  const filterConfig = [
-    { id: "category", title: "Categorias", options: ["Esguichos de Pré-Lavagem", "Esguichos com Torneira Extra", "Torneiras Industriais", "Torneiras Clínicas", "Torneiras de Acionamento por Pedal", "Higienizadores e Acessórios"] },
-    { id: "instalacao", title: "Tipo de instalação", options: ["Bancada", "Parede"] },
-    { id: "configuracao", title: "Configuração", options: ["Com misturador", "Sem misturador"] },
-    { id: "formato", title: "Formato", options: ["Padrão", "Mini"] },
-    { id: "complemento", title: "Complemento", options: ["Com torneira extra", "Sem torneira extra"] },
-    { id: "acionamento", title: "Acionamento", options: ["Manual", "Alavanca clínica", "Pedal", "Eletrônico"] },
-    { id: "aplicacao", title: "Aplicação", options: ["Cozinhas", "Clínicas e hospitais", "Indústrias"] }
-  ];
-
-  const state = {
-    category: [], instalacao: [], configuracao: [], formato: [], complemento: [], acionamento: [], aplicacao: []
-  };
-
-  function renderFilters() {
-    const container = document.getElementById('filtersContainer');
-    let html = '';
-    filterConfig.forEach(group => {
-      html += `<div class="filter-group"><h3 class="filter-title">${group.title}</h3>`;
-      group.options.forEach(opt => {
-        html += `<label class="filter-label"><input type="checkbox" data-group="${group.id}" value="${opt}"> ${opt}</label>`;
-      });
-      html += `</div>`;
-    });
-    container.innerHTML = html;
-
-    document.querySelectorAll('#filtersContainer input[type="checkbox"]').forEach(cb => {
-      cb.addEventListener('change', (e) => {
-        const group = e.target.dataset.group;
-        const val = e.target.value;
-        if(e.target.checked) state[group].push(val);
-        else state[group] = state[group].filter(v => v !== val);
-        renderProducts();
-      });
-    });
-  }
-
-  function renderProducts() {
-    const grid = document.getElementById('productsGrid');
-    if (typeof products === 'undefined') {
-      grid.innerHTML = 'Erro: products não carregado.';
-      return;
-    }
-    const filtered = products.filter(p => {
-      return (state.category.length === 0 || state.category.includes(p.category)) &&
-             (state.instalacao.length === 0 || state.instalacao.includes(p.instalacao)) &&
-             (state.configuracao.length === 0 || state.configuracao.includes(p.configuracao)) &&
-             (state.formato.length === 0 || state.formato.includes(p.formato)) &&
-             (state.complemento.length === 0 || state.complemento.includes(p.complemento)) &&
-             (state.acionamento.length === 0 || state.acionamento.includes(p.acionamento)) &&
-             (state.aplicacao.length === 0 || state.aplicacao.includes(p.aplicacao));
-    });
-
-    if (filtered.length === 0) {
-      grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 4rem; color: #888; font-size: 1.1rem; background: #f9f9f9; border-radius: 12px;">Nenhum produto encontrado com os filtros selecionados.</div>`;
-      return;
-    }
-
-    grid.innerHTML = filtered.map(p => `
-      <div class="product-card">
-        <img src="${p.image}" alt="${p.name}" class="product-image">
-        <div class="product-info">
-          <div class="product-category">${p.category}</div>
-          <h3 class="product-name">${p.name}</h3>
-          <ul class="product-chars">
-            ${p.characteristics.slice(0, 3).map(c => `<li>${c}</li>`).join('')}
-          </ul>
-          <a href="product.html?id=${p.id}" class="btn-details">Ver detalhes &rarr;</a>
+      <!-- Video Column -->
+      <div class="video-editorial-media reveal-up delay-2 is-visible">
+        <div style="position: relative; width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 24px 48px rgba(8,41,87,0.12); aspect-ratio: 4/5; background: #f8f9fc;">
+          <video src="images/Industrial_faucet_commercial_vid…_202608281431.mp4" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+          <div class="video-identification">
+            <div style="font-size: 0.85rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.25rem;">ESGUICHO DE PRÉ-LAVAGEM</div>
+            <div style="font-size: 1.1rem; font-weight: 400; opacity: 0.9;">Soluções para cozinhas profissionais</div>
+          </div>
         </div>
       </div>
-    `).join('');
-  }
-
-  const catalogSidebar = document.getElementById('filterSidebar');
-  const overlay = document.getElementById('drawerOverlay');
-  const openBtn = document.getElementById('openFilters');
-  const closeBtn = document.getElementById('closeFilters');
-
-  function closeDrawer() { catalogSidebar.classList.remove('active'); overlay.classList.remove('active'); }
-  openBtn.addEventListener('click', () => { catalogSidebar.classList.add('active'); overlay.classList.add('active'); });
-  closeBtn.addEventListener('click', closeDrawer);
-  overlay.addEventListener('click', closeDrawer);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    renderFilters();
-    renderProducts();
-  });
-</script>
+    </div>
+  </div>
+</section>
 
 
 <div class="lg:p-10 p-5 py-16 bg-white text-navy" id="aplicacoes">
   <div class="mb-12 flex flex-col gap-4">
     <span class="text-caption text-black-700 font-semibold tracking-wider">APLICAÇÕES</span>
-    <h2 class="reveal-up text-3xl font-bold" style="font-size: 2.5rem; margin-bottom: 0.5rem;">Onde a Square faz a diferença.</h2>
+    <h2 class="reveal-up text-3xl font-bold" style="font-size: 2.5rem; margin-bottom: 0.5rem; line-height: 1.2; text-wrap: balance;">Onde a Square faz a diferença.</h2>
     <p class="text-body max-w-[700px] text-black-800 text-lg">Soluções desenvolvidas para ambientes profissionais que exigem eficiência, higiene e resistência.</p>
   </div>
 
@@ -1298,7 +1024,7 @@ const products = [
       <div class="cyan-line-crossing"></div>
       <div class="visual-grid">
         <div class="v-img-wrapper large mnt-reveal" style="transition-delay: 0.1s;">
-          <img src="images/product_esguicho_new.png" alt="Detalhe de Torneira" class="v-img">
+          <img src="images/DMAB90.png" alt="Detalhe de Torneira" class="v-img">
           <div class="tech-indicator tech-indicator-1 mnt-reveal">Vedações Cerâmicas</div>
         </div>
         <div class="v-img-wrapper mnt-reveal" style="height: 250px; transition-delay: 0.3s;">
@@ -1306,7 +1032,7 @@ const products = [
           <div class="tech-indicator tech-indicator-3 mnt-reveal">Aço Inox 304</div>
         </div>
         <div class="v-img-wrapper mnt-reveal" style="height: 250px; transition-delay: 0.5s;">
-          <img src="images/product_industrial_new.png" alt="Registros e Conexões" class="v-img">
+          <img src="images/PDTR1AC200.png" alt="Registros e Conexões" class="v-img">
           <div class="tech-indicator tech-indicator-2 mnt-reveal">Conexões de Alta Pressão</div>
         </div>
       </div>
@@ -1366,6 +1092,8 @@ const products = [
     font-weight: 800;
     color: var(--color-navy, #082957);
     margin-bottom: 3rem;
+    line-height: 1.2;
+    text-wrap: balance;
   }
   .guarantee-graphic {
     position: relative;
@@ -1444,10 +1172,10 @@ const products = [
 <div class="flex justify-between items-start about-container flex-wrap lg:pb-18 lg:pt-13">
 <div class="w-full lg:w-[310px] justify-center lg:justify-normal self-end lg:block flex gap-4 lg:gap-0">
 <div class="mb-7 mt-12 about-img about-img-1 lg:max-h-full lg:mt-0 about-img-wrapper">
-<img alt="Esguicho de Pré-Lavagem" decoding="async" loading="lazy" src="images/about_esguicho_nobg.png" width="100" class="about-nobg-img" style="width:100%;object-fit:contain;mix-blend-mode:multiply;background:transparent;">
+<img alt="Esguicho DMAB90" decoding="async" loading="lazy" src="images/DMAB90.png" width="100" class="about-nobg-img" style="width:100%;object-fit:contain;mix-blend-mode:multiply;background:transparent;">
 </div>
 <div class="mb-12 mt-7 about-img about-img-2 lg:max-h-full about-img-wrapper">
-<img alt="Esguicho Profissional" decoding="async" loading="lazy" src="images/about_esguicho_nobg2.png" width="100" class="about-nobg-img" style="width:100%;object-fit:contain;mix-blend-mode:multiply;background:transparent;">
+<img alt="Torneira Clínica SPBICCH" decoding="async" loading="lazy" src="images/SPBICCH.png" width="100" class="about-nobg-img" style="width:100%;object-fit:contain;mix-blend-mode:multiply;background:transparent;">
 </div>
 </div>
 <div class="lg:w-[310px] w-full text-navy flex flex-col gap-6 self-center">
@@ -1460,10 +1188,10 @@ const products = [
 </div>
 <div class="w-full lg:w-[310px] justify-center lg:justify-normal self-start lg:block flex gap-4 lg:gap-0 mt-5 lg:mt-0">
 <div class="mb-7 mt-12 about-img about-img-3 lg:max-h-full lg:mt-0 about-img-wrapper">
-<img alt="Sistema de Esguicho" decoding="async" loading="lazy" src="images/about_esguicho_nobg2.png" width="100" class="about-nobg-img" style="width:100%;object-fit:contain;mix-blend-mode:multiply;background:transparent;transform:scaleX(-1);">
+<img alt="Torneira de Pedal PDTR1AC200" decoding="async" loading="lazy" src="images/PDTR1AC200.png" width="100" class="about-nobg-img" style="width:100%;object-fit:contain;mix-blend-mode:multiply;background:transparent;">
 </div>
 <div class="mb-12 mt-7 about-img about-img-4 lg:max-h-full about-img-wrapper">
-<img alt="Esguicho de Alta Pressão" decoding="async" loading="lazy" src="images/about_esguicho_nobg.png" width="100" class="about-nobg-img" style="width:100%;object-fit:contain;mix-blend-mode:multiply;background:transparent;transform:scaleX(-1);">
+<img alt="Enrolador AV10L312" decoding="async" loading="lazy" src="images/AV10L312.png" width="100" class="about-nobg-img" style="width:100%;object-fit:contain;mix-blend-mode:multiply;background:transparent;">
 </div>
 </div>
 </div>
@@ -1518,22 +1246,22 @@ const products = [
 <div class="min-w-[310px] hidden md:block">
 </div>
 <div class="block min-w-[310px] w-[310px]">
-<img alt="Robustez para uso intenso" decoding="async" loading="lazy" src="images/product_esguicho_new.png" width="100" class="rounded-lg w-[310px] h-[310px] object-cover transition-all" style="width: 100%;">
+<img alt="Robustez para uso intenso" decoding="async" loading="lazy" src="images/DMAB90.png" width="100" class="rounded-lg w-[310px] h-[310px] object-cover transition-all" style="width: 100%;">
 <h3 class="mt-6 mb-4 min-h-[46px]">Robustez para uso intenso</h3>
 <p class="text-body">Equipamentos desenvolvidos com materiais resistentes para acompanhar rotinas de alta demanda.</p>
 </div>
 <div class="block min-w-[310px] w-[310px]">
-<img alt="Mais alcance, mais agilidade" decoding="async" loading="lazy" src="images/product_clinica_new.png" width="100" class="rounded-lg w-[310px] h-[310px] object-cover transition-all" style="width: 100%;">
+<img alt="Mais alcance, mais agilidade" decoding="async" loading="lazy" src="images/SPBICCH.png" width="100" class="rounded-lg w-[310px] h-[310px] object-cover transition-all" style="width: 100%;">
 <h3 class="mt-6 mb-4 min-h-[46px]">Mais alcance, mais agilidade</h3>
 <p class="text-body">Esguichos e duchas que facilitam a lavagem de utensílios, bancadas e áreas de trabalho.</p>
 </div>
 <div class="block min-w-[310px] w-[310px]">
-<img alt="Modelos para cada instalação" decoding="async" loading="lazy" src="images/product_industrial_new.png" width="100" class="rounded-lg w-[310px] h-[310px] object-cover transition-all" style="width: 100%;">
+<img alt="Modelos para cada instalação" decoding="async" loading="lazy" src="images/PDTR1AC200.png" width="100" class="rounded-lg w-[310px] h-[310px] object-cover transition-all" style="width: 100%;">
 <h3 class="mt-6 mb-4 min-h-[46px]">Modelos para cada instalação</h3>
 <p class="text-body">Opções de bancada, parede, com misturador, sem misturador, torneira extra e versões compactas.</p>
 </div>
 <div class="block min-w-[310px] w-[310px]">
-<img alt="Higiene como prioridade" decoding="async" loading="lazy" src="images/product_esguicho_new.png" width="100" class="rounded-lg w-[310px] h-[310px] object-cover transition-all" style="width: 100%;">
+<img alt="Higiene como prioridade" decoding="async" loading="lazy" src="images/DMAB90.png" width="100" class="rounded-lg w-[310px] h-[310px] object-cover transition-all" style="width: 100%;">
 <h3 class="mt-6 mb-4 min-h-[46px]">Higiene como prioridade</h3>
 <p class="text-body">Soluções indicadas para ambientes que demandam praticidade, controle e cuidado sanitário.</p>
 </div>
