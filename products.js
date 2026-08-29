@@ -116,14 +116,14 @@ const products = [
   {
     id: "SPBICCH",
     name: "Modelo SPBICCH",
-    category: "Higienizadores e Acessórios",
+    category: "Acessórios",
     image: "images/SPBICCH.png",
     description: "Suporte e acessório modelo SPBICCH."
   },
   {
     id: "AV10L312",
     name: "Enrolador 12M",
-    category: "Higienizadores e Acessórios",
+    category: "Acessórios",
     image: "images/AV10L312.png",
     description: "GRUPO DE LAVAGEM PROTEGIDO COM ENROLADOR 12 METROS COM DUCHA ANTI-DERRAPANTE. Higienizador de Cozinha."
   },
@@ -141,63 +141,63 @@ const products = [
   {
     id: "SP300D",
     name: "Modelo SP300D",
-    category: "Higienizadores e Acessórios",
+    category: "Acessórios",
     image: "images/SP300D.png",
     description: "Bica em latão cromado referência SP300D."
   },
   {
     id: "SP250A",
     name: "Modelo SP250A",
-    category: "Higienizadores e Acessórios",
+    category: "Acessórios",
     image: "images/SP250A.png",
     description: "Bica em latão cromado referência SP250A."
   },
   {
     id: "RDTUBO",
     name: "Modelo RDTUBO",
-    category: "Higienizadores e Acessórios",
+    category: "Acessórios",
     image: "images/RDTUBO.png",
     description: "Cano em aço inox, com bica extra em latão cromado H.750 mm."
   },
   {
     id: "RDSTCP",
     name: "Modelo RDSTCP",
-    category: "Higienizadores e Acessórios",
+    category: "Acessórios",
     image: "images/RDSTCP.png",
     description: "Kit de fixação para parede aço inox. Parafusos de travamento."
   },
   {
     id: "RDFLX0B",
     name: "Modelo RDFLX0B",
-    category: "Higienizadores e Acessórios",
+    category: "Acessórios",
     image: "images/RDFLX0B.png",
     description: "Flexível FG 1/2 CR 1/2 CR com proteção UV e trança de aço inoxidável."
   },
   {
     id: "RDEVML",
     name: "Modelo RDEVML",
-    category: "Higienizadores e Acessórios",
+    category: "Acessórios",
     image: "images/RDEVML.png",
     description: "Cano em aço inox, com bica extra em latão cromado L.750 mm."
   },
   {
     id: "RDCPNB",
     name: "Modelo RDCPNB",
-    category: "Higienizadores e Acessórios",
+    category: "Acessórios",
     image: "images/RDCPNB.png",
     description: "Ducha aérea corpo em latão cromado, cabo emborrachado anti-derrapante, proteção anti-choque, gatilho manual com opção de travamento."
   },
   {
     id: "RDMOLXM",
     name: "Modelo RDMOLXM",
-    category: "Higienizadores e Acessórios",
+    category: "Acessórios",
     image: "images/RDMOLXM.png",
     description: "Mola e acessório de fixação modelo RDMOLXM."
   },
   {
     id: "RIC220",
     name: "Modelo RIC220",
-    category: "Higienizadores e Acessórios",
+    category: "Acessórios",
     image: "images/RIC220.png",
     description: "Registro em latão água quente ou fria, vedação em cerâmica, 1/4 de volta."
   },
@@ -353,21 +353,21 @@ const products = [
   {
     id: "AV10L3",
     name: "Enrolador 3M",
-    category: "Higienizadores e Acessórios",
+    category: "Acessórios",
     image: "images/AV10L3.png",
     description: "Grupo de lavagem protegido com enrolador 3 metros com ducha anti-derrapante. Higienizador de cozinha."
   },
   {
     id: "AV10L2",
     name: "Enrolador 3 Metros",
-    category: "Higienizadores e Acessórios",
+    category: "Acessórios",
     image: "images/AV10L2 – 3 METROS.png",
     description: "Grupo de lavagem protegido com enrolador 3 metros com ducha anti-derrapante. Higienizador de cozinha."
   },
   {
     id: "CANOPLA",
     name: "Canopla",
-    category: "Higienizadores e Acessórios",
+    category: "Acessórios",
     image: "images/CANOPLA.png",
     description: "Canopla acessório de fixação e acabamento."
   },
@@ -394,14 +394,14 @@ const products = [
   {
     id: "DUCHAMINIESGUICHO",
     name: "Ducha Mini Esguicho",
-    category: "Higienizadores e Acessórios",
+    category: "Acessórios",
     image: "images/DUCHA MINI ESGUICHO.png",
     description: "Ducha mini esguicho, acessório para sistemas de pré-lavagem."
   },
   {
     id: "02UVXA",
     name: "Modelo 02UVXA",
-    category: "Higienizadores e Acessórios",
+    category: "Acessórios",
     image: "images/02UVXA.png",
     description: "Kit de vedação: borracha de vedação, rosca de vedação e porca de vedação."
   },

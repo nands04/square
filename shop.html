@@ -1264,7 +1264,7 @@
   <script>
     // Filter Configuration
     const filterConfig = [
-      { id: "category", title: "Categoria", options: ["Esguichos de Pré-Lavagem", "Esguichos com Torneira Extra", "Torneiras Industriais", "Torneiras Clínicas", "Torneiras de Acionamento por Pedal", "Higienizadores e Acessórios"] },
+      { id: "category", title: "Categoria", options: ["Esguichos de Pré-Lavagem", "Esguichos com Torneira Extra", "Torneiras Industriais", "Torneiras Clínicas", "Torneiras de Acionamento por Pedal", "Acessórios"] },
       { id: "instalacao", title: "Instalação", options: ["Bancada", "Parede"] },
       { id: "configuracao", title: "Misturador", options: ["Com misturador", "Sem misturador"] }
     ];
@@ -1281,7 +1281,7 @@
     // Render Quick Category Tabs
     function renderCategoryTabs() {
       const container = document.getElementById('categoryTabsContainer');
-      const categories = ["Todos", "Esguichos de Pré-Lavagem", "Esguichos com Torneira Extra", "Torneiras Industriais", "Torneiras Clínicas", "Torneiras de Acionamento por Pedal", "Higienizadores e Acessórios"];
+      const categories = ["Todos", "Esguichos de Pré-Lavagem", "Esguichos com Torneira Extra", "Torneiras Industriais", "Torneiras Clínicas", "Torneiras de Acionamento por Pedal", "Acessórios"];
       
       container.innerHTML = categories.map(cat => `
         <button class="category-tab ${state.selectedCategoryTab === cat ? 'active' : ''}" data-cat="${cat}">
