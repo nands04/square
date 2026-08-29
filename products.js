@@ -404,6 +404,16 @@ const products = [
     category: "Higienizadores e Acessórios",
     image: "images/02UVXA.png",
     description: "Kit de vedação: borracha de vedação, rosca de vedação e porca de vedação."
+  },
+  {
+    id: "DMAMAD",
+    name: "Modelo DMAMAD",
+    category: "Torneiras Industriais",
+    image: "images/DMAMAD.png",
+    instalacao: "Bancada",
+    configuracao: "Sem misturador",
+    aplicacao: "Cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas",
+    description: "Torneira industrial simples modelo DMAMAD, de BANCADA SEM MISTURADOR, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas."
   }
 ];
 
