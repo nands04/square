@@ -165,5 +165,73 @@ const products = [
     category: "Higienizadores e Acessórios",
     image: "images/RDSTCP.png",
     description: "Kit de fixação para parede aço inox. Parafusos de travamento."
+  },
+  {
+    id: "RDFLX0B",
+    name: "Modelo RDFLX0B",
+    category: "Higienizadores e Acessórios",
+    image: "images/RDFLX0B.png",
+    description: "Flexível FG 1/2 CR 1/2 CR com proteção UV e trança de aço inoxidável."
+  },
+  {
+    id: "RDEVML",
+    name: "Modelo RDEVML",
+    category: "Higienizadores e Acessórios",
+    image: "images/RDEVML.png",
+    description: "Cano em aço inox, com bica extra em latão cromado L.750 mm."
+  },
+  {
+    id: "RDCPNB",
+    name: "Modelo RDCPNB",
+    category: "Higienizadores e Acessórios",
+    image: "images/RDCPNB.png",
+    description: "Ducha aérea corpo em latão cromado, cabo emborrachado anti-derrapante, proteção anti-choque, gatilho manual com opção de travamento."
+  },
+  {
+    id: "RDMOLXM",
+    name: "Modelo RDMOLXM",
+    category: "Higienizadores e Acessórios",
+    image: "images/RDMOLXM.png",
+    description: "Mola e acessório de fixação modelo RDMOLXM."
+  },
+  {
+    id: "RIC220",
+    name: "Modelo RIC220",
+    category: "Higienizadores e Acessórios",
+    image: "images/RIC220.png",
+    description: "Registro em latão água quente ou fria, vedação em cerâmica, 1/4 de volta."
+  },
+  {
+    id: "PDTR1A",
+    name: "Modelo PDTR1A",
+    category: "Torneiras de Acionamento por Pedal",
+    image: "images/PDTR1A.png",
+    description: "Pedal de acionamento hidráulico para torneiras de pedal. Ideal para cozinhas industriais, restaurantes, clínicas médicas e odontológicas."
+  },
+  {
+    id: "MINIDMAPAREDE",
+    name: "Mini Esguicho de Pré-Lavagem de Parede com Torneira Extra",
+    category: "Esguichos com Torneira Extra",
+    image: "images/MINIDMAPAREDE.png",
+    instalacao: "Parede",
+    configuracao: "Com misturador",
+    complemento: "Com torneira extra",
+    description: "Mini Esguicho de Pré-Lavagem modelo BFBDD2/MINI 200MM, de PAREDE COM MISTURADOR E TORNEIRA EXTRA, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria."
+  },
+  {
+    id: "MINIDMFB90B",
+    name: "Mini Esguicho de Pré-Lavagem de Bancada",
+    category: "Esguichos de Pré-Lavagem",
+    image: "images/MINIDMFB90B.png",
+    instalacao: "Bancada",
+    configuracao: "Com misturador",
+    description: "Mini Esguicho de Pré-Lavagem de Bancada com misturador, latão cromado e aço inox."
+  },
+  {
+    id: "MODFRIUO",
+    name: "Torneira Eletrônica com Bateria",
+    category: "Torneiras Industriais",
+    image: "images/MODFRIUO.png",
+    description: "Torneira eletrônica com bateria, mecanismo cerâmico, ideal para cozinhas industriais, restaurantes, clínicas médicas e odontológicas."
   }
 ];
