@@ -137,5 +137,33 @@ const products = [
     formato: "Mini",
     aplicacao: "Cozinhas",
     description: "Mini Esguicho de Pré-Lavagem modelo BFBDD/MINI 200MM, de PAREDE COM MISTURADOR, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Foi desenvolvido especificamente para o trabalho pesado das cozinhas industriais, aumentando a produtividade dos funcionários e economizando tempo, água e dinheiro. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
+  },
+  {
+    id: "SP300D",
+    name: "Modelo SP300D",
+    category: "Higienizadores e Acessórios",
+    image: "images/SP300D.png",
+    description: "Bica em latão cromado referência SP300D."
+  },
+  {
+    id: "SP250A",
+    name: "Modelo SP250A",
+    category: "Higienizadores e Acessórios",
+    image: "images/SP250A.png",
+    description: "Bica em latão cromado referência SP250A."
+  },
+  {
+    id: "RDTUBO",
+    name: "Modelo RDTUBO",
+    category: "Higienizadores e Acessórios",
+    image: "images/RDTUBO.png",
+    description: "Cano em aço inox, com bica extra em latão cromado H.750 mm."
+  },
+  {
+    id: "RDSTCP",
+    name: "Modelo RDSTCP",
+    category: "Higienizadores e Acessórios",
+    image: "images/RDSTCP.png",
+    description: "Kit de fixação para parede aço inox. Parafusos de travamento."
   }
 ];
