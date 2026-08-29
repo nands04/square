@@ -68,7 +68,8 @@
     backdrop-filter: blur(8px);
   }
   .header-logo-shrink {
-    max-height: 32px !important;
+    transform: scale(1.5) !important;
+    transform-origin: left center !important;
   }
 }
 /* Theme Classes */
@@ -226,9 +227,600 @@
     transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
   }
 
+  /* Header B2B Styling & Scroll Behavior */
+  .sc-header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: 84px;
+    background: linear-gradient(180deg, rgba(6, 25, 50, 0.65) 0%, rgba(6, 25, 50, 0) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+  }
+  .sc-header.scrolled-header, .sc-header.header-shrink {
+    height: 90px !important;
+    background: rgba(6, 25, 50, 0.96) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  .header-inner {
+    margin: 0 auto;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .header-logo-link {
+    flex-shrink: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 44px;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: visible;
+  }
+  .header-logo-link img {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: left center;
+  }
+  .sc-header.scrolled-header .header-logo-link img,
+  .sc-header.header-shrink .header-logo-link img,
+  img.header-logo-shrink {
+    height: 66px !important;
+    max-height: 66px !important;
+    transform: scale(1.5) !important;
+  }
+  .header-logo-link:hover img {
+    transform: scale(1.05);
+  }
+  .sc-header.scrolled-header .header-logo-link:hover img,
+  .sc-header.header-shrink .header-logo-link:hover img,
+  img.header-logo-shrink:hover {
+    transform: scale(1.55) !important;
+  }
+
+  .sc-nav-link {
+    position: relative;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 6px 0;
+    transition: color 0.3s ease;
+  }
+  .sc-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #20A8D8;
+    transition: width 0.3s ease;
+    border-radius: 1px;
+    box-shadow: 0 0 8px rgba(32, 168, 216, 0.5);
+  }
+  .sc-nav-link:hover {
+    color: #ffffff;
+  }
+  .sc-nav-link:hover::after,
+  .sc-nav-link.active::after {
+    width: 100%;
+  }
+  .sc-nav-link.active {
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  .sc-search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    color: rgba(255, 255, 255, 0.82);
+    transition: all 0.3s ease;
+    background: transparent;
+    border: 1px solid transparent;
+  }
+  .sc-search-btn:hover {
+    color: #20A8D8;
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(32, 168, 216, 0.25);
+    transform: scale(1.05);
+  }
+
+  /* Refined Premium Hero Styling */
+  .hero-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: #061932;
+  }
+
+  .hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+    z-index: 0;
+    filter: brightness(0.98) contrast(1.02);
+  }
+
+  /* Refined Hero Gradient Overlay to balance text and right logo */
+  .hero-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+      to right,
+      rgba(6, 25, 50, 0.92) 0%,
+      rgba(6, 25, 50, 0.75) 35%,
+      rgba(6, 25, 50, 0.40) 65%,
+      rgba(6, 25, 50, 0.65) 100%
+    );
+  }
+
+  .hero-content-wrapper {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 140px 5% 70px 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+
+  .hero-content-left {
+    width: 100%;
+    max-width: 620px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  /* Right Integrated Brand Feature Logo (25-35% Larger + Upward/Rightward Offset) */
+  .hero-content-right {
+    width: 45vw;
+    max-width: 630px;
+    min-width: 340px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+    transform: translate(25px, -65px);
+  }
+
+  .hero-feature-logo-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: radial-gradient(circle at center, rgba(6, 25, 50, 0.35) 0%, transparent 70%);
+    border: none;
+    box-shadow: none;
+  }
+
+  .hero-feature-logo {
+    width: 100%;
+    height: auto;
+    max-height: 340px;
+    object-fit: contain;
+    filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.72)) drop-shadow(0 0 24px rgba(6, 25, 50, 0.45));
+    transition: transform 0.4s ease, filter 0.4s ease;
+  }
+
+  .hero-feature-logo:hover {
+    transform: scale(1.02);
+    filter: drop-shadow(0 18px 38px rgba(0, 0, 0, 0.78)) drop-shadow(0 0 30px rgba(32, 168, 216, 0.25));
+  }
+
+  @media (max-width: 1024px) {
+    .hero-content-wrapper {
+      padding: 120px 4% 60px 4%;
+      gap: 2rem;
+    }
+    .hero-content-right {
+      width: 36vw;
+      max-width: 400px;
+      min-width: 260px;
+      transform: translate(10px, -35px);
+    }
+    .hero-feature-logo {
+      max-height: 220px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-video {
+      object-position: 70% center;
+    }
+    .hero-gradient-overlay {
+      background: linear-gradient(
+        to top,
+        rgba(6, 25, 50, 0.94) 0%,
+        rgba(6, 25, 50, 0.75) 55%,
+        rgba(6, 25, 50, 0.35) 85%,
+        transparent 100%
+      );
+    }
+    .hero-content-wrapper {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 110px 24px 70px 24px;
+      gap: 2.5rem;
+    }
+    .hero-content-left {
+      max-width: 100%;
+    }
+    .hero-content-right {
+      width: 100%;
+      max-width: 220px;
+      justify-content: flex-start;
+      align-self: flex-start;
+      transform: none;
+      margin-top: 0.5rem;
+    }
+    .hero-feature-logo-wrapper {
+      padding: 0;
+      background: transparent;
+    }
+    .hero-feature-logo {
+      max-height: 100px;
+    }
+  }
+
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    color: #20A8D8;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.2rem, 4.4vw, 3.8rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  }
+
+  .hero-headline .headline-highlight {
+    color: #ffffff;
+    display: block;
+  }
+
+  .hero-support-text {
+    font-size: clamp(1rem, 1.25vw, 1.2rem);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 520px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  }
+
+  .hero-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .btn-primary-hero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.1rem 2.4rem;
+    background: linear-gradient(135deg, #082957 0%, #061c3a 100%);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid rgba(32, 168, 216, 0.7);
+    border-radius: 6px;
+    box-shadow: 0 8px 30px rgba(8, 41, 87, 0.6), 0 0 20px rgba(32, 168, 216, 0.2);
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    text-decoration: none;
+  }
+
+  .btn-primary-hero:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #0a336d 0%, #082957 100%);
+    border-color: #20A8D8;
+    box-shadow: 0 14px 40px rgba(8, 41, 87, 0.8), 0 0 30px rgba(32, 168, 216, 0.45);
+    color: #ffffff;
+  }
+
+  .btn-secondary-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.6rem 0;
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary-hero:hover {
+    color: #20A8D8;
+    border-bottom-color: #20A8D8;
+  }
+
+  .made-in-italy-badge {
+    position: absolute;
+    bottom: 36px;
+    right: 5%;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    pointer-events: auto;
+  }
+
+  .made-in-italy-badge img {
+    height: 52px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.95;
+  }
+
+  .made-in-italy-badge img:hover {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .made-in-italy-badge {
+      bottom: 24px;
+      right: 24px;
+    }
+    .made-in-italy-badge img {
+      height: 42px;
+    }
+  }
+
+  /* Discrete Reveal Animations for Hero Elements */
+  @keyframes hero-fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .reveal-hero-step {
+    animation: hero-fade-in-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+  .delay-03 { animation-delay: 0.3s; }
+  .delay-05 { animation-delay: 0.5s; }
+  .delay-07 { animation-delay: 0.7s; }
+  .delay-09 { animation-delay: 0.9s; }
+  .delay-11 { animation-delay: 1.1s; }
+  .delay-13 { animation-delay: 1.3s; }
+
+  /* Editorial B2B Solutions Section Styling */
+  .solutions-section {
+    background-color: #ffffff;
+    padding: 6rem 5%;
+    position: relative;
+    overflow: hidden;
+  }
+  .solutions-header {
+    margin-bottom: 3.5rem;
+    max-width: 850px;
+  }
+  .solutions-eyebrow {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #20A8D8;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  .solutions-title {
+    font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+    font-weight: 800;
+    color: #061932;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+  }
+  .solutions-subtitle {
+    font-size: 1.125rem;
+    color: #061932;
+    opacity: 0.75;
+    line-height: 1.6;
+    max-width: 720px;
+  }
+
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .solution-card {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+    position: relative;
+  }
+  .solution-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(32, 168, 216, 0.4);
+    box-shadow: 0 20px 45px rgba(6, 25, 50, 0.09);
+    background: #ffffff;
+  }
+
+  .solution-image-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background: #ffffff;
+    padding: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 1px solid #F1F5F9;
+  }
+  .solution-image-container img {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .solution-card:hover .solution-image-container img {
+    transform: scale(1.08);
+  }
+
+  .solution-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(6, 25, 50, 0.05);
+    color: #061932;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(6, 25, 50, 0.1);
+  }
+
+  .solution-content {
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .solution-card-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #061932;
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+    transition: color 0.3s ease;
+  }
+  .solution-card:hover .solution-card-title {
+    color: #20A8D8;
+  }
+  .solution-card-desc {
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.55;
+    margin-bottom: 1.75rem;
+    flex-grow: 1;
+  }
+  .solution-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: #061932;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+  .solution-link-arrow {
+    transition: transform 0.3s ease;
+    font-size: 1rem;
+  }
+  .solution-card:hover .solution-link {
+    color: #20A8D8;
+  }
+  .solution-card:hover .solution-link-arrow {
+    transform: translateX(6px);
+  }
+
+  @media (max-width: 1100px) {
+    .solutions-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+  @media (max-width: 640px) {
+    .solutions-grid {
+      grid-template-columns: 1fr;
+    }
+    .solutions-section {
+      padding: 4rem 1.5rem;
+    }
+  }
+
+
+
   /* Layout fixes: ensure header stays above sections and sections stack cleanly */
   .sc-header {
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -549,160 +1141,190 @@
 </main>
 </aside>
 </div>
-<header id="main-header" class="sc-header" style="position: fixed; top: 0; width: 100%; z-index: 50; display: flex; align-items: center;">
-  <div style="margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; width: 100%;">
-    <a aria-current="page" href="index.html" style="flex-shrink: 0; z-index: 50; display: flex; align-items: center; text-decoration: none;" class="logo-container">
-      <img src="images/Gemini_Generated_Image_ze6qq0ze6qq0ze6q (1).png" alt="Square Commerce Logo" style="height: 100%; width: 100%; object-fit: contain;" />
+<header id="main-header" class="sc-header">
+  <div class="header-inner">
+    <a aria-current="page" href="index.html" class="header-logo-link">
+      <img src="images/Gemini_Generated_Image_txrkudtxrkudtxrk.png" alt="Square Commerce Logo" />
     </a>
     <nav class="hidden lg:flex items-center gap-10" style="position: absolute; left: 50%; transform: translateX(-50%); display: flex;" role="navigation">
-      <a class="nav-link" href="shop.html">Catálogo</a>
-      <a class="nav-link" href="#produtos">Soluções</a>
-      <a class="nav-link" href="about.html">Quem Somos</a>
-      <a class="nav-link" href="#certificacoes">Certificações</a>
-      <a class="nav-link" href="#manutencao">Manutenção</a>
+      <a class="sc-nav-link active" href="index.html">Home</a>
+      <a class="sc-nav-link" href="#produtos">Produtos</a>
+      <a class="sc-nav-link" href="shop.html">Catálogo</a>
+      <a class="sc-nav-link" href="#contato">Contato</a>
     </nav>
     <div class="hidden lg:flex items-center gap-8 z-50">
-      <form method="post" action="https://squarecommerce.com/locale" class="flex items-center m-0">
-        <input type="hidden" name="language" value="PT">
-        <input type="hidden" name="userCountry" value="BR">
-        <button type="submit" class="text-white font-medium text-sm hover:text-cyan transition-colors bg-transparent border-none cursor-pointer">PT</button>
-      </form>
-      <a href="https://wa.me/5582996205266?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento" class="cta-premium">
-        Solicitar orçamento
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+      <a href="#" class="sc-search-btn" aria-label="Pesquisar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       </a>
     </div>
-    <button id="mobile-menu-btn" style="padding: 8px; background: transparent; border: none; z-index: 50; cursor: pointer; color: white;" class="mobile-toggle flex lg:hidden">
+    <button id="mobile-menu-btn" style="padding: 8px; background: transparent; border: none; z-index: 50; cursor: pointer; color: white;" class="mobile-toggle flex lg:hidden" aria-label="Abrir menu">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="bar1" d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
   </div>
 </header>
 <div id="mobile-drawer" class="mobile-menu-overlay flex flex-col justify-center items-center" style="padding: 32px;">
   <div style="margin-bottom: 40px;">
-    <img src="images/Gemini_Generated_Image_ze6qq0ze6qq0ze6q (1).png" alt="Square Commerce Logo" style="height: 100px; width: auto; object-fit: contain;" />
+    <img src="images/Gemini_Generated_Image_txrkudtxrkudtxrk.png" alt="Square Commerce Logo" style="height: 60px; width: auto; object-fit: contain;" />
   </div>
   <nav class="flex flex-col gap-8 text-2xl font-semibold text-white text-center w-full max-w-sm">
-    <a href="shop.html" class="nav-link inline-block mx-auto w-fit">Catálogo</a>
-    <a href="#produtos" class="nav-link inline-block mx-auto w-fit">Soluções</a>
-    <a href="about.html" class="nav-link inline-block mx-auto w-fit">Quem Somos</a>
-    <a href="#certificacoes" class="nav-link inline-block mx-auto w-fit">Certificações</a>
-    <a href="#manutencao" class="nav-link inline-block mx-auto w-fit">Manutenção</a>
+    <a href="index.html" class="nav-link mobile-nav-link inline-block mx-auto w-fit">Home</a>
+    <a href="#produtos" class="nav-link mobile-nav-link inline-block mx-auto w-fit">Produtos</a>
+    <a href="shop.html" class="nav-link mobile-nav-link inline-block mx-auto w-fit">Catálogo</a>
+    <a href="#contato" class="nav-link mobile-nav-link inline-block mx-auto w-fit">Contato</a>
   </nav>
-  <div class="mt-16 w-full max-w-sm">
-    <a href="https://wa.me/5582996205266?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento" class="cta-premium w-full justify-center" style="justify-content: center;">
-      Solicitar orçamento
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
-  </div>
 </div>
 <main class="w-full text-navy">
-<div class="relative overflow-hidden" style="background-color: #082957;">
-<div class="relative w-full flex items-center overflow-hidden" style="height: 85vh; min-height: 600px;">
-<div class="hero-bg-anim bg-cover" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-image: url('images/hero_bg_kitchen_new.png'); background-position: 75% center;"></div>
-<div class="hero-overlay-anim" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-color: #082957; opacity: 0.4;"></div>
-<div class="hero-overlay-anim" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; pointer-events: none; background: linear-gradient(to top right, rgba(8, 41, 87, 0.8) 0%, rgba(8, 41, 87, 0.2) 100%);"></div>
-<div class="cyan-flow-curve"></div>
-<style>
-  @media (max-width: 768px) {
-    .hero-container-resp { padding: 100px 20px 40px 20px !important; align-items: center; text-align: center; }
-    .hero-eyebrow-resp { text-align: center; width: 100%; }
-    .hero-h1-resp { font-size: 36px !important; margin-bottom: 16px !important; text-align: center; }
-    .hero-desc-resp { font-size: 16px !important; margin-bottom: 32px !important; text-align: center; }
-    .hero-btns-resp { justify-content: center; }
-  }
-</style>
-<div class="relative z-10 mx-auto flex flex-col justify-end h-full hero-container-resp" style="width: 100%; max-width: 1400px; padding: 140px 40px 80px 40px; position: relative; z-index: 10;">
-<span class="hero-eyebrow-anim hero-eyebrow-resp block uppercase" style="color: #20A8D8; font-size: 14px; font-weight: bold; letter-spacing: 0.2em; margin-bottom: 24px;">SOLUÇÕES PROFISSIONAIS • FABRICAÇÃO ITALIANA</span>
-<h1 class="hero-h1 font-extrabold text-white hero-h1-resp" style="font-size: 60px; line-height: 1.1; max-width: 900px; margin-bottom: 24px; text-wrap: balance; margin-top: 0;">
-<span class="reveal-wrapper"><span class="hero-h1-line1">Soluções profissionais</span></span><br/>
-<span class="reveal-wrapper"><span class="hero-h1-line2">para lavagem e higienização</span></span>
-</h1>
-<p class="hero-desc-anim font-medium text-white leading-relaxed hero-desc-resp" style="font-size: 20px; max-width: 650px; opacity: 0.9; margin-bottom: 40px; text-wrap: balance; margin-top: 0;">
-Equipamentos robustos e funcionais para cozinhas industriais, restaurantes, clínicas, hospitais e operações que não podem parar.
-</p>
-<div class="hero-btns-anim hero-btns-resp flex flex-wrap gap-4" style="margin-bottom: 56px; display: flex; flex-wrap: wrap; gap: 16px;">
-<a href="shop.html" style="padding: 16px 32px; background-color: white; color: #082957; font-weight: bold; font-size: 16px; border-radius: 9999px; text-decoration: none; text-align: center;">
-Conheça os produtos &rarr;
-</a>
-<a href="https://wa.me/5582996205266" style="padding: 16px 32px; background-color: transparent; border: 1px solid rgba(255,255,255,0.3); color: white; font-weight: bold; font-size: 16px; border-radius: 9999px; text-decoration: none; text-align: center;">
-Fale com um especialista
-</a>
-</div>
+<section class="hero-container">
+  
+  <!-- Video Background (Clear, Natural & Highlighted) -->
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="images/Water_flowing_from_chrome_faucet_202608281707.mp4" type="video/mp4">
+  </video>
+  
+  <!-- Strategic Smooth Gradient Overlay (Left text contrast only) -->
+  <div class="hero-gradient-overlay"></div>
 
-</div>
-<div class="scroll-explore" style="position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 20;">
-<span style="color: rgba(255,255,255,0.6); font-size: 10px; font-weight: bold; letter-spacing: 0.2em;">SCROLL PARA EXPLORAR</span>
-<div style="width: 1px; height: 32px; background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);"></div>
-</div>
-</div>
-</div>
-<section class="benefits-section">
-  <div class="benefits-container">
-    <div class="benefits-header reveal-up">
-      <h2>Eficiência para a rotina profissional</h2>
-      <p>Equipamentos pensados para facilitar processos, melhorar a ergonomia e acompanhar operações de alta demanda.</p>
+  <!-- Editorial Asymmetrical Hero Content -->
+  <div class="hero-content-wrapper">
+    <!-- Left Column: Editorial Content Hierarchy -->
+    <div class="hero-content-left">
+      
+      <!-- Eyebrow -->
+      <span class="hero-eyebrow reveal-hero-step delay-03">SOLUÇÕES PROFISSIONAIS</span>
+      
+      <!-- Headline -->
+      <h1 class="hero-headline reveal-hero-step delay-05">
+        SOLUÇÕES PROFISSIONAIS PARA<br>
+        <span class="headline-highlight">LAVAGEM E HIGIENIZAÇÃO.</span>
+      </h1>
+      
+      <!-- Texto de Apoio -->
+      <p class="hero-support-text reveal-hero-step delay-07">
+        Equipamentos robustos e funcionais para cozinhas industriais, restaurantes, clínicas, hospitais e operações que não podem parar.
+      </p>
+      
+      <!-- CTAs -->
+      <div class="hero-cta-group reveal-hero-step delay-09">
+        <a href="#produtos" class="btn-primary-hero">
+          CONHEÇA NOSSAS SOLUÇÕES &rarr;
+        </a>
+        <a href="shop.html" class="btn-secondary-hero">
+          VER CATÁLOGO
+        </a>
+      </div>
+
     </div>
-    <div class="benefits-list">
-      <div class="benefit-item reveal-up">
-        <span class="benefit-number">01</span>
-        <h3 class="benefit-title">Robustez para uso intenso</h3>
-        <p class="benefit-desc">Equipamentos desenvolvidos com materiais resistentes para acompanhar rotinas de alta demanda.</p>
-      </div>
-      <div class="benefit-item reveal-up reveal-delay-1">
-        <span class="benefit-number">02</span>
-        <h3 class="benefit-title">Mais alcance, mais agilidade</h3>
-        <p class="benefit-desc">Esguichos e duchas que facilitam a lavagem de utensílios, bancadas e áreas de trabalho.</p>
-      </div>
-      <div class="benefit-item reveal-up reveal-delay-2">
-        <span class="benefit-number">03</span>
-        <h3 class="benefit-title">Modelos para cada instalação</h3>
-        <p class="benefit-desc">Opções de bancada, parede, com misturador, sem misturador, torneira extra e versões compactas.</p>
-      </div>
-      <div class="benefit-item reveal-up reveal-delay-3">
-        <span class="benefit-number">04</span>
-        <h3 class="benefit-title">Higiene como prioridade</h3>
-        <p class="benefit-desc">Soluções indicadas para ambientes que demandam praticidade, controle e cuidado sanitário.</p>
+
+    <!-- Right Column: Prominent Integrated Brand Feature (30-40% Width) -->
+    <div class="hero-content-right reveal-hero-step delay-05">
+      <div class="hero-feature-logo-wrapper">
+        <img src="images/Gemini_Generated_Image_txrkudtxrkudtxrk.png" alt="Square Commerce Logo" class="hero-feature-logo">
       </div>
     </div>
   </div>
+
+  <!-- Official Made in Italy Badge (Bottom Right Signature) -->
+  <div class="made-in-italy-badge reveal-hero-step delay-13">
+    <img src="images/made_in_italy_official.png" alt="Made in Italy" title="Engenharia e Fabricação Italiana">
+  </div>
+
 </section>
-  <div class="lg:px-10 px-5 py-14 relative overflow-hidden" style="background-color: #ffffff;">
-    <div class="cyan-line-crossing"></div>
+
+<section id="produtos" class="solutions-section">
+  <div class="cyan-line-crossing"></div>
   <div class="mx-auto" style="max-width: 1400px;">
-    <div style="margin-bottom: 48px;">
-      <h2 class="text-navy" style="font-size: 48px; font-weight: 800; line-height: 1.1; max-width: 600px; text-wrap: balance; margin-bottom: 16px;">Soluções para ambientes de alta exigência.</h2>
-      <p class="text-navy" style="font-size: 18px; opacity: 0.7; max-width: 600px; line-height: 1.6; margin: 0;">
-        Equipamentos profissionais desenvolvidos para tornar a rotina de lavagem mais eficiente, higiênica e segura.
+    
+    <!-- Section Header -->
+    <div class="solutions-header">
+      <span class="solutions-eyebrow">EQUIPAMENTOS DE ALTA PERFORMANCE</span>
+      <h2 class="solutions-title">SOLUÇÕES PARA OPERAÇÕES PROFISSIONAIS</h2>
+      <p class="solutions-subtitle">
+        Equipamentos profissionais desenvolvidos para tornar a rotina de higienização e lavagem industrial mais eficiente, ágil e segura.
       </p>
     </div>
 
-    </div> <!-- Fecha o header de "Soluções" para permitir o vídeo full-width -->
-
-    <div style="width: 100%; margin: 2rem 0; position: relative; z-index: 1; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(8,41,87,0.1);">
+    <!-- Commercial Faucet Product Video -->
+    <div style="width: 100%; margin: 2.5rem 0 3.5rem 0; position: relative; z-index: 1; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 45px rgba(6, 25, 50, 0.12);">
       <video src="images/Commercial_faucet_product_advert…_202608281420.mp4" autoplay loop muted playsinline style="width: 100%; height: auto; display: block; object-fit: cover;"></video>
     </div>
 
-    <div class="mx-auto" style="max-width: 1400px; margin-top: 3rem;">
-
-    <div class="editorial-categories-list">
-      <a href="shop.html" class="editorial-category-pill">Sistemas por Pedal</a>
-      <a href="shop.html" class="editorial-category-pill">Higienizadores e Acessórios</a>
-      <a href="shop.html" class="editorial-category-pill">Válvulas de Acionamento</a>
-    </div>
-
-    <div style="margin-top: 64px; text-align: center;">
-      <a href="shop.html" style="display: inline-flex; align-items: center; justify-content: center; padding: 16px 32px; background-color: #082957; color: white; font-weight: bold; font-size: 16px; border-radius: 9999px; text-decoration: none; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#20A8D8'" onmouseout="this.style.backgroundColor='#082957'">
-        Ver catálogo completo &rarr;
+    <!-- 4 Core Solution Cards Grid -->
+    <div class="solutions-grid">
+      
+      <!-- Card 1: Esguichos de Pré-Lavagem -->
+      <a href="shop.html" class="solution-card">
+        <div class="solution-image-container">
+          <span class="solution-badge">ALTA VAZÃO</span>
+          <img src="images/DMAB90.png" alt="Esguichos de Pré-Lavagem" loading="lazy">
+        </div>
+        <div class="solution-content">
+          <h3 class="solution-card-title">Esguichos de Pré-Lavagem</h3>
+          <p class="solution-card-desc">
+            Molas de alta flexibilidade, pistolas ergonômicas e controle de jato d'água para cozinhas industriais de alto rendimento.
+          </p>
+          <span class="solution-link">
+            VER SOLUÇÕES <span class="solution-link-arrow">&rarr;</span>
+          </span>
+        </div>
       </a>
+
+      <!-- Card 2: Torneiras Industriais & Clínicas -->
+      <a href="shop.html" class="solution-card">
+        <div class="solution-image-container">
+          <span class="solution-badge">HIGIENE HOSPITALAR</span>
+          <img src="images/DBFP90.png" alt="Torneiras Industriais & Clínicas" loading="lazy">
+        </div>
+        <div class="solution-content">
+          <h3 class="solution-card-title">Torneiras Industriais & Clínicas</h3>
+          <p class="solution-card-desc">
+            Construção robusta em latão forjado e aço inox com acionamento por alavanca longa para lavagem asséptica sem toque manual.
+          </p>
+          <span class="solution-link">
+            VER SOLUÇÕES <span class="solution-link-arrow">&rarr;</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Card 3: Sistemas por Pedal & Válvulas -->
+      <a href="shop.html" class="solution-card">
+        <div class="solution-image-container">
+          <span class="solution-badge">MÃO LIVRE / PEDAL</span>
+          <img src="images/PDTR1AC200.png" alt="Sistemas por Pedal & Válvulas" loading="lazy">
+        </div>
+        <div class="solution-content">
+          <h3 class="solution-card-title">Sistemas por Pedal & Válvulas</h3>
+          <p class="solution-card-desc">
+            Válvulas mecânicas de acionamento por pedal que eliminam a contaminação cruzada e garantem economia contínua de água.
+          </p>
+          <span class="solution-link">
+            VER SOLUÇÕES <span class="solution-link-arrow">&rarr;</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- Card 4: Higienizadores & Acessórios -->
+      <a href="shop.html" class="solution-card">
+        <div class="solution-image-container">
+          <span class="solution-badge">AÇO INOX 304</span>
+          <img src="images/SPBICCH.png" alt="Higienizadores & Acessórios" loading="lazy">
+        </div>
+        <div class="solution-content">
+          <h3 class="solution-card-title">Higienizadores & Acessórios</h3>
+          <p class="solution-card-desc">
+            Lavadores automáticos de copos, dosadores e componentes pesados projetados para integrar operações profissionais.
+          </p>
+          <span class="solution-link">
+            VER SOLUÇÕES <span class="solution-link-arrow">&rarr;</span>
+          </span>
+        </div>
+      </a>
+
     </div>
+
   </div>
-</div>
+</section>
 <script src="products.js"></script>
 
 <style>
@@ -747,10 +1369,12 @@ Fale com um especialista
 </section>
 
 
+
+
 <div class="lg:p-10 p-5 py-16 bg-white text-navy" id="aplicacoes">
   <div class="mb-12 flex flex-col gap-4">
     <span class="text-caption text-black-700 font-semibold tracking-wider">APLICAÇÕES</span>
-    <h2 class="reveal-up text-3xl font-bold" style="font-size: 2.5rem; margin-bottom: 0.5rem; line-height: 1.2; text-wrap: balance;">Onde a Square faz a diferença.</h2>
+    <h2 class="reveal-up text-3xl font-bold" style="font-size: 2.5rem; margin-bottom: 0.5rem; line-height: 1.2; text-wrap: balance;">Onde a Square Commerce faz a diferença.</h2>
     <p class="text-body max-w-[700px] text-black-800 text-lg">Soluções desenvolvidas para ambientes profissionais que exigem eficiência, higiene e resistência.</p>
   </div>
 
@@ -870,194 +1494,7 @@ Fale com um especialista
     </div>
   </div>
 </div>
-<style>
-.maintenance-section {
-  padding: 8rem 2rem;
-  background-color: var(--color-white, #fff);
-  color: var(--color-navy, #082957);
-  overflow: hidden;
-  position: relative;
-}
-.maintenance-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-@media(min-width: 1024px) {
-  .maintenance-container {
-    flex-direction: row;
-    align-items: center;
-  }
-}
-.maintenance-content {
-  flex: 1;
-  max-width: 500px;
-}
-.maintenance-eyebrow {
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--color-cyan, #00d2ff);
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-  display: block;
-}
-.maintenance-h2 {
-  font-size: 2.8rem;
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-  text-wrap: balance;
-}
-.maintenance-text {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: var(--color-black-700, #555);
-  margin-bottom: 2.5rem;
-}
-.maintenance-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 700;
-  color: var(--color-navy, #082957);
-  text-decoration: none;
-  border-bottom: 2px solid var(--color-cyan, #00d2ff);
-  padding-bottom: 0.25rem;
-  transition: opacity 0.3s ease;
-}
-.maintenance-cta:hover { opacity: 0.7; }
 
-.maintenance-visual {
-  flex: 1.2;
-  position: relative;
-  min-height: 500px;
-}
-.cyan-line-crossing {
-  position: absolute;
-  top: 30%;
-  left: -20%;
-  width: 140%;
-  height: 1px;
-  background-color: var(--color-cyan, #00d2ff);
-  transform: rotate(-15deg);
-  z-index: 0;
-  opacity: 0.5;
-}
-.visual-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  position: relative;
-  z-index: 1;
-}
-.v-img-wrapper {
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-  background-color: #f8f9fa;
-  transform: translateY(40px);
-  opacity: 0;
-  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.v-img-wrapper.large {
-  grid-row: span 2;
-}
-.v-img-wrapper.animate-reveal { 
-  transform: translateY(0);
-  opacity: 1;
-}
-.v-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Indicators */
-.tech-indicator {
-  position: absolute;
-  background: var(--color-navy, #082957);
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.5s ease 0.6s; /* Delays until after image reveal */
-  white-space: nowrap;
-}
-.tech-indicator.animate-reveal {
-  opacity: 1;
-  transform: translateY(0);
-}
-.tech-indicator::before {
-  content: "";
-  display: block;
-  width: 6px;
-  height: 6px;
-  background: var(--color-cyan, #00d2ff);
-  border-radius: 50%;
-}
-.tech-indicator-1 { top: 15%; left: -10%; z-index: 10; }
-.tech-indicator-2 { bottom: 20%; right: -10%; z-index: 10; }
-.tech-indicator-3 { top: 40%; right: -5%; z-index: 10; }
-
-@media(max-width: 768px) {
-  .tech-indicator { position: relative; top: auto; bottom: auto; left: auto; right: auto; margin-top: 10px; width: fit-content; }
-  .cyan-line-crossing { display: none; }
-}
-</style>
-
-<section class="maintenance-section" id="manutencao">
-  <div class="maintenance-container">
-    <div class="maintenance-content reveal-left">
-      <span class="maintenance-eyebrow">Manutenção e suporte</span>
-      <h2 class="maintenance-h2">Performance também está nos detalhes.</h2>
-      <p class="maintenance-text">A manutenção adequada contribui para preservar o desempenho, a durabilidade e a segurança dos equipamentos ao longo do tempo.</p>
-      <a href="https://wa.me/5582996205266?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20manuten%C3%A7%C3%A3o%20dos%20equipamentos" class="maintenance-cta">Falar com especialista &rarr;</a>
-    </div>
-    
-    <div class="maintenance-visual">
-      <div class="cyan-line-crossing"></div>
-      <div class="visual-grid">
-        <div class="v-img-wrapper large mnt-reveal" style="transition-delay: 0.1s;">
-          <img src="images/DMAB90.png" alt="Detalhe de Torneira" class="v-img">
-          <div class="tech-indicator tech-indicator-1 mnt-reveal">Vedações Cerâmicas</div>
-        </div>
-        <div class="v-img-wrapper mnt-reveal" style="height: 250px; transition-delay: 0.3s;">
-          <img src="images/about_detail_finish.png" alt="Acabamento Inox" class="v-img">
-          <div class="tech-indicator tech-indicator-3 mnt-reveal">Aço Inox 304</div>
-        </div>
-        <div class="v-img-wrapper mnt-reveal" style="height: 250px; transition-delay: 0.5s;">
-          <img src="images/PDTR1AC200.png" alt="Registros e Conexões" class="v-img">
-          <div class="tech-indicator tech-indicator-2 mnt-reveal">Conexões de Alta Pressão</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-reveal');
-        }
-      });
-    }, { threshold: 0.2 });
-    
-    document.querySelectorAll('.mnt-reveal').forEach(el => observer.observe(el));
-  });
-</script>
 <style>
   .guarantee-section {
     background-color: var(--color-white, #ffffff);
@@ -1173,34 +1610,7 @@ Fale com um especialista
   });
 </script>
 
-<div class="lg:p-10 p-5" style="background:#ffffff;">
-<div class="flex justify-between items-start about-container flex-wrap lg:pb-18 lg:pt-13">
-<div class="w-full lg:w-[310px] justify-center lg:justify-normal self-end lg:block flex gap-4 lg:gap-0">
-<div class="mb-7 mt-12 about-img about-img-1 lg:max-h-full lg:mt-0 about-img-wrapper">
-<img alt="Esguicho DMAB90" decoding="async" loading="lazy" src="images/DMAB90.png" width="100" class="about-nobg-img" style="width:100%;object-fit:contain;mix-blend-mode:multiply;background:transparent;">
-</div>
-<div class="mb-12 mt-7 about-img about-img-2 lg:max-h-full about-img-wrapper">
-<img alt="Torneira Clínica SPBICCH" decoding="async" loading="lazy" src="images/SPBICCH.png" width="100" class="about-nobg-img" style="width:100%;object-fit:contain;mix-blend-mode:multiply;background:transparent;">
-</div>
-</div>
-<div class="lg:w-[310px] w-full text-navy flex flex-col gap-6 self-center">
-<p class="text-caption text-black-700 text-center">Sobre Nós</p>
-<h2 class="text-center reveal-up">Somos uma empresa líder em soluções hidráulicas profissionais, focada na alta performance e confiabilidade.</h2>
-<p class="text-center text-body">Desenvolvemos produtos robustos projetados especificamente para suportar o rigor de cozinhas industriais e hospitais.</p>
-<a class="hover:no-underline m-auto" href="https://wa.me/5582996205266?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20Square%20Commerce" target="_blank" data-discover="true">
-<button class="flex items-center rounded-lg text-button transition-all disabled:opacity-35  py-3 px-5 text-navy border-solid border-1 border-tech-gray hover:border-cyan justify-between">Falar conosco</button>
-</a>
-</div>
-<div class="w-full lg:w-[310px] justify-center lg:justify-normal self-start lg:block flex gap-4 lg:gap-0 mt-5 lg:mt-0">
-<div class="mb-7 mt-12 about-img about-img-3 lg:max-h-full lg:mt-0 about-img-wrapper">
-<img alt="Torneira de Pedal PDTR1AC200" decoding="async" loading="lazy" src="images/PDTR1AC200.png" width="100" class="about-nobg-img" style="width:100%;object-fit:contain;mix-blend-mode:multiply;background:transparent;">
-</div>
-<div class="mb-12 mt-7 about-img about-img-4 lg:max-h-full about-img-wrapper">
-<img alt="Enrolador AV10L312" decoding="async" loading="lazy" src="images/AV10L312.png" width="100" class="about-nobg-img" style="width:100%;object-fit:contain;mix-blend-mode:multiply;background:transparent;">
-</div>
-</div>
-</div>
-</div>
+
 <style>
   .cinematic-section {
     position: relative;
@@ -1241,39 +1651,7 @@ Fale com um especialista
     z-index: 2;
   }
 </style>
-<div class="lg:pl-10 pl-5 py-10 bg-white" style="background-color: #ffffff;">
-<div class="text-navy">
-<div class="mb-10 flex items-center justify-between">
-<h2 class="reveal-up">Eficiência para a rotina profissional</h2>
-</div>
-<div class="pb-10 overflow-x-auto scroll-thin overflow-y-hidden w-full">
-<div class="flex gap-7 flex-shrink-0 w-full pr-5 lg:pr-10">
-<div class="min-w-[310px] hidden md:block">
-</div>
-<div class="block min-w-[310px] w-[310px]">
-<img alt="Robustez para uso intenso" decoding="async" loading="lazy" src="images/DMAB90.png" width="100" class="rounded-lg w-[310px] h-[310px] object-cover transition-all" style="width: 100%;">
-<h3 class="mt-6 mb-4 min-h-[46px]">Robustez para uso intenso</h3>
-<p class="text-body">Equipamentos desenvolvidos com materiais resistentes para acompanhar rotinas de alta demanda.</p>
-</div>
-<div class="block min-w-[310px] w-[310px]">
-<img alt="Mais alcance, mais agilidade" decoding="async" loading="lazy" src="images/SPBICCH.png" width="100" class="rounded-lg w-[310px] h-[310px] object-cover transition-all" style="width: 100%;">
-<h3 class="mt-6 mb-4 min-h-[46px]">Mais alcance, mais agilidade</h3>
-<p class="text-body">Esguichos e duchas que facilitam a lavagem de utensílios, bancadas e áreas de trabalho.</p>
-</div>
-<div class="block min-w-[310px] w-[310px]">
-<img alt="Modelos para cada instalação" decoding="async" loading="lazy" src="images/PDTR1AC200.png" width="100" class="rounded-lg w-[310px] h-[310px] object-cover transition-all" style="width: 100%;">
-<h3 class="mt-6 mb-4 min-h-[46px]">Modelos para cada instalação</h3>
-<p class="text-body">Opções de bancada, parede, com misturador, sem misturador, torneira extra e versões compactas.</p>
-</div>
-<div class="block min-w-[310px] w-[310px]">
-<img alt="Higiene como prioridade" decoding="async" loading="lazy" src="images/DMAB90.png" width="100" class="rounded-lg w-[310px] h-[310px] object-cover transition-all" style="width: 100%;">
-<h3 class="mt-6 mb-4 min-h-[46px]">Higiene como prioridade</h3>
-<p class="text-body">Soluções indicadas para ambientes que demandam praticidade, controle e cuidado sanitário.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
+
 <style>
 .editorial-grid {
   display: grid;
@@ -1528,6 +1906,9 @@ Fale com um especialista
   </div>
   
   <div class="final-cta-content reveal-up">
+    <div class="final-cta-logo-wrapper" style="margin-bottom: 1.5rem; display: flex; justify-content: center;">
+      <img src="images/Gemini_Generated_Image_txrkudtxrkudtxrk.png" alt="Square Commerce Logo" style="height: 58px; width: auto; object-fit: contain; filter: drop-shadow(0 6px 16px rgba(0,0,0,0.4));" />
+    </div>
     <div class="final-cta-eyebrow">SQUARE COMMERCE</div>
     <h2 class="final-cta-h2">Encontre o modelo ideal para sua operação.</h2>
     <p class="final-cta-text">Nossa equipe ajuda você a identificar a solução mais adequada conforme o ambiente, o tipo de instalação e a demanda de uso.</p>
@@ -1660,7 +2041,7 @@ Fale com um especialista
 
     <!-- Brand Column -->
     <div>
-      <img src="images/Gemini_Generated_Image_ze6qq0ze6qq0ze6q (1).png" alt="Square Commerce Logo" class="footer-brand-logo" />
+      <img src="images/Gemini_Generated_Image_txrkudtxrkudtxrk.png" alt="Square Commerce Logo" class="footer-brand-logo" style="height: 64px; width: auto; max-width: 240px; object-fit: contain; margin-bottom: 24px;" />
       <p class="footer-brand-desc">Importação e exportação de equipamentos profissionais para lavagem e higienização. Soluções italianas para operações de alta demanda.</p>
       <div class="footer-social-links">
         <a href="https://www.instagram.com/squarecommerce" target="_blank" class="footer-social-link" aria-label="Instagram">
