@@ -27,7 +27,7 @@
 <link rel="icon" type="image/svg+xml" href="images/square_transparent.svg">
 
 <style>
-.intro-animation-timer a { display:inline-block; width:120px; height:120px; background-image:url('images/Gemini_Generated_Image_ze6qq0ze6qq0ze6q (1).png'); background-size:contain; background-repeat:no-repeat; background-position:center; }
+.intro-animation-timer a { display:inline-block; width:120px; height:120px; background-image:url('images/Gemini_Generated_Image_txrkudtxrkudtxrk.png'); background-size:contain; background-repeat:no-repeat; background-position:center; }
 .intro-animation-timer a svg { display:none !important; }
 </style>
 
@@ -1113,6 +1113,203 @@
     .cta-premium { padding: 12px 20px !important; }
   }
 </style>
+
+<!-- =========================================================================
+     PREMIUM UX/UI REFINEMENT - SQUARE COMMERCE
+     ========================================================================= -->
+<style id="premium-ux-refinement">
+  :root {
+    --premium-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --premium-border-radius: 6px; /* Industrial precision */
+    --premium-shadow-diffuse: 0 20px 40px rgba(6, 25, 50, 0.06);
+    --premium-shadow-hover: 0 30px 60px rgba(6, 25, 50, 0.12);
+  }
+
+  /* 1. Global Smoothing & Transitions */
+  html {
+    scroll-behavior: smooth;
+  }
+  body, main {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Enforce premium easing on interactive elements */
+  a, button, .solution-card, .editorial-img, .benefit-item {
+    transition: all 0.6s var(--premium-easing) !important;
+  }
+
+  /* 2. Header Refinement - Glassmorphic */
+  .sc-header {
+    background: rgba(6, 25, 50, 0.03) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    transition: background 0.6s var(--premium-easing), border-color 0.6s var(--premium-easing), padding 0.6s var(--premium-easing) !important;
+  }
+  .sc-header.scrolled-header {
+    background: rgba(6, 25, 50, 0.98) !important;
+    border-bottom: 1px solid rgba(32, 168, 216, 0.1) !important;
+    backdrop-filter: blur(20px) !important;
+  }
+  
+  /* 3. Typography Scales & High Contrast */
+  h1, .hero-headline, .solutions-title {
+    letter-spacing: -0.03em !important;
+    font-weight: 800 !important;
+  }
+  .hero-eyebrow, .solutions-eyebrow, .editorial-category {
+    letter-spacing: 0.25em !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+  }
+
+  /* 4. Section Spacing - Extreme Breathing Room */
+  section:not(.hero-container) {
+    padding: 8rem 5% !important; /* Huge intentional space on desktop */
+  }
+  @media (max-width: 768px) {
+    section:not(.hero-container) {
+      padding: 5rem 5% !important; /* Adjusted for mobile */
+    }
+  }
+
+  /* 5. Buttons - Refined CTA */
+  .btn-primary-hero, .btn-primary-cta {
+    border-radius: var(--premium-border-radius) !important;
+    padding: 1.25rem 2.5rem !important;
+    letter-spacing: 0.12em !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
+    transform: translateY(0) !important; /* Reset any bounce */
+  }
+  .btn-primary-hero:hover, .btn-primary-cta:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: var(--premium-shadow-hover) !important;
+    background: linear-gradient(135deg, #0a336d 0%, #061c3a 100%) !important;
+    border-color: rgba(32, 168, 216, 0.4) !important;
+  }
+
+  /* 6. Cards & Products - Subtle Interactions */
+  .solution-card, .editorial-img-wrapper {
+    border-radius: var(--premium-border-radius) !important;
+    box-shadow: none !important;
+    border: 1px solid rgba(0,0,0,0.06) !important;
+  }
+  .solution-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: var(--premium-shadow-diffuse) !important;
+    border-color: rgba(32, 168, 216, 0.25) !important;
+  }
+  .solution-card:hover .solution-image-container img {
+    transform: scale(1.04) !important; /* Micro zoom */
+  }
+  .solution-image-container {
+    border-bottom: 1px solid rgba(0,0,0,0.03) !important;
+  }
+
+  /* 7. Scroll Reveal Enforcements */
+  .reveal-up, .reveal-horizontal, .reveal-left, .reveal-right {
+    transition: opacity 1.2s var(--premium-easing), transform 1.2s var(--premium-easing) !important;
+  }
+  .reveal-up { transform: translateY(30px) !important; }
+  .reveal-up.is-visible { transform: translateY(0) !important; opacity: 1 !important; }
+  
+  /* 8. Light Sweep & Parallax */
+  .hero-container {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-container::after {
+    content: '';
+    position: absolute;
+    top: -100%; left: -100%; width: 300%; height: 300%;
+    background: linear-gradient(
+      135deg,
+      transparent 45%,
+      rgba(255, 255, 255, 0.05) 48%,
+      rgba(255, 255, 255, 0.25) 50%,
+      rgba(255, 255, 255, 0.05) 52%,
+      transparent 55%
+    );
+    pointer-events: none;
+    z-index: 5;
+    animation: light-sweep 12s linear infinite;
+  }
+  @keyframes light-sweep {
+    0% { transform: translate(-30%, -30%); opacity: 0; }
+    20% { opacity: 1; }
+    80% { transform: translate(30%, 30%); opacity: 1; }
+    100% { transform: translate(30%, 30%); opacity: 0; }
+  }
+
+  [data-parallax-layer] {
+    will-change: transform;
+    /* transition removed to allow JS requestAnimationFrame to move instantly */
+  }
+  .hero-video {
+    transform: scale(1.05);
+  }
+
+  /* 9. Cinematic Video Reveal */
+  .cinematic-video-reveal {
+    clip-path: inset(calc(50% - 1px) 0 calc(50% - 1px) 0);
+    transition: clip-path 1.2s cubic-bezier(0.8, 0, 0.2, 1) 0.1s;
+  }
+  .reveal-up.is-visible .cinematic-video-reveal {
+    clip-path: inset(0 0 0 0);
+  }
+  
+  .video-geometry-mark {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    opacity: 0;
+    transition: opacity 1.5s ease 1s; /* Slow fade in after clip-path finishes */
+    pointer-events: none;
+    z-index: 10;
+  }
+  .reveal-up.is-visible .video-geometry-mark {
+    opacity: 0.7; /* Subtlety is key */
+  }
+  
+  /* Precision Corners */
+  .mark-tl { top: 20px; left: 20px; border-top: 1.5px solid #20A8D8; border-left: 1.5px solid #20A8D8; }
+  .mark-tr { top: 20px; right: 20px; border-top: 1.5px solid #20A8D8; border-right: 1.5px solid #20A8D8; }
+  .mark-bl { bottom: 20px; left: 20px; border-bottom: 1.5px solid #20A8D8; border-left: 1.5px solid #20A8D8; }
+  .mark-br { bottom: 20px; right: 20px; border-bottom: 1.5px solid #20A8D8; border-right: 1.5px solid #20A8D8; }
+
+  /* 10. Focus In Video Reveal */
+  .focus-in-video video {
+    transform: scale(0.96);
+    opacity: 0.8;
+    filter: blur(2px);
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.8s ease-out, filter 0.8s ease-out;
+    transition-delay: 0.25s;
+  }
+  .reveal-up.is-visible .focus-in-video video {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+
+
+  /* Disable animations for prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .reveal-up, .reveal-horizontal, .reveal-left, .reveal-right {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .hero-container::after {
+      display: none !important;
+    }
+  }
+</style>
 </head>
 <body class="w-screen overflow-x-hidden">
 
@@ -1190,18 +1387,18 @@
   </nav>
 </div>
 <main class="w-full text-navy">
-<section class="hero-container">
+<section class="hero-container" id="hero-parallax-container">
   
   <!-- Video Background (Clear, Natural & Highlighted) -->
-  <video autoplay muted loop playsinline class="hero-video">
+  <video autoplay muted loop playsinline class="hero-video" data-parallax-layer="true" data-parallax-speed="-6">
     <source src="images/Water_flowing_from_chrome_faucet_202608281707.mp4" type="video/mp4">
   </video>
   
   <!-- Strategic Smooth Gradient Overlay (Left text contrast only) -->
-  <div class="hero-gradient-overlay"></div>
+  <div class="hero-gradient-overlay" data-parallax-layer="true" data-parallax-speed="-3"></div>
 
   <!-- Editorial Asymmetrical Hero Content -->
-  <div class="hero-content-wrapper">
+  <div class="hero-content-wrapper" data-parallax-layer="true" data-parallax-speed="2">
     <!-- Left Column: Editorial Content Hierarchy -->
     <div class="hero-content-left">
       
@@ -1259,9 +1456,18 @@
       </p>
     </div>
 
-    <!-- Commercial Faucet Product Video -->
-    <div style="width: 100%; margin: 2.5rem 0 3.5rem 0; position: relative; z-index: 1; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 45px rgba(6, 25, 50, 0.12);">
-      <video src="images/Commercial_faucet_product_advert…_202608281420.mp4" autoplay loop muted playsinline style="width: 100%; height: auto; display: block; object-fit: cover;"></video>
+    <!-- Commercial Faucet Product Video with Cinematic Reveal -->
+    <div class="reveal-up" style="margin: 2.5rem 0 3.5rem 0;">
+      <div class="cinematic-video-reveal" style="width: 100%; position: relative; z-index: 1; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 45px rgba(6, 25, 50, 0.12);">
+        
+        <!-- Engineering Geometry Marks -->
+        <span class="video-geometry-mark mark-tl"></span>
+        <span class="video-geometry-mark mark-tr"></span>
+        <span class="video-geometry-mark mark-bl"></span>
+        <span class="video-geometry-mark mark-br"></span>
+
+        <video src="images/Commercial_faucet_product_advert…_202608281420.mp4" autoplay loop muted playsinline style="width: 100%; height: auto; display: block; object-fit: cover;"></video>
+      </div>
     </div>
 
 
@@ -1299,7 +1505,14 @@
 
       <!-- Video Column -->
       <div class="video-editorial-media reveal-up delay-2 is-visible">
-        <div style="position: relative; width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 24px 48px rgba(8,41,87,0.12); aspect-ratio: 4/5; background: #f8f9fc;">
+        <div class="focus-in-video" style="position: relative; width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 24px 48px rgba(8,41,87,0.12); aspect-ratio: 4/5; background: #f8f9fc;">
+          
+          <!-- Engineering Geometry Marks -->
+          <span class="video-geometry-mark mark-tl"></span>
+          <span class="video-geometry-mark mark-tr"></span>
+          <span class="video-geometry-mark mark-bl"></span>
+          <span class="video-geometry-mark mark-br"></span>
+
           <video src="images/Industrial_faucet_commercial_vid…_202608281431.mp4" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
           <div class="video-identification">
             <div style="font-size: 0.85rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.25rem;">ESGUICHO DE PRÉ-LAVAGEM</div>
@@ -2137,5 +2350,173 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 </script>
+<script>
+  // Premium Mouse Parallax Effect for Hero
+  document.addEventListener('DOMContentLoaded', () => {
+    const heroContainer = document.getElementById('hero-parallax-container');
+    const layers = document.querySelectorAll('[data-parallax-layer]');
+    
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 1024px)').matches;
+    
+    if (!heroContainer || prefersReducedMotion || isMobile || layers.length === 0) return;
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
+
+    heroContainer.addEventListener('mousemove', (e) => {
+      const rect = heroContainer.getBoundingClientRect();
+      // Calculate relative position (-1 to 1)
+      mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      mouseY = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+    });
+
+    heroContainer.addEventListener('mouseleave', () => {
+      mouseX = 0;
+      mouseY = 0;
+    });
+
+    const updateParallax = () => {
+      // Smooth easing interpolation
+      targetX += (mouseX - targetX) * 0.08;
+      targetY += (mouseY - targetY) * 0.08;
+
+      layers.forEach(layer => {
+        const speed = parseFloat(layer.getAttribute('data-parallax-speed')) || 0;
+        // Multiplicador x4 para garantir que o movimento seja notável na tela (e.g., -24px de deslocamento total)
+        const x = targetX * speed * 4;
+        const y = targetY * speed * 4;
+        
+        if (layer.classList.contains('hero-video')) {
+          layer.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
+        } else {
+          layer.style.transform = `translate(${x}px, ${y}px)`;
+        }
+      });
+
+      requestAnimationFrame(updateParallax);
+    };
+
+    updateParallax();
+  });
+</script>
+
+<!-- =========================================================================
+     GLOBAL MOBILE RESPONSIVENESS FIXES
+     ========================================================================= -->
+<style id="mobile-responsiveness">
+  /* 1. Global Preventions */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100%;
+    max-width: 100vw;
+  }
+  
+  /* 2. Target Breakpoints */
+  @media (max-width: 1024px) {
+    /* Grids & Layouts to Column */
+    .b2b-grid, 
+    .editorial-grid, 
+    .benefits-list,
+    .product-showcase-grid,
+    .video-editorial-layout,
+    .about-visuals {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 2rem !important;
+    }
+    
+    .video-editorial-content,
+    .video-editorial-media {
+      width: 100% !important;
+      padding: 0 !important;
+    }
+    
+    /* Paddings */
+    section, .premium-video-section, .about-section, .benefits-section {
+      padding: 4rem 20px !important;
+    }
+    
+    /* Typography */
+    .hero-headline {
+      font-size: clamp(2.2rem, 8vw, 3rem) !important;
+      text-align: center;
+    }
+    .hero-support-text {
+      text-align: center;
+      margin: 0 auto 2rem auto !important;
+      font-size: 1rem !important;
+    }
+    .hero-eyebrow {
+      display: block;
+      text-align: center;
+      width: 100%;
+    }
+    
+    /* Hero Alignments */
+    .hero-content-wrapper {
+      padding: 120px 20px 60px 20px !important;
+      align-items: center !important;
+      text-align: center !important;
+    }
+    .hero-content-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      align-items: stretch !important;
+    }
+    .hero-cta-group a {
+      width: 100% !important;
+      text-align: center !important;
+      justify-content: center !important;
+    }
+    
+    /* Hide decorative right column entirely on mobile to save space */
+    .hero-content-right {
+      display: none !important;
+    }
+    
+    /* Benefits/About lists */
+    .benefit-item {
+      padding-top: 2rem !important;
+      padding-left: 0 !important;
+    }
+    .benefit-number {
+      position: relative !important;
+      top: 0 !important;
+      left: 0 !important;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    .benefits-list::before, .benefit-item::before {
+      display: none !important;
+    }
+    
+    /* Mobile Drawer adjustments */
+    #mobile-drawer {
+      padding: 24px !important;
+      width: 100%;
+    }
+    .mobile-menu-overlay nav {
+      width: 100%;
+      max-width: 100%;
+      gap: 1.5rem !important;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .editorial-title { font-size: 1.25rem !important; }
+    .solutions-title { font-size: 1.8rem !important; }
+    section { padding: 3rem 16px !important; }
+  }
+</style>
 </body>
 </html>

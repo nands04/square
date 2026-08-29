@@ -2,173 +2,1281 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catálogo | Square Commerce</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="images/square_transparent.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    :root{--color-navy:#082957;--color-deep-blue:#061C3A;--color-cyan:#20A8D8;--color-white:#FBFCFE;--color-tech-gray:#EEF2F7;}
-    body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background: var(--color-white); color: var(--color-navy); font-size:16px; line-height:1.45; }
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
-    .catalog-layout { display: flex; flex-direction: column; gap: 3rem; padding: 3.5rem 0; }
-    @media(min-width: 1024px) { .catalog-layout { flex-direction: row; gap: 2.5rem; } }
-    .sidebar { width: 100%; background: transparent; }
-    @media(min-width: 1024px) { .sidebar { width: 320px; flex-shrink: 0; position: sticky; top: 2rem; align-self: start; height: calc(100vh - 4rem); overflow-y: auto; padding-right: 1rem; } }
-
-    /* Refined filters: pill style */
-    .filters-panel { background: transparent; padding: 0; }
-    .filter-group { margin-bottom: 1.25rem; }
-    .filter-title { font-weight: 700; margin-bottom: 0.75rem; font-size: 0.95rem; color: var(--color-navy); text-transform: uppercase; letter-spacing: 0.02em; }
-    .filter-label { display: inline-flex; align-items: center; gap: 0.5rem; margin: 0.25rem 0.5rem 0.25rem 0; cursor: pointer; font-size: 0.95rem; color: var(--color-navy); }
-    .filter-label input { position: absolute; left: -9999px; }
-    .filter-pill { display: inline-block; padding: 10px 14px; border-radius: 999px; border: 1px solid var(--color-tech-gray); background: #fff; color: var(--color-navy); font-weight: 700; font-size:0.95rem; transition: all 0.18s ease; }
-    .filter-label:hover .filter-pill { box-shadow: 0 4px 12px rgba(8,41,87,0.04); }
-    .filter-label input:checked + .filter-pill { background: linear-gradient(180deg,#fff,#fbfdff); border-color: var(--color-cyan); box-shadow: 0 6px 18px rgba(32,168,216,0.06); color: var(--color-navy); }
-
-    /* Scrollbar styling for sidebar */
-    .sidebar::-webkit-scrollbar { width: 6px; }
-    .sidebar::-webkit-scrollbar-track { background: transparent; }
-    .sidebar::-webkit-scrollbar-thumb { background: #e0e6ef; border-radius: 10px; }
-
-    .products-grid { flex-grow: 1; display: grid; grid-template-columns: 1fr; gap: 1.25rem; align-content: start; }
-    @media(min-width: 768px) { .products-grid { grid-template-columns: repeat(2,1fr); gap:1.5rem; } }
-    @media(min-width: 1024px) { .products-grid { grid-template-columns: repeat(3,1fr); gap: 2.5rem; } }
-
-    .product-card { background: #fff; border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; border: 1px solid rgba(8,41,87,0.03); transition: box-shadow 0.25s ease, transform 0.25s ease; }
-    .product-card:hover { transform: translateY(-3px); box-shadow: 0 6px 14px rgba(8,41,87,0.03); }
-
-    .product-image-wrapper { width: 100%; height: 220px; overflow: hidden; background: #fff; display:block; position: relative; }
-    .product-image { width: 100%; height: 100%; object-fit: contain; background-color: #f8f9fc; transition: transform 0.5s cubic-bezier(0.2,0.8,0.2,1); transform-origin: center; }
-    .product-card:hover .product-image { transform: scale(1.03); }
-    @media(min-width:1024px){ .product-image-wrapper { height: 220px; } }
-
-    .accent-line { height: 3px; width: 0%; background: var(--color-cyan); transition: width 0.35s ease; margin-top: -3px; }
-    .product-card:hover .accent-line { width: 22%; }
-
-    .product-info { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
-    .product-category { font-size: 0.68rem; text-transform: uppercase; color: var(--color-navy); font-weight: 800; letter-spacing: 0.08em; margin-bottom: 0.5rem; opacity: 0.95; }
-    .product-name { font-size: 1.125rem; font-weight: 800; color: var(--color-navy); margin-bottom: 0.5rem; line-height: 1.15; }
-    .product-chars { list-style: none; padding: 0; margin: 0 0 1rem 0; flex-grow: 1; }
-    .product-chars li { font-size: 0.985rem; color: #425066; margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.45; }
-    .product-chars li::before { content: ""; width:6px; height:6px; background: var(--color-cyan); border-radius: 2px; display:inline-block; margin-right:0.5rem; margin-top:0.6rem; }
-
-    .btn-details { display:inline-flex; align-items:center; gap:10px; justify-content:center; padding:0.7rem 1rem; background:transparent; border: none; color: var(--color-navy); font-weight:700; text-decoration:none; border-radius:6px; transition: color 0.25s ease; margin-top: 0.5rem; }
-    .btn-details .arrow { display:inline-block; transition: transform 0.25s ease; }
-    .btn-details:hover .arrow { transform: translateX(6px); color: var(--color-cyan); }
-
-    /* Mobile Drawer Styles */
-    .mobile-filter-btn { display: none; width: 100%; padding: 0.95rem; background: var(--color-navy); color: white; text-align: center; font-weight: 700; border: none; border-radius: 8px; margin-bottom: 1rem; cursor: pointer; font-size: 1.05rem; }
-    @media(max-width: 1023px) {
-      .mobile-filter-btn { display: block; }
-      .sidebar { display: none; position: fixed; top: 0; left: 0; width: 85%; max-width: 360px; height: 100vh; background: #fff; z-index: 100; padding: 2rem; overflow-y: auto; box-shadow: 4px 0 25px rgba(0,0,0,0.08); }
-      .sidebar.active { display: block; animation: slideIn 0.28s forwards; }
-      .drawer-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.35); z-index: 99; backdrop-filter: blur(2px); }
-      .drawer-overlay.active { display: block; }
-      .close-filters { display: block; background: none; border: none; font-size: 2rem; float: right; cursor: pointer; margin-bottom: 1rem; color: var(--color-navy); line-height: 1; }
+    :root {
+      --color-navy: #082957;
+      --color-deep-blue: #061C3A;
+      --color-cyan: #20A8D8;
+      --color-cyan-hover: #1994C1;
+      --color-white: #FBFCFE;
+      --color-tech-gray: #EEF2F7;
+      --color-slate-dark: #1E293B;
+      --color-slate-muted: #64748B;
+      --color-border: rgba(8, 41, 87, 0.08);
+      --shadow-sm: 0 2px 8px rgba(8, 41, 87, 0.04);
+      --shadow-md: 0 8px 24px rgba(8, 41, 87, 0.08);
+      --shadow-lg: 0 16px 40px rgba(8, 41, 87, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-pill: 9999px;
     }
-    @media(min-width: 1024px) { .close-filters { display: none; } }
 
-    @keyframes slideIn { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--color-white);
+      color: var(--color-navy);
+      font-size: 16px;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
 
-    /* Header minimal */
-    header { padding: 1.25rem 1.5rem; background: transparent; display: flex; align-items: center; justify-content: space-between; }
-    header a { color: var(--color-navy); text-decoration: none; font-weight: 700; font-size: 1rem; }
-    header a:hover { color: var(--color-cyan); }
-    /* Section rhythm */
-    .section--navy { background: var(--color-navy); color: var(--color-white); }
-    .section--navy .container, .section--navy header a { color: var(--color-white); }
-    .section--white { background: var(--color-white); color: var(--color-navy); }
-    .section--photo { background-image: url('images/hero_new.png'); background-size: cover; background-position: center; color: var(--color-white); }
-    .section--metal { background: linear-gradient(180deg,#3b3f44,#222427); color: #e6e9ee; }
-    .section-pad { padding: 3.5rem 0; }
-    .photo-pad { padding: 6rem 0; }
-  </style>
+    .container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== HEADER STYLING ===== */
+    .sc-header {
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(6, 28, 58, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 150px;
+      padding: 10px 0;
+    }
+
+    /* Logo ampliada em 50% (de 90px para 135px) na seção superior */
+    .logo-container {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      height: 135px;
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .logo-container:hover {
+      transform: scale(1.03);
+    }
+    .brand-logo-img {
+      height: 100%;
+      width: auto;
+      max-height: 135px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 2.25rem;
+    }
+    .nav-link {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+      position: relative;
+      padding: 6px 0;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #ffffff;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: var(--color-cyan);
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .btn-header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.4rem;
+      background: var(--color-cyan);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 16px rgba(32, 168, 216, 0.25);
+    }
+    .btn-header-cta:hover {
+      background: var(--color-cyan-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(32, 168, 216, 0.4);
+    }
+
+    .mobile-toggle-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .catalog-hero {
+      background: linear-gradient(135deg, #061C3A 0%, #082957 60%, #0A3772 100%);
+      color: #ffffff;
+      padding: 2rem 0 4.5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .catalog-hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(32, 168, 216, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 6px 16px;
+      background: rgba(32, 168, 216, 0.15);
+      border: 1px solid rgba(32, 168, 216, 0.35);
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-cyan);
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge-eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background-color: var(--color-cyan);
+      border-radius: 50%;
+    }
+
+    .catalog-hero-title {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+      color: #ffffff;
+      max-width: 900px;
+    }
+
+    .catalog-hero-subtitle {
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.82);
+      max-width: 780px;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Live Search Bar in Hero */
+    .hero-search-wrapper {
+      max-width: 680px;
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+    .hero-search-input {
+      width: 100%;
+      padding: 1.15rem 1.5rem 1.15rem 3.25rem;
+      font-size: 1.05rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      backdrop-filter: blur(10px);
+      outline: none;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+    .hero-search-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    .hero-search-input:focus {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: var(--color-cyan);
+      box-shadow: 0 0 24px rgba(32, 168, 216, 0.3);
+    }
+    .hero-search-icon {
+      position: absolute;
+      left: 1.15rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.6);
+      pointer-events: none;
+    }
+
+    /* Feature Pills Bar */
+    .hero-highlights-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .highlight-pill-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.06);
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .highlight-pill-icon {
+      color: var(--color-cyan);
+    }
+
+    /* ===== CATALOG LAYOUT ===== */
+    .catalog-main-section {
+      padding: 3.5rem 0 5rem 0;
+      background: var(--color-white);
+    }
+
+    /* Quick Category Filter Bar */
+    .category-tabs-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      overflow-x: auto;
+      padding-bottom: 1.25rem;
+      margin-bottom: 2rem;
+      scrollbar-width: thin;
+    }
+    .category-tab {
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--color-border);
+      background: #ffffff;
+      color: var(--color-navy);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+      user-select: none;
+    }
+    .category-tab:hover {
+      border-color: var(--color-cyan);
+      box-shadow: var(--shadow-sm);
+    }
+    .category-tab.active {
+      background: var(--color-navy);
+      color: #ffffff;
+      border-color: var(--color-navy);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Results Header Bar */
+    .results-control-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-border);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .results-count {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-navy);
+    }
+    .results-count span {
+      color: var(--color-cyan);
+    }
+    .sort-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .sort-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-slate-muted);
+    }
+    .sort-select {
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+      background: #ffffff;
+      color: var(--color-navy);
+      font-weight: 600;
+      font-size: 0.9rem;
+      outline: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .catalog-layout-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+    @media(min-width: 1024px) {
+      .catalog-layout-grid {
+        flex-direction: row;
+        gap: 2.5rem;
+      }
+    }
+
+    /* ===== SIDEBAR FILTERS ===== */
+    .filter-sidebar {
+      width: 100%;
+    }
+    @media(min-width: 1024px) {
+      .filter-sidebar {
+        width: 310px;
+        flex-shrink: 0;
+        position: sticky;
+        top: 170px;
+        align-self: start;
+        max-height: calc(100vh - 190px);
+        overflow-y: auto;
+        padding-right: 8px;
+      }
+    }
+
+    .filter-sidebar::-webkit-scrollbar { width: 5px; }
+    .filter-sidebar::-webkit-scrollbar-track { background: transparent; }
+    .filter-sidebar::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
+
+    .filter-panel-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .filter-header-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .filter-main-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--color-navy);
+    }
+    .btn-reset-filters {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-cyan);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .filter-group-item {
+      margin-bottom: 1.5rem;
+    }
+    .filter-group-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-navy);
+      margin-bottom: 0.85rem;
+    }
+
+    .filter-options-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .filter-option-label {
+      cursor: pointer;
+      position: relative;
+    }
+    .filter-option-label input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .filter-pill-tag {
+      display: inline-block;
+      padding: 7px 13px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--color-border);
+      background: var(--color-tech-gray);
+      color: var(--color-navy);
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .filter-option-label:hover .filter-pill-tag {
+      border-color: var(--color-cyan);
+      background: #ffffff;
+    }
+    .filter-option-label input:checked + .filter-pill-tag {
+      background: var(--color-navy);
+      color: #ffffff;
+      border-color: var(--color-navy);
+      box-shadow: 0 4px 12px rgba(8, 41, 87, 0.15);
+    }
+
+    /* Mobile Filter Button */
+    .mobile-filter-trigger {
+      display: none;
+      width: 100%;
+      padding: 1rem;
+      background: var(--color-navy);
+      color: white;
+      text-align: center;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius-md);
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    @media(max-width: 1023px) {
+      .mobile-filter-trigger { display: flex; align-items: center; justify-content: center; gap: 8px; }
+      .filter-sidebar {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 85%;
+        max-width: 360px;
+        height: 100vh;
+        background: #ffffff;
+        z-index: 1000;
+        padding: 2rem 1.5rem 6rem 1.5rem;
+        overflow-y: auto;
+        box-shadow: 8px 0 32px rgba(0, 0, 0, 0.15);
+      }
+      .filter-sidebar.active { display: block; animation: slideDrawer 0.3s forwards ease-out; }
+      .drawer-backdrop {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(6, 28, 58, 0.5);
+        z-index: 999;
+        backdrop-filter: blur(4px);
+      }
+      .drawer-backdrop.active { display: block; }
+      .drawer-close-btn {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        float: right;
+        cursor: pointer;
+        color: var(--color-navy);
+        line-height: 1;
+      }
+      .mobile-filter-footer {
+        display: flex;
+        gap: 0.75rem;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 85%;
+        max-width: 360px;
+        background: white;
+        padding: 1rem 1.5rem;
+        box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
+        z-index: 1001;
+      }
+      .mobile-filter-footer button {
+        flex: 1;
+        padding: 0.85rem;
+        border-radius: var(--radius-sm);
+        font-weight: 700;
+        font-size: 0.95rem;
+        cursor: pointer;
+        border: none;
+      }
+      .btn-apply-mobile { background: var(--color-navy); color: white; }
+      .btn-clear-mobile { background: var(--color-tech-gray); color: var(--color-navy); }
+    }
+    @media(min-width: 1024px) { 
+      .drawer-close-btn, .mobile-filter-footer { display: none; } 
+    }
+
+    /* Mobile Nav Drawer specific styling */
+    .mobile-nav-drawer {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 85%;
+      max-width: 360px;
+      height: 100vh;
+      background: #ffffff;
+      z-index: 1000;
+      padding: 2rem 1.5rem;
+      overflow-y: auto;
+      box-shadow: 8px 0 32px rgba(0, 0, 0, 0.15);
+    }
+    .mobile-nav-drawer.active { display: block; animation: slideDrawer 0.3s forwards ease-out; }
+    
+    @media(min-width: 1024px) {
+      .mobile-nav-drawer { display: none !important; }
+    }
+
+    @keyframes slideDrawer {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
+    }
+
+    /* ===== PRODUCT GRID ===== */
+    .products-main-grid {
+      flex-grow: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      align-content: start;
+    }
+    @media(min-width: 640px) { .products-main-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(min-width: 1120px) { .products-main-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .product-card-item {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      position: relative;
+    }
+    .product-card-item:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(32, 168, 216, 0.3);
+    }
+
+    .card-img-wrapper {
+      width: 100%;
+      height: 230px;
+      background: #F8FAFC;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 1.5rem;
+    }
+    .card-img-wrapper img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .product-card-item:hover .card-img-wrapper img {
+      transform: scale(1.06);
+    }
+
+    .card-accent-line {
+      height: 3px;
+      width: 0%;
+      background: var(--color-cyan);
+      transition: width 0.35s ease;
+    }
+    .product-card-item:hover .card-accent-line {
+      width: 100%;
+    }
+
+    .card-content-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-category-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-slate-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .card-ref-badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--color-cyan);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-product-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--color-navy);
+      line-height: 1.25;
+      margin-bottom: 0.85rem;
+    }
+
+    .card-features-list {
+      list-style: none;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    .card-features-list li {
+      font-size: 0.9rem;
+      color: #475569;
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.4;
+    }
+    .card-features-list li::before {
+      content: "✓";
+      color: var(--color-cyan);
+      font-weight: 800;
+      font-size: 0.85rem;
+      margin-top: 1px;
+    }
+
+    .card-actions-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: auto;
+    }
+
+    .btn-card-details {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0.65rem 1rem;
+      background: var(--color-tech-gray);
+      color: var(--color-navy);
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-card-details:hover {
+      background: #E2E8F0;
+      color: var(--color-navy);
+    }
+
+    .btn-card-quote {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0.75rem 1rem;
+      background: var(--color-navy);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .btn-card-quote:hover {
+      background: var(--color-cyan);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(32, 168, 216, 0.3);
+    }
+
+    .empty-results-box {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 5rem 2rem;
+      background: #F8FAFC;
+      border-radius: var(--radius-md);
+      border: 1px dashed var(--color-border);
+    }
+    .empty-results-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--color-navy);
+      margin-bottom: 0.5rem;
+    }
+    .empty-results-desc {
+      color: var(--color-slate-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ===== SPEC MODAL ===== */
+    .spec-modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(6, 28, 58, 0.65);
+      z-index: 2000;
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .spec-modal-backdrop.active {
+      display: flex;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .spec-modal-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      max-width: 860px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      padding: 2.5rem;
+    }
+    .btn-modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: #F1F5F9;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.25rem;
+      cursor: pointer;
+      color: var(--color-navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .btn-modal-close:hover { background: #E2E8F0; }
+
+    .modal-grid-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    @media(min-width: 768px) {
+      .modal-grid-layout { grid-template-columns: 1fr 1.2fr; }
+    }
+
+    .modal-img-box {
+      background: #F8FAFC;
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-img-box img {
+      max-width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+    }
+
+    .modal-spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem 0;
+      font-size: 0.9rem;
+    }
+    .modal-spec-table th, .modal-spec-table td {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--color-border);
+      text-align: left;
+    }
+    .modal-spec-table th { font-weight: 700; color: var(--color-navy); width: 40%; }
+    .modal-spec-table td { color: #475569; }
+
+    /* ===== B2B BANNER SECTION ===== */
+    .b2b-info-banner {
+      background: var(--color-deep-blue);
+      color: #ffffff;
+      padding: 3.5rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .b2b-banner-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+    }
+    .b2b-banner-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+    .b2b-banner-desc {
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 700px;
+      font-size: 1.05rem;
+    }
+
+    /* ===== FOOTER STYLING ===== */
+    .sc-footer {
+      background: #04142B;
+      color: #ffffff;
+      padding: 4rem 0 2rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+    }
+    @media(min-width: 768px) {
+      .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+    }
+    .footer-brand-logo-img {
+      height: 56px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 1.25rem;
+    }
+    .footer-brand-desc {
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 380px;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    .footer-col-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1.25rem;
+    }
+    .footer-links-list {
+      list-style: none;
+    }
+    .footer-links-list li {
+      margin-bottom: 0.75rem;
+    }
+    .footer-links-list a {
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      transition: color 0.2s;
+      font-size: 0.95rem;
+    }
+    .footer-links-list a:hover {
+      color: var(--color-cyan);
+    }
+    .footer-bottom-bar {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
+    }
+    @media(min-width: 768px) {
+      .footer-bottom-bar { flex-direction: row; }
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--color-cyan);
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 90;
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    .back-to-top:hover {
+      background: var(--color-cyan-hover);
+      transform: translateY(-4px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Responsividade */
+    @media(max-width: 1023px) {
+      .header-inner { height: 120px; }
+      .logo-container { height: 100px; }
+      .brand-logo-img { max-height: 100px; }
+      .header-nav { display: none; }
+      .mobile-toggle-btn { display: block; }
+    }
+</style>
+<!-- =========================================================================
+     PREMIUM UX/UI REFINEMENT - SQUARE COMMERCE
+     ========================================================================= -->
+<style id="premium-ux-refinement">
+  :root {
+    --premium-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --premium-border-radius: 6px; /* Industrial precision */
+    --premium-shadow-diffuse: 0 20px 40px rgba(6, 25, 50, 0.06);
+    --premium-shadow-hover: 0 30px 60px rgba(6, 25, 50, 0.12);
+  }
+
+  /* 1. Global Smoothing & Transitions */
+  html {
+    scroll-behavior: smooth;
+  }
+  body, main {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Enforce premium easing on interactive elements */
+  a, button, .product-card, .brand-logo-img, .filter-btn {
+    transition: all 0.6s var(--premium-easing) !important;
+  }
+
+  /* 2. Header Refinement - Glassmorphic */
+  .sc-header {
+    background: rgba(6, 25, 50, 0.98) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    transition: background 0.6s var(--premium-easing), border-color 0.6s var(--premium-easing), padding 0.6s var(--premium-easing) !important;
+  }
+  .sc-header.scrolled-header {
+    background: rgba(6, 25, 50, 0.98) !important;
+    border-bottom: 1px solid rgba(32, 168, 216, 0.1) !important;
+    backdrop-filter: blur(20px) !important;
+  }
+  
+  /* 3. Typography Scales & High Contrast */
+  h1, .page-title {
+    letter-spacing: -0.03em !important;
+    font-weight: 800 !important;
+  }
+  .filter-btn, .product-badge {
+    letter-spacing: 0.15em !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+  }
+
+  /* 4. Cards & Products - Subtle Interactions */
+  .product-card {
+    border-radius: var(--premium-border-radius) !important;
+    box-shadow: none !important;
+    border: 1px solid rgba(0,0,0,0.06) !important;
+  }
+  .product-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: var(--premium-shadow-diffuse) !important;
+    border-color: rgba(32, 168, 216, 0.25) !important;
+  }
+  .product-card:hover .product-img {
+    transform: scale(1.04) !important; /* Micro zoom */
+  }
+
+  /* Disable animations for prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
 </head>
 <body>
 
-  <section class="section--navy section-pad">
-    <header>
-      <a href="index.html" class="logo-container" style="display: flex; align-items: center; text-decoration: none; height: 90px;">
-        <img src="images/Gemini_Generated_Image_ze6qq0ze6qq0ze6q (1).png" alt="Square Commerce Logo" style="height: 100%; width: auto; object-fit: contain;" />
-      </a>
-      <a href="index.html">&larr; Voltar para Home</a>
-    </header>
+  <!-- ===== STICKY HEADER ===== -->
+  <header class="sc-header">
     <div class="container">
-      <div class="hero-catalog" style="background:transparent; color: #fff; text-align:center; padding:3.5rem 0;">
-        <h1 style="color:#fff; font-size:2.4rem; margin-bottom:0.75rem;">Soluções profissionais para cada necessidade.</h1>
-        <p style="color:rgba(255,255,255,0.85); max-width:760px; margin:0 auto; margin-bottom: 2rem;">Explore nossa linha de equipamentos para lavagem, higienização e operação profissional.</p>
-        <a href="#productsGrid" style="display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2.5rem; background-color: var(--color-cyan); color: white; font-weight: 700; font-size: 1.1rem; border-radius: 9999px; text-decoration: none; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
-          CONHECER TODOS OS PRODUTOS &darr;
+      <div class="header-inner">
+        <!-- Logo ampliada em 50% com a nova imagem oficial -->
+        <a href="index.html" class="logo-container" title="Square Commerce - Voltar à Página Inicial">
+          <img src="images/Gemini_Generated_Image_txrkudtxrkudtxrk.png" alt="Square Commerce Logo" class="brand-logo-img" />
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="header-nav" role="navigation">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="index.html#produtos">Produtos</a>
+          <a class="nav-link active" href="shop.html">Catálogo</a>
+          <a class="nav-link" href="about.html">Sobre Nós</a>
+          <a class="nav-link" href="index.html#contato">Contato</a>
+        </nav>
+
+        <!-- Actions / CTAs -->
+        <div class="header-actions">
+          <a href="https://wa.me/5582996205266?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20do%20cat%C3%A1logo" class="btn-header-cta" target="_blank" rel="noopener">
+            <span>Falar com Consultor</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <button id="mobileMenuBtn" class="mobile-toggle-btn" aria-label="Abrir Menu">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer Backdrop & Panel -->
+  <div id="drawerBackdrop" class="drawer-backdrop"></div>
+  <aside id="mobileDrawer" class="mobile-nav-drawer">
+    <button id="closeDrawerBtn" class="drawer-close-btn">&times;</button>
+    <div style="margin-bottom: 2rem; margin-top: 1rem;">
+      <img src="images/Gemini_Generated_Image_txrkudtxrkudtxrk.png" alt="Square Commerce" style="height: 60px; width: auto; object-fit: contain;" />
+    </div>
+    <nav style="display: flex; flex-direction: column; gap: 1.25rem; font-size: 1.15rem; font-weight: 700;">
+      <a href="index.html" style="color: var(--color-navy); text-decoration: none;">Home</a>
+      <a href="index.html#produtos" style="color: var(--color-navy); text-decoration: none;">Produtos</a>
+      <a href="shop.html" style="color: var(--color-cyan); text-decoration: none;">Catálogo</a>
+      <a href="about.html" style="color: var(--color-navy); text-decoration: none;">Sobre Nós</a>
+      <a href="index.html#contato" style="color: var(--color-navy); text-decoration: none;">Contato</a>
+    </nav>
+  </aside>
+
+  <!-- ===== CATALOG HERO SECTION ===== -->
+  <section class="catalog-hero">
+    <div class="container">
+      <div class="hero-badge-eyebrow">EQUIPAMENTOS DE ALTA PERFORMANCE • FABRICAÇÃO ITALIANA</div>
+      <h1 class="catalog-hero-title">Soluções Profissionais para Lavagem e Higienização.</h1>
+      <p class="catalog-hero-subtitle">
+        Explore nossa linha completa de esguichos de pré-lavagem, torneiras industriais, modelos clínicos e equipamentos de acionamento por pedal projetados para uso intensivo.
+      </p>
+
+      <!-- Live Search Bar -->
+      <div class="hero-search-wrapper">
+        <svg class="hero-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="heroSearchInput" class="hero-search-input" placeholder="Pesquisar por modelo, código REF (ex: DBFP90), categoria ou aplicação..." />
+      </div>
+
+      <!-- Feature Highlights Pills -->
+      <div class="hero-highlights-grid">
+        <div class="highlight-pill-item">
+          <svg class="highlight-pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <span>Aço Inoxidável & Latão Cromado</span>
+        </div>
+        <div class="highlight-pill-item">
+          <svg class="highlight-pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span>Até 10 Anos de Garantia</span>
+        </div>
+        <div class="highlight-pill-item">
+          <svg class="highlight-pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>Peças de Reposição Pronta Entrega</span>
+        </div>
+        <div class="highlight-pill-item">
+          <svg class="highlight-pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+          <span>Economia de Água Certificada</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATALOG MAIN SECTION ===== -->
+  <section class="catalog-main-section">
+    <div class="container">
+
+      <!-- Quick Category Filter Bar -->
+      <div class="category-tabs-bar" id="categoryTabsContainer">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- Controls & Sort Bar -->
+      <div class="results-control-bar">
+        <div class="results-count" id="resultsCount">
+          Carregando catálogo...
+        </div>
+        <div class="sort-wrapper">
+          <label for="sortSelect" class="sort-label">Ordenar por:</label>
+          <select id="sortSelect" class="sort-select">
+            <option value="default">Mais Relevantes</option>
+            <option value="name-asc">Nome (A-Z)</option>
+            <option value="ref-asc">Código REF (A-Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="catalog-layout-grid">
+        <!-- Mobile Trigger Button -->
+        <button class="mobile-filter-trigger" id="openMobileFiltersBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6H20M4 12H14M4 18H9"></path></svg>
+          Filtrar Soluções
+        </button>
+
+        <!-- Sidebar Filter Panel -->
+        <aside class="filter-sidebar" id="filterSidebar">
+          <button class="drawer-close-btn" id="closeSidebarBtn">&times;</button>
+          <div class="filter-panel-card">
+            <div class="filter-header-flex">
+              <h2 class="filter-main-title">Filtros</h2>
+              <button id="resetFiltersBtn" class="btn-reset-filters">Limpar Tudo</button>
+            </div>
+            <div id="filtersContainer">
+              <!-- Filter Checkboxes injected via JS -->
+            </div>
+          </div>
+          <!-- Mobile Filter Footer -->
+          <div class="mobile-filter-footer">
+            <button class="btn-clear-mobile" id="clearMobileFiltersBtn">Limpar</button>
+            <button class="btn-apply-mobile" id="applyMobileFiltersBtn">Aplicar</button>
+          </div>
+        </aside>
+
+        <!-- Product Grid -->
+        <main class="products-main-grid" id="productsGrid">
+          <!-- Products injected via JS -->
+        </main>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== TECHNICAL B2B BANNER ===== -->
+  <section class="b2b-info-banner">
+    <div class="container">
+      <div class="b2b-banner-inner">
+        <h2 class="b2b-banner-title">Especificações Técnicas e Projetos Especiais B2B</h2>
+        <p class="b2b-banner-desc">
+          Precisa de suporte técnico ou cotações em lote para franquias, hospitais ou grandes cozinhas industriais? Nossa equipe de engenharia está pronta para auxiliar na escolha da especificação exata.
+        </p>
+        <a href="https://wa.me/5582996205266?text=Ol%C3%A1%2C%20gostaria%20de%20suporte%20t%C3%A9cnico%20para%20um%20projeto%20B2B" class="btn-header-cta" style="margin-top: 1rem;" target="_blank" rel="noopener">
+          <span>Solicitar Atendimento Técnico B2B</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
       </div>
     </div>
   </section>
 
-  <section class="section--white section-pad">
-    <div class="container">
-      <!-- white spacer section to provide contrast -->
-    </div>
-  </section>
-
-  <section class="section--photo photo-pad">
-    <div class="container">
-      <!-- photography band (visual rhythm) -->
-    </div>
-  </section>
-
-  <section class="section--navy section-pad">
-    <div class="container" style="text-align:center;">
-      <h2 style="color:#fff; margin:0; font-size:1.25rem; font-weight:700;">Especificações técnicas e soluções para projetos B2B</h2>
-      <p style="color:rgba(255,255,255,0.9); margin-top:0.5rem;">Projetados para durabilidade e compatibilidade com ambientes profissionais.</p>
-    </div>
-  </section>
-
-  <section class="section--white section-pad">
-    <div class="container">
-      <div class="catalog-layout">
-        <button class="mobile-filter-btn" id="openFilters">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline; vertical-align:middle; margin-right:8px;"><path d="M4 6H20M4 12H14M4 18H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Filtrar soluções
-        </button>
-        <div class="drawer-overlay" id="drawerOverlay"></div>
-
-        <aside class="sidebar" id="filterSidebar">
-          <button class="close-filters" id="closeFilters">&times;</button>
-          <h2 style="margin-top:0; color: var(--color-navy); font-size: 1.5rem; margin-bottom: 2rem;">Filtros</h2>
-          <div id="filtersContainer" class="filters-panel"></div>
-        </aside>
-
-        <main class="products-grid" id="productsGrid">
-          <!-- Products injected via JS -->
-        </main>
+  <!-- ===== QUICK SPEC MODAL ===== -->
+  <div id="specModalBackdrop" class="spec-modal-backdrop">
+    <div class="spec-modal-card">
+      <button id="closeModalBtn" class="btn-modal-close" aria-label="Fechar Modal">&times;</button>
+      <div id="modalBodyContent">
+        <!-- Injected via JS -->
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="section--metal section-pad">
-    <div class="container" style="text-align:center;">
-      <h3 style="color: #e6e9ee; margin:0; font-weight:700;">Materiais & acabamentos</h3>
-      <p style="color: rgba(230,233,238,0.9); margin-top:0.5rem;">Especificações em aço inoxidável, grafite e acabamentos técnicos para ambientes severos.</p>
-    </div>
-  </section>
+  <!-- ===== FOOTER ===== -->
+  <footer class="sc-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <!-- Logo Oficial no Footer -->
+          <img src="images/Gemini_Generated_Image_txrkudtxrkudtxrk.png" alt="Square Commerce Logo" class="footer-brand-logo-img" />
+          <p class="footer-brand-desc">
+            Líder em equipamentos profissionais de pré-lavagem e higienização. Projetados com engenharia de alta resistência para operações que exigem máxima performance.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Navegação</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Página Inicial</a></li>
+            <li><a href="index.html#produtos">Linha de Produtos</a></li>
+            <li><a href="shop.html">Catálogo Completo</a></li>
+            <li><a href="about.html">Quem Somos</a></li>
+            <li><a href="index.html#contato">Fale Conosco</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Contato & Suporte</h4>
+          <ul class="footer-links-list">
+            <li><a href="https://wa.me/5582996205266" target="_blank">Atendimento WhatsApp</a></li>
+            <li><a href="https://wa.me/5582996205266?text=Suporte%20T%C3%A9cnico" target="_blank">Suporte Técnico</a></li>
+            <li><a href="https://wa.me/5582996205266?text=Pe%C3%A7as%20de%20Reposi%C3%A7%C3%A3o" target="_blank">Peças de Reposição</a></li>
+            <li><a href="index.html#garantia">Termos de Garantia</a></li>
+          </ul>
+        </div>
+      </div>
 
-  <section class="section--navy">
-    <div class="container" style="padding:1.25rem 0; text-align:center;">
-      <small style="color:rgba(255,255,255,0.85);">© Square Commerce</small>
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 Square Commerce. Todos os direitos reservados.</div>
+        <div>Soluções Hidráulicas Profissionais</div>
+      </div>
     </div>
-  </section>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="backToTopBtn" class="back-to-top" aria-label="Voltar ao topo">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+  </button>
 
   <script src="products.js"></script>
   <script>
+    // Filter Configuration
     const filterConfig = [
-      { id: "category", title: "Categorias", options: ["Esguichos de Pré-Lavagem", "Esguichos com Torneira Extra", "Torneiras Industriais", "Torneiras Clínicas", "Torneiras de Acionamento por Pedal", "Higienizadores e Acessórios"] },
-      { id: "instalacao", title: "Tipo de instalação", options: ["Bancada", "Parede"] },
+      { id: "category", title: "Categoria", options: ["Esguichos de Pré-Lavagem", "Esguichos com Torneira Extra", "Torneiras Industriais", "Torneiras Clínicas", "Torneiras de Acionamento por Pedal", "Higienizadores e Acessórios"] },
+      { id: "instalacao", title: "Tipo de Instalação", options: ["Bancada", "Parede"] },
       { id: "configuracao", title: "Configuração", options: ["Com misturador", "Sem misturador"] },
       { id: "formato", title: "Formato", options: ["Padrão", "Mini"] },
-      { id: "complemento", title: "Complemento", options: ["Com torneira extra", "Sem torneira extra"] },
+      { id: "complemento", title: "Complemento", options: ["Com torneira extra", "Sem torneira extra", "Pedal Completo"] },
       { id: "acionamento", title: "Acionamento", options: ["Manual", "Alavanca clínica", "Pedal", "Eletrônico"] },
-      { id: "aplicacao", title: "Aplicação", options: ["Cozinhas", "Clínicas e hospitais", "Indústrias"] }
+      { id: "aplicacao", title: "Aplicação Principal", options: ["Cozinhas", "Clínicas e hospitais", "Indústrias"] }
     ];
 
     const state = {
+      searchQuery: "",
+      selectedCategoryTab: "Todos",
+      sortBy: "default",
       category: [],
       instalacao: [],
       configuracao: [],
@@ -178,30 +1286,57 @@
       aplicacao: []
     };
 
-    function renderFilters() {
+    // Render Quick Category Tabs
+    function renderCategoryTabs() {
+      const container = document.getElementById('categoryTabsContainer');
+      const categories = ["Todos", "Esguichos de Pré-Lavagem", "Torneiras Industriais", "Torneiras Clínicas", "Torneiras de Acionamento por Pedal", "Higienizadores e Acessórios"];
+      
+      container.innerHTML = categories.map(cat => `
+        <button class="category-tab ${state.selectedCategoryTab === cat ? 'active' : ''}" data-cat="${cat}">
+          ${cat}
+        </button>
+      `).join('');
+
+      container.querySelectorAll('.category-tab').forEach(tab => {
+        tab.addEventListener('click', (e) => {
+          state.selectedCategoryTab = e.target.dataset.cat;
+          renderCategoryTabs();
+          renderProducts();
+        });
+      });
+    }
+
+    // Render Filter Sidebar Options
+    function renderFilterSidebar() {
       const container = document.getElementById('filtersContainer');
       let html = '';
 
       filterConfig.forEach(group => {
-        html += `<div class="filter-group"><h3 class="filter-title">${group.title}</h3><div class="filter-options">`;
+        html += `
+          <div class="filter-group-item">
+            <h3 class="filter-group-title">${group.title}</h3>
+            <div class="filter-options-flex">
+        `;
         group.options.forEach(opt => {
+          const isChecked = state[group.id].includes(opt);
           html += `
-            <label class="filter-label">
-              <input type="checkbox" data-group="${group.id}" value="${opt}">
-              <span class="filter-pill">${opt}</span>
+            <label class="filter-option-label">
+              <input type="checkbox" data-group="${group.id}" value="${opt}" ${isChecked ? 'checked' : ''}>
+              <span class="filter-pill-tag">${opt}</span>
             </label>
           `;
         });
         html += `</div></div>`;
       });
+
       container.innerHTML = html;
 
       container.querySelectorAll('input[type="checkbox"]').forEach(cb => {
         cb.addEventListener('change', (e) => {
           const group = e.target.dataset.group;
           const val = e.target.value;
-          if(e.target.checked) {
-            state[group].push(val);
+          if (e.target.checked) {
+            if (!state[group].includes(val)) state[group].push(val);
           } else {
             state[group] = state[group].filter(v => v !== val);
           }
@@ -210,63 +1345,228 @@
       });
     }
 
+    // Render Product Cards
     function renderProducts() {
       const grid = document.getElementById('productsGrid');
-      
-      const filtered = products.filter(p => {
+      const countEl = document.getElementById('resultsCount');
+
+      let filtered = products.filter(p => {
+        // Tab category match
+        if (state.selectedCategoryTab !== "Todos" && p.category !== state.selectedCategoryTab) {
+          return false;
+        }
+
+        // Hero Search match
+        if (state.searchQuery.trim() !== "") {
+          const q = state.searchQuery.toLowerCase();
+          const matchName = (p.name || "").toLowerCase().includes(q);
+          const matchId = (p.id || "").toLowerCase().includes(q);
+          const matchCat = (p.category || "").toLowerCase().includes(q);
+          const matchDesc = (p.description || "").toLowerCase().includes(q);
+          const matchApp = (p.aplicacao || "").toLowerCase().includes(q);
+          if (!matchName && !matchId && !matchCat && !matchDesc && !matchApp) {
+            return false;
+          }
+        }
+
+        // Checkboxes filters
         return (state.category.length === 0 || state.category.includes(p.category)) &&
-               (state.instalacao.length === 0 || state.instalacao.includes(p.instalacao)) &&
-               (state.configuracao.length === 0 || state.configuracao.includes(p.configuracao)) &&
-               (state.formato.length === 0 || state.formato.includes(p.formato)) &&
-               (state.complemento.length === 0 || state.complemento.includes(p.complemento)) &&
-               (state.acionamento.length === 0 || state.acionamento.includes(p.acionamento)) &&
-               (state.aplicacao.length === 0 || state.aplicacao.includes(p.aplicacao));
+               (state.instalacao.length === 0 || (p.instalacao && state.instalacao.includes(p.instalacao))) &&
+               (state.configuracao.length === 0 || (p.configuracao && state.configuracao.includes(p.configuracao))) &&
+               (state.formato.length === 0 || (p.formato && state.formato.includes(p.formato))) &&
+               (state.complemento.length === 0 || (p.complemento && state.complemento.includes(p.complemento))) &&
+               (state.acionamento.length === 0 || (p.acionamento && state.acionamento.includes(p.acionamento))) &&
+               (state.aplicacao.length === 0 || (p.aplicacao && state.aplicacao.some(a => p.aplicacao.includes(a))));
       });
 
+      // Sorting
+      if (state.sortBy === "name-asc") {
+        filtered.sort((a, b) => a.name.localeCompare(b.name));
+      } else if (state.sortBy === "ref-asc") {
+        filtered.sort((a, b) => a.id.localeCompare(b.id));
+      }
+
+      countEl.innerHTML = `Mostrando <span>${filtered.length}</span> de ${products.length} soluções`;
+
       if (filtered.length === 0) {
-        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 4rem; color: #888; font-size: 1.2rem; background: #f9f9f9; border-radius: 12px;">Nenhum produto encontrado com os filtros selecionados.</div>`;
+        grid.innerHTML = `
+          <div class="empty-results-box">
+            <h3 class="empty-results-title">Nenhum equipamento encontrado</h3>
+            <p class="empty-results-desc">Tente ajustar os termos de pesquisa ou remover os filtros aplicados.</p>
+            <button id="resetFromEmptyBtn" class="btn-header-cta" style="display:inline-flex;">Limpar Filtros</button>
+          </div>
+        `;
+        document.getElementById('resetFromEmptyBtn')?.addEventListener('click', resetAllFilters);
         return;
       }
 
-        grid.innerHTML = filtered.map(p => `
-          <div class="product-card">
-            <div class="product-image-wrapper">
-              <img src="${p.image}" alt="${p.name}" class="product-image">
-            </div>
-            <div class="accent-line"></div>
-            <div class="product-info">
-              <div class="product-category">${p.category}</div>
-              <div style="font-size: 0.8rem; font-weight: 700; color: var(--color-cyan); margin-bottom: 0.25rem;">REF: ${p.id}</div>
-              <h3 class="product-name">${p.name}</h3>
-              <ul class="product-chars">
-                ${(p.characteristics || []).slice(0, 3).map(c => `<li>${c}</li>`).join('')}
-              </ul>
-              <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20produto%20${p.name}%20(REF:%20${p.id})" class="btn-details" target="_blank">Fazer Orçamento <span class="arrow">→</span></a>
+      grid.innerHTML = filtered.map(p => `
+        <div class="product-card-item">
+          <div class="card-img-wrapper">
+            <img src="${p.image}" alt="${p.name}" loading="lazy" />
+          </div>
+          <div class="card-accent-line"></div>
+          <div class="card-content-body">
+            <div class="card-category-tag">${p.category}</div>
+            <div class="card-ref-badge">REF: ${p.id}</div>
+            <h3 class="card-product-title">${p.name}</h3>
+            <ul class="card-features-list">
+              ${(p.characteristics || [p.description || "Equipamento de alta resistência"]).slice(0, 3).map(c => `<li>${c}</li>`).join('')}
+            </ul>
+            <div class="card-actions-wrapper">
+              <button class="btn-card-details" onclick="openSpecModal('${p.id}')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span>Ver Especificações</span>
+              </button>
+              <a href="https://wa.me/5582996205266?text=${encodeURIComponent(`Olá! Gostaria de solicitar um orçamento.\n\nProduto: ${p.name}\nModelo: ${p.modelo || p.name}\nReferência: ${p.id}\n\nGostaria de receber informações sobre preço, disponibilidade e condições comerciais.`)}" class="btn-card-quote" target="_blank" rel="noopener">
+                <span>Solicitar Orçamento</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
             </div>
           </div>
-        `).join('');
+        </div>
+      `).join('');
     }
 
-    // Drawer Logic
-    const sidebar = document.getElementById('filterSidebar');
-    const overlay = document.getElementById('drawerOverlay');
-    const openBtn = document.getElementById('openFilters');
-    const closeBtn = document.getElementById('closeFilters');
+    // Modal Especificações
+    window.openSpecModal = function(productId) {
+      const p = products.find(item => item.id === productId);
+      if (!p) return;
 
-    function closeDrawer() {
-      sidebar.classList.remove('active');
-      overlay.classList.remove('active');
+      const modalBody = document.getElementById('modalBodyContent');
+      const backdrop = document.getElementById('specModalBackdrop');
+
+      modalBody.innerHTML = `
+        <div class="modal-grid-layout">
+          <div class="modal-img-box">
+            <img src="${p.image}" alt="${p.name}" />
+          </div>
+          <div>
+            <div style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--color-cyan); margin-bottom: 0.25rem;">${p.category}</div>
+            <div style="font-size: 0.9rem; font-weight: 800; color: var(--color-navy); margin-bottom: 0.75rem;">REF: ${p.id}</div>
+            <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--color-navy); margin-bottom: 1rem; line-height: 1.2;">${p.name}</h2>
+            <p style="font-size: 0.95rem; color: #475569; line-height: 1.6; margin-bottom: 1.25rem;">${p.description || "Equipamento profissional projetado para ambientes de alta demanda."}</p>
+
+            ${(p.characteristics && p.characteristics.length > 0) ? `
+              <div style="margin-bottom: 1.25rem;">
+                <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem;">Destaques do Modelo:</h4>
+                <ul style="list-style:none; padding:0;">
+                  ${p.characteristics.map(c => `<li style="font-size:0.88rem; color:#334155; margin-bottom:4px;">✓ ${c}</li>`).join('')}
+                </ul>
+              </div>
+            ` : ''}
+
+            <table class="modal-spec-table">
+              <tbody>
+                <tr><th>Material</th><td>${p.materials || "Aço Inox / Latão Cromado"}</td></tr>
+                <tr><th>Instalação</th><td>${p.instalacao || "Padrão Industrial"}</td></tr>
+                <tr><th>Configuração</th><td>${p.configuracao || "Conforme especificação"}</td></tr>
+                <tr><th>Acionamento</th><td>${p.acionamento || "Manual / Ergonômico"}</td></tr>
+                <tr><th>Aplicação</th><td>${p.aplicacao || "Cozinhas, Hospitais, Indústrias"}</td></tr>
+              </tbody>
+            </table>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top: 1.5rem;">
+              <a href="https://wa.me/5582996205266?text=${encodeURIComponent(`Olá! Gostaria de solicitar um orçamento.\n\nProduto: ${p.name}\nModelo: ${p.modelo || p.name}\nReferência: ${p.id}\n\nGostaria de receber informações sobre preço, disponibilidade e condições comerciais.`)}" class="btn-header-cta" target="_blank" style="flex:1; justify-content:center;">
+                <span>Solicitar Orçamento</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+
+      backdrop.classList.add('active');
+    };
+
+    function closeModal() {
+      document.getElementById('specModalBackdrop').classList.remove('active');
     }
 
-    openBtn.addEventListener('click', () => {
-      sidebar.classList.add('active');
-      overlay.classList.add('active');
+    document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+    document.getElementById('specModalBackdrop').addEventListener('click', (e) => {
+      if (e.target.id === 'specModalBackdrop') closeModal();
     });
-    closeBtn.addEventListener('click', closeDrawer);
-    overlay.addEventListener('click', closeDrawer);
+
+    // Reset All Filters
+    function resetAllFilters() {
+      state.searchQuery = "";
+      state.selectedCategoryTab = "Todos";
+      state.sortBy = "default";
+      filterConfig.forEach(g => state[g.id] = []);
+      document.getElementById('heroSearchInput').value = "";
+      document.getElementById('sortSelect').value = "default";
+      renderCategoryTabs();
+      renderFilterSidebar();
+      renderProducts();
+    }
+
+    // Hero Live Search Event
+    document.getElementById('heroSearchInput').addEventListener('input', (e) => {
+      state.searchQuery = e.target.value;
+      renderProducts();
+    });
+
+    // Sort Select Event
+    document.getElementById('sortSelect').addEventListener('change', (e) => {
+      state.sortBy = e.target.value;
+      renderProducts();
+    });
+
+    document.getElementById('resetFiltersBtn').addEventListener('click', resetAllFilters);
+
+    // Mobile Drawer Logic
+    const filterSidebar = document.getElementById('filterSidebar');
+    const drawerBackdrop = document.getElementById('drawerBackdrop');
+    const openMobileFiltersBtn = document.getElementById('openMobileFiltersBtn');
+    const closeSidebarBtn = document.getElementById('closeSidebarBtn');
+
+    function closeMobileSidebar() {
+      filterSidebar.classList.remove('active');
+      drawerBackdrop.classList.remove('active');
+    }
+
+    openMobileFiltersBtn?.addEventListener('click', () => {
+      filterSidebar.classList.add('active');
+      drawerBackdrop.classList.add('active');
+    });
+    closeSidebarBtn?.addEventListener('click', closeMobileSidebar);
+    drawerBackdrop?.addEventListener('click', closeMobileSidebar);
+    document.getElementById('applyMobileFiltersBtn')?.addEventListener('click', closeMobileSidebar);
+    document.getElementById('clearMobileFiltersBtn')?.addEventListener('click', () => {
+      resetAllFilters();
+      closeMobileSidebar();
+    });
+
+    // Mobile Menu Drawer Logic
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileDrawer.classList.add('active');
+      drawerBackdrop.classList.add('active');
+    });
+    closeDrawerBtn?.addEventListener('click', () => {
+      mobileDrawer.classList.remove('active');
+      drawerBackdrop.classList.remove('active');
+    });
+
+    // Back to Top Button
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
     // Init
-    renderFilters();
+    renderCategoryTabs();
+    renderFilterSidebar();
     renderProducts();
   </script>
 </body>

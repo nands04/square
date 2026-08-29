@@ -38,7 +38,110 @@
     
     .cta-btn { display: inline-block; padding: 1rem 2rem; background: var(--color-cyan); color: #fff; text-decoration: none; font-weight: 700; border-radius: 9999px; transition: background 0.3s; margin-top: 2rem; }
     .cta-btn:hover { background: #1a8ab2; }
-  </style>
+</style>
+<!-- =========================================================================
+     PREMIUM UX/UI REFINEMENT - SQUARE COMMERCE
+     ========================================================================= -->
+<style id="premium-ux-refinement">
+  :root {
+    --premium-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --premium-border-radius: 6px; /* Industrial precision */
+    --premium-shadow-diffuse: 0 20px 40px rgba(6, 25, 50, 0.06);
+    --premium-shadow-hover: 0 30px 60px rgba(6, 25, 50, 0.12);
+  }
+
+  /* 1. Global Smoothing & Transitions */
+  html {
+    scroll-behavior: smooth;
+  }
+  body, main {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Enforce premium easing on interactive elements */
+  a, button, .value-card, .image-placeholder {
+    transition: all 0.6s var(--premium-easing) !important;
+  }
+
+  /* 2. Header Refinement - Glassmorphic */
+  .sc-header {
+    background: rgba(6, 25, 50, 0.03) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    transition: background 0.6s var(--premium-easing), border-color 0.6s var(--premium-easing), padding 0.6s var(--premium-easing) !important;
+  }
+  .sc-header.scrolled-header {
+    background: rgba(6, 25, 50, 0.98) !important;
+    border-bottom: 1px solid rgba(32, 168, 216, 0.1) !important;
+    backdrop-filter: blur(20px) !important;
+  }
+  
+  /* 3. Typography Scales & High Contrast */
+  h1, h2 {
+    letter-spacing: -0.03em !important;
+    font-weight: 800 !important;
+  }
+  .subtitle {
+    letter-spacing: 0.1em !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    opacity: 0.9;
+  }
+
+  /* 4. Section Spacing - Extreme Breathing Room */
+  section {
+    padding: 8rem 5% !important; /* Huge intentional space on desktop */
+  }
+  @media (max-width: 768px) {
+    section {
+      padding: 5rem 5% !important; /* Adjusted for mobile */
+    }
+  }
+
+  /* 5. Buttons - Refined CTA */
+  .cta-btn {
+    border-radius: var(--premium-border-radius) !important;
+    padding: 1.25rem 2.5rem !important;
+    letter-spacing: 0.12em !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
+    transform: translateY(0) !important; /* Reset any bounce */
+  }
+  .cta-btn:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: var(--premium-shadow-hover) !important;
+    background: linear-gradient(135deg, #1994C1 0%, #15799e 100%) !important;
+  }
+
+  /* 6. Cards & Products - Subtle Interactions */
+  .value-card, .image-placeholder {
+    border-radius: var(--premium-border-radius) !important;
+    box-shadow: none !important;
+    border: 1px solid rgba(0,0,0,0.06) !important;
+  }
+  .value-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: var(--premium-shadow-diffuse) !important;
+    border-color: rgba(32, 168, 216, 0.25) !important;
+  }
+  .image-placeholder img {
+    transition: transform 0.6s var(--premium-easing) !important;
+  }
+  .image-placeholder:hover img {
+    transform: scale(1.04) !important; /* Micro zoom */
+  }
+
+  /* Disable animations for prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
 </head>
 <body>
 
@@ -92,6 +195,51 @@
       <small style="color:rgba(255,255,255,0.85);">© Square Commerce. Todos os direitos reservados.</small>
     </div>
   </section>
+
+<!-- =========================================================================
+     GLOBAL MOBILE RESPONSIVENESS FIXES
+     ========================================================================= -->
+<style id="mobile-responsiveness">
+  /* Global Preventions */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100%;
+    max-width: 100vw;
+  }
+  
+  /* Mobile Adjustments */
+  @media (max-width: 1024px) {
+    /* Grids to Column */
+    .content-grid,
+    .values-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 2rem !important;
+    }
+    
+    /* Paddings */
+    .section-pad, .hero-about {
+      padding: 3rem 20px !important;
+    }
+    
+    /* Typography */
+    .hero-about h1 {
+      font-size: clamp(2rem, 8vw, 2.5rem) !important;
+    }
+    .content-text h2 {
+      font-size: clamp(1.8rem, 6vw, 2.2rem) !important;
+    }
+    .hero-about p, .content-text p {
+      font-size: 1rem !important;
+    }
+    
+    /* Elements */
+    .image-placeholder {
+      min-height: 250px !important;
+      height: 250px !important;
+    }
+  }
+</style>
 
 </body>
 </html>
