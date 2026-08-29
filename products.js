@@ -287,7 +287,7 @@ const products = [
     id: "BFBD20",
     name: "Modelo BFBD20",
     category: "Torneiras Industriais",
-    image: "images/BFBD20 .png",
+    image: "images/BFBD20.png",
     instalacao: "Bancada",
     configuracao: "Com misturador",
     aplicacao: "Cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas",
@@ -327,7 +327,7 @@ const products = [
     id: "BFBDD2MINI",
     name: "Mini Esguicho de Pré-Lavagem de Parede",
     category: "Esguichos de Pré-Lavagem",
-    image: "images/BFBDD2MINI .png",
+    image: "images/BFBDD2MINI.png",
     instalacao: "Parede",
     configuracao: "Com misturador",
     description: "Mini Esguicho de Pré-Lavagem modelo BFBDD2/MINI, de PAREDE COM MISTURADOR, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria."
@@ -361,7 +361,7 @@ const products = [
     id: "AV10L2",
     name: "Enrolador 3 Metros",
     category: "Acessórios",
-    image: "images/AV10L2 – 3 METROS.png",
+    image: "images/AV10L2–3METROS.png",
     description: "Grupo de lavagem protegido com enrolador 3 metros com ducha anti-derrapante. Higienizador de cozinha."
   },
   {
@@ -385,7 +385,7 @@ const products = [
     id: "MODELOB",
     name: "Torneira Clínica Modelo B",
     category: "Torneiras Clínicas",
-    image: "images/MODELO B.png",
+    image: "images/MODELOB.png",
     instalacao: "Parede",
     configuracao: "Sem misturador",
     aplicacao: "Hospitais, clínicas, centro cirúrgicos, fábricas, clínicas médicas e odontológicas",
@@ -395,7 +395,7 @@ const products = [
     id: "DUCHAMINIESGUICHO",
     name: "Ducha Mini Esguicho",
     category: "Acessórios",
-    image: "images/DUCHA MINI ESGUICHO.png",
+    image: "images/DUCHAMINIESGUICHO.png",
     description: "Ducha mini esguicho, acessório para sistemas de pré-lavagem."
   },
   {
