@@ -24,49 +24,68 @@ const products = [
     name: "Modelo DBFP90",
     category: "Esguichos de Pré-Lavagem",
     image: "images/DBFP90.png",
-    description: "Produto com referência DBFP90."
+    instalacao: "Parede",
+    configuracao: "Com misturador",
+    description: "O Esguicho de Pré-Lavagem modelo DBFB90/150, de PAREDE COM MISTURADOR (150mm), latão cromado e aço inox provido de mecanismo cerâmica que utilizam água quente e fria."
   },
   {
     id: "DBFP9D",
     name: "Modelo DBFP9D",
-    category: "Esguichos de Pré-Lavagem",
+    category: "Esguichos com Torneira Extra",
     image: "images/DBFP9D.png",
-    description: "Produto com referência DBFP9D."
+    instalacao: "Parede",
+    configuracao: "Com misturador",
+    complemento: "Com torneira extra",
+    aplicacao: "Cozinhas industriais",
+    description: "O Esguicho de Pré-Lavagem modelo DBFP9D, de PAREDE COM TORNEIRA EXTRA, COM MISTURADOR (150mm), latão cromado e inox provido de mecanismo cerâmica que utilizam água quente e fria. Foi desenvolvido especificamente para o trabalho pesado das cozinhas industriais, aumentando a produtividade dos funcionários e economizando tempo, água e dinheiro."
   },
   {
     id: "DMAB90",
     name: "Modelo DMAB90",
     category: "Esguichos de Pré-Lavagem",
     image: "images/DMAB90.png",
-    description: "Produto com referência DMAB90."
+    instalacao: "Bancada",
+    configuracao: "Sem misturador",
+    description: "O Esguicho de Pré-Lavagem modelo DMAB90, de BANCADA SEM MISTURADOR, latão cromado e aço inox provido de mecanismo cerâmica que utilizam água quente e fria."
   },
   {
     id: "DMAB9D_BANCADA",
     name: "Modelo DMAB9D BANCADA",
-    category: "Esguichos de Pré-Lavagem",
+    category: "Esguichos com Torneira Extra",
     image: "images/DMAB9D_BANCADA.png",
-    description: "Produto com referência DMAB9D BANCADA."
+    instalacao: "Bancada",
+    configuracao: "Sem misturador",
+    complemento: "Com torneira extra",
+    description: "O Esguicho de Pré-Lavagem modelo DMAB9D, de BANCADA COM TORNEIRA EXTRA SEM MISTURADOR, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria."
   },
   {
     id: "DMAP90",
     name: "Modelo DMAP90",
     category: "Esguichos de Pré-Lavagem",
     image: "images/DMAP90.png",
-    description: "Produto com referência DMAP90."
+    instalacao: "Parede",
+    configuracao: "Sem misturador",
+    description: "O Esguicho de Pré-Lavagem modelo DMAP90, de PAREDE SEM MISTURADOR, latão cromado e aço inox provido de mecanismo cerâmica que utilizam água quente e fria."
   },
   {
     id: "DMAP9D",
     name: "Modelo DMAP9D",
-    category: "Esguichos de Pré-Lavagem",
+    category: "Esguichos com Torneira Extra",
     image: "images/DMAP9D.png",
-    description: "Produto com referência DMAP9D."
+    instalacao: "Parede",
+    configuracao: "Sem misturador",
+    complemento: "Com torneira extra",
+    description: "O Esguicho de Pré-Lavagem modelo DMAP9D, de PAREDE COM TORNEIRA EXTRA, SEM MISTURADOR, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria."
   },
   {
     id: "DMERB",
     name: "Modelo DMERB",
-    category: "Esguichos de Pré-Lavagem",
+    category: "Torneiras Industriais",
     image: "images/DMERB.png",
-    description: "Produto com referência DMERB."
+    instalacao: "Parede",
+    configuracao: "Com misturador",
+    aplicacao: "Cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas",
+    description: "Torneira industrial simples modelo DMERB, de PAREDE COM MISTURADOR (200mm), feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas."
   },
   {
     id: "DMFB90B",
@@ -83,7 +102,9 @@ const products = [
     name: "Modelo DMFBMCB",
     category: "Esguichos de Pré-Lavagem",
     image: "images/DMFBMCB.png",
-    description: "Produto com referência DMFBMCB."
+    instalacao: "Bancada",
+    configuracao: "Com misturador",
+    description: "O Esguicho de Pré-Lavagem modelo DMFBMCB, de BANCADA COM MISTURADOR FURO ÚNICO, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria."
   },
   {
     id: "DMFBMD",
@@ -95,9 +116,9 @@ const products = [
   {
     id: "SPBICCH",
     name: "Modelo SPBICCH",
-    category: "Esguichos de Pré-Lavagem",
+    category: "Higienizadores e Acessórios",
     image: "images/SPBICCH.png",
-    description: "Produto com referência SPBICCH."
+    description: "Suporte e acessório modelo SPBICCH."
   },
   {
     id: "AV10L312",

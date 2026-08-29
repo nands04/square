@@ -1264,13 +1264,9 @@
   <script>
     // Filter Configuration
     const filterConfig = [
-      { id: "category", title: "Categoria", options: ["Esguichos de Pré-Lavagem", "Esguichos com Torneira Extra", "Torneiras Industriais", "Torneiras Clínicas", "Torneiras de Acionamento por Pedal", "Higienizadores e Acessórios"] },
-      { id: "instalacao", title: "Tipo de Instalação", options: ["Bancada", "Parede"] },
-      { id: "configuracao", title: "Configuração", options: ["Com misturador", "Sem misturador"] },
-      { id: "formato", title: "Formato", options: ["Padrão", "Mini"] },
-      { id: "complemento", title: "Complemento", options: ["Com torneira extra", "Sem torneira extra", "Pedal Completo"] },
-      { id: "acionamento", title: "Acionamento", options: ["Manual", "Alavanca clínica", "Pedal", "Eletrônico"] },
-      { id: "aplicacao", title: "Aplicação Principal", options: ["Cozinhas", "Clínicas e hospitais", "Indústrias"] }
+      { id: "category", title: "Categoria", options: ["Esguichos de Pré-Lavagem", "Esguichos com Torneira Extra", "Torneiras Industriais", "Torneiras de Acionamento por Pedal", "Higienizadores e Acessórios"] },
+      { id: "instalacao", title: "Instalação", options: ["Bancada", "Parede"] },
+      { id: "configuracao", title: "Misturador", options: ["Com misturador", "Sem misturador"] }
     ];
 
     const state = {
@@ -1279,17 +1275,13 @@
       sortBy: "default",
       category: [],
       instalacao: [],
-      configuracao: [],
-      formato: [],
-      complemento: [],
-      acionamento: [],
-      aplicacao: []
+      configuracao: []
     };
 
     // Render Quick Category Tabs
     function renderCategoryTabs() {
       const container = document.getElementById('categoryTabsContainer');
-      const categories = ["Todos", "Esguichos de Pré-Lavagem", "Torneiras Industriais", "Torneiras Clínicas", "Torneiras de Acionamento por Pedal", "Higienizadores e Acessórios"];
+      const categories = ["Todos", "Esguichos de Pré-Lavagem", "Esguichos com Torneira Extra", "Torneiras Industriais", "Torneiras de Acionamento por Pedal", "Higienizadores e Acessórios"];
       
       container.innerHTML = categories.map(cat => `
         <button class="category-tab ${state.selectedCategoryTab === cat ? 'active' : ''}" data-cat="${cat}">
@@ -1372,11 +1364,7 @@
         // Checkboxes filters
         return (state.category.length === 0 || state.category.includes(p.category)) &&
                (state.instalacao.length === 0 || (p.instalacao && state.instalacao.includes(p.instalacao))) &&
-               (state.configuracao.length === 0 || (p.configuracao && state.configuracao.includes(p.configuracao))) &&
-               (state.formato.length === 0 || (p.formato && state.formato.includes(p.formato))) &&
-               (state.complemento.length === 0 || (p.complemento && state.complemento.includes(p.complemento))) &&
-               (state.acionamento.length === 0 || (p.acionamento && state.acionamento.includes(p.acionamento))) &&
-               (state.aplicacao.length === 0 || (p.aplicacao && state.aplicacao.some(a => p.aplicacao.includes(a))));
+               (state.configuracao.length === 0 || (p.configuracao && state.configuracao.includes(p.configuracao)));
       });
 
       // Sorting
