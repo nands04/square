@@ -2482,8 +2482,8 @@ document.addEventListener('DOMContentLoaded', () => {
       object-fit: cover !important;
       width: 100vw !important;
       height: 100vh !important;
-      /* On mobile, parallax might shift it too much. We enforce centering. */
-      transform: translate(-50%, -50%) scale(1.05) !important;
+      /* Fixed: Remove translate as the original CSS uses top:0, left:0 */
+      transform: scale(1.05) !important;
       object-position: center center !important;
     }
 
