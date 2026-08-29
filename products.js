@@ -370,6 +370,40 @@ const products = [
     category: "Higienizadores e Acessórios",
     image: "images/CANOPLA.png",
     description: "Canopla acessório de fixação e acabamento."
+  },
+  {
+    id: "MFBUOC",
+    name: "Modelo MFBUOC",
+    category: "Torneiras Industriais",
+    image: "images/MFBUOC.png",
+    instalacao: "Bancada",
+    configuracao: "Com misturador",
+    aplicacao: "Cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas e odontológicas",
+    description: "Torneira industrial simples modelo MFBUOC, de BANCADA COM MISTURADOR FURO ÚNICO, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas e odontológicas."
+  },
+  {
+    id: "MODELOB",
+    name: "Torneira Clínica Modelo B",
+    category: "Torneiras Clínicas",
+    image: "images/MODELO B.png",
+    instalacao: "Parede",
+    configuracao: "Sem misturador",
+    aplicacao: "Hospitais, clínicas, centro cirúrgicos, fábricas, clínicas médicas e odontológicas",
+    description: "Torneira clínica MODELO B, de PAREDE SEM MISTURADOR ALAVANCA CLÍNICA, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para hospitais, clínicas, centro cirúrgicos e fábricas, clínicas médicas e odontológicas."
+  },
+  {
+    id: "DUCHAMINIESGUICHO",
+    name: "Ducha Mini Esguicho",
+    category: "Higienizadores e Acessórios",
+    image: "images/DUCHA MINI ESGUICHO.png",
+    description: "Ducha mini esguicho, acessório para sistemas de pré-lavagem."
+  },
+  {
+    id: "02UVXA",
+    name: "Modelo 02UVXA",
+    category: "Higienizadores e Acessórios",
+    image: "images/02UVXA.png",
+    description: "Kit de vedação: borracha de vedação, rosca de vedação e porca de vedação."
   }
 ];
 
