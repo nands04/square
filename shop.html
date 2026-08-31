@@ -1264,29 +1264,25 @@
   <script>
     // Filter Configuration
     const filterConfig = [
-      { id: "category", title: "Categoria", options: ["Esguichos de Pré-Lavagem", "Esguichos com Torneira Extra", "Torneiras Industriais", "Torneiras Clínicas", "Torneiras de Acionamento por Pedal", "Acessórios"] },
-      { id: "instalacao", title: "Instalação", options: ["Bancada", "Parede"] },
-      { id: "configuracao", title: "Misturador", options: ["Com misturador", "Sem misturador"] }
+      { id: "category", title: "Categoria", options: ["Torneiras Industriais Simples", "Torneiras Especiais", "Torneiras Clínicas", "Higienização", "Esguichos de Parede", "Esguichos de Bancada", "Acessórios"] }
     ];
 
     const urlParams = new URLSearchParams(window.location.search);
     const initialCategory = urlParams.get('category');
     
-    const validCategories = ["Esguichos de Pré-Lavagem", "Esguichos com Torneira Extra", "Torneiras Industriais", "Torneiras Clínicas", "Torneiras de Acionamento por Pedal", "Acessórios"];
+    const validCategories = ["Torneiras Industriais Simples", "Torneiras Especiais", "Torneiras Clínicas", "Higienização", "Esguichos de Parede", "Esguichos de Bancada", "Acessórios"];
     
     const state = {
       searchQuery: "",
       selectedCategoryTab: (initialCategory && validCategories.includes(initialCategory)) ? initialCategory : "Todos",
       sortBy: "default",
-      category: [],
-      instalacao: [],
-      configuracao: []
+      category: []
     };
 
     // Render Quick Category Tabs
     function renderCategoryTabs() {
       const container = document.getElementById('categoryTabsContainer');
-      const categories = ["Todos", "Esguichos de Pré-Lavagem", "Esguichos com Torneira Extra", "Torneiras Industriais", "Torneiras Clínicas", "Torneiras de Acionamento por Pedal", "Acessórios"];
+      const categories = ["Todos", "Torneiras Industriais Simples", "Torneiras Especiais", "Torneiras Clínicas", "Higienização", "Esguichos de Parede", "Esguichos de Bancada", "Acessórios"];
       
       container.innerHTML = categories.map(cat => `
         <button class="category-tab ${state.selectedCategoryTab === cat ? 'active' : ''}" data-cat="${cat}">
@@ -1367,9 +1363,7 @@
         }
 
         // Checkboxes filters
-        return (state.category.length === 0 || state.category.includes(p.category)) &&
-               (state.instalacao.length === 0 || (p.instalacao && state.instalacao.includes(p.instalacao))) &&
-               (state.configuracao.length === 0 || (p.configuracao && state.configuracao.includes(p.configuracao)));
+        return (state.category.length === 0 || state.category.includes(p.category));
       });
 
       // Sorting

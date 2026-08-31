@@ -2,7 +2,7 @@ const products = [
   {
     id: "PDTR1AC200",
     name: "Torneira modelo PDTR1AC200",
-    category: "Torneiras de Acionamento por Pedal",
+    category: "Torneiras Clínicas",
     image: "images/PDTR1AC200.png",
     instalacao: "Bancada",
     configuracao: "Sem misturador",
@@ -14,143 +14,156 @@ const products = [
       "Pedal Completo Sem Misturador",
       "Feita em material nobre e robusto",
       "Refil cerâmico",
-      "ECONOMIA 100 % DE ÁGUA"
+      "Economia de 100% de água"
     ],
     materials: "Material nobre",
-    description: "Torneira modelo PDTR1AC200, de PEDAL COMPLETO SEM MISTURADOR, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas. ECONOMIA 100 % DE ÁGUA."
+    description: "Torneira modelo PDTR1AC200, de pedal completo sem misturador, feita em material nobre, produto robusto, refil cerâmico, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas."
   },
   {
     id: "DBFP90",
     name: "Modelo DBFP90",
-    category: "Esguichos de Pré-Lavagem",
+    category: "Esguichos de Parede",
     image: "images/DBFP90.png",
     instalacao: "Parede",
     configuracao: "Com misturador",
-    description: "O Esguicho de Pré-Lavagem modelo DBFB90/150, de PAREDE COM MISTURADOR (150mm), latão cromado e aço inox provido de mecanismo cerâmica que utilizam água quente e fria."
+    description: "O Esguicho de Pré-Lavagem modelo DBFB90/150, de parede com misturador (Disponível nas versões 150 mm e 200 mm), latão cromado e aço inox provido de mecanismo cerâmica que utilizam água quente e fria. Disponível também de bancada com misturador."
   },
   {
     id: "DBFP9D",
     name: "Modelo DBFP9D",
-    category: "Esguichos com Torneira Extra",
+    category: "Esguichos de Parede",
     image: "images/DBFP9D.png",
     instalacao: "Parede",
     configuracao: "Com misturador",
     complemento: "Com torneira extra",
     aplicacao: "Cozinhas industriais",
-    description: "O Esguicho de Pré-Lavagem modelo DBFP9D, de PAREDE COM TORNEIRA EXTRA, COM MISTURADOR (150mm), latão cromado e inox provido de mecanismo cerâmica que utilizam água quente e fria. Foi desenvolvido especificamente para o trabalho pesado das cozinhas industriais, aumentando a produtividade dos funcionários e economizando tempo, água e dinheiro."
+    description: "O Esguicho de Pré-Lavagem modelo DBFP9D, de parede com torneira extra, com misturador (Disponível nas versões 150 mm e 200 mm), latão cromado e inox provido de mecanismo cerâmica que utilizam água quente e fria. Foi desenvolvido especificamente para o trabalho pesado das cozinhas industriais, aumentando a produtividade dos funcionários e economizando tempo, água e dinheiro. Bica: 250 mm ou 300 mm."
   },
   {
     id: "DMAB90",
     name: "Modelo DMAB90",
-    category: "Esguichos de Pré-Lavagem",
+    category: "Esguichos de Bancada",
     image: "images/DMAB90.png",
     instalacao: "Bancada",
     configuracao: "Sem misturador",
-    description: "O Esguicho de Pré-Lavagem modelo DMAB90, de BANCADA SEM MISTURADOR, latão cromado e aço inox provido de mecanismo cerâmica que utilizam água quente e fria."
+    description: "O Esguicho de Pré-Lavagem modelo DMAB90, de bancada sem misturador, latão cromado e aço inox provido de mecanismo cerâmica que utilizam água quente e fria. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   },
   {
     id: "DMAB9D_BANCADA",
-    name: "Modelo DMAB9D BANCADA",
-    category: "Esguichos com Torneira Extra",
+    name: "Modelo DMAB9D Bancada",
+    category: "Esguichos de Bancada",
     image: "images/DMAB9D_BANCADA.png",
     instalacao: "Bancada",
     configuracao: "Sem misturador",
     complemento: "Com torneira extra",
-    description: "O Esguicho de Pré-Lavagem modelo DMAB9D, de BANCADA COM TORNEIRA EXTRA SEM MISTURADOR, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria."
+    description: "O Esguicho de Pré-Lavagem modelo DMAB9D, de bancada com torneira extra sem misturador, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   },
   {
     id: "DMAP90",
     name: "Modelo DMAP90",
-    category: "Esguichos de Pré-Lavagem",
+    category: "Esguichos de Parede",
     image: "images/DMAP90.png",
     instalacao: "Parede",
     configuracao: "Sem misturador",
-    description: "O Esguicho de Pré-Lavagem modelo DMAP90, de PAREDE SEM MISTURADOR, latão cromado e aço inox provido de mecanismo cerâmica que utilizam água quente e fria."
+    description: "O Esguicho de Pré-Lavagem modelo DMAP90, de parede sem misturador, latão cromado e aço inox provido de mecanismo cerâmica que utilizam água quente e fria. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   },
   {
     id: "DMAP9D",
     name: "Modelo DMAP9D",
-    category: "Esguichos com Torneira Extra",
+    category: "Esguichos de Parede",
     image: "images/DMAP9D.png",
     instalacao: "Parede",
     configuracao: "Sem misturador",
     complemento: "Com torneira extra",
-    description: "O Esguicho de Pré-Lavagem modelo DMAP9D, de PAREDE COM TORNEIRA EXTRA, SEM MISTURADOR, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria."
+    description: "O Esguicho de Pré-Lavagem modelo DMAP9D, de parede com torneira extra, sem misturador, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   },
   {
     id: "DMERB",
     name: "Modelo DMERB",
-    category: "Torneiras Industriais",
+    category: "Torneiras Industriais Simples",
     image: "images/DMERB.png",
     instalacao: "Parede",
     configuracao: "Com misturador",
     aplicacao: "Cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas",
-    description: "Torneira industrial simples modelo DMERB, de PAREDE COM MISTURADOR (200mm), feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas."
+    description: "Torneira industrial simples modelo DMERB, de parede com misturador (Disponível nas versões 150 mm e 200 mm), feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas."
   },
   {
     id: "DMFB90B",
     name: "Esguicho de Pré-Lavagem Bancada",
-    category: "Esguichos de Pré-Lavagem",
+    category: "Esguichos de Bancada",
     image: "images/DMFB9D.png",
     instalacao: "Bancada",
     configuracao: "Com misturador",
     aplicacao: "Cozinhas",
-    description: "O Esguicho de Pré-Lavagem modelo DMFB90B, de BANCADA COM MISTURADOR FURO ÚNICO, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Foi desenvolvido especificamente para o trabalho pesado das cozinhas industriais, aumentando a produtividade dos funcionários e economizando tempo, água e dinheiro."
+    description: "O Esguicho de Pré-Lavagem modelo DMFB90B, de bancada com misturador furo único, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Foi desenvolvido especificamente para o trabalho pesado das cozinhas industriais, aumentando a produtividade dos funcionários e economizando tempo, água e dinheiro."
   },
   {
     id: "DMFBMCB",
     name: "Modelo DMFBMCB",
-    category: "Esguichos de Pré-Lavagem",
+    category: "Esguichos de Bancada",
     image: "images/DMFBMCB.png",
     instalacao: "Bancada",
     configuracao: "Com misturador",
-    description: "O Esguicho de Pré-Lavagem modelo DMFBMCB, de BANCADA COM MISTURADOR FURO ÚNICO, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria."
+    description: "O Esguicho de Pré-Lavagem modelo DMFBMCB, de bancada com misturador furo único, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   },
   {
     id: "DMFBMD",
     name: "Modelo DMFBMD",
-    category: "Esguichos de Pré-Lavagem",
+    category: "Esguichos de Bancada",
     image: "images/DMFBMD.png",
-    description: "Produto com referência DMFBMD."
+    instalacao: "Bancada",
+    configuracao: "Com misturador",
+    description: "O Esguicho de Pré-Lavagem modelo DMFBMD, de bancada com misturador furo único, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Foi desenvolvido especificamente para o trabalho pesado das cozinhas industriais, aumentando a produtividade dos funcionários e economizando tempo, água e dinheiro. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   },
   {
     id: "SPBICCH",
-    name: "Modelo SPBICCH",
+    name: "Lava Copo (Modelo SPBICCH)",
     category: "Acessórios",
     image: "images/SPBICCH.png",
-    description: "Suporte e acessório modelo SPBICCH."
+    description: "Lava copo modelo SPBICCH. Acessório profissional para higienização rápida de copos."
   },
   {
     id: "AV10L312",
     name: "Enrolador 12M",
-    category: "Acessórios",
+    category: "Higienização",
     image: "images/AV10L312.png",
     description: "GRUPO DE LAVAGEM PROTEGIDO COM ENROLADOR 12 METROS COM DUCHA ANTI-DERRAPANTE. Higienizador de Cozinha."
   },
   {
     id: "BFBDD_MINI_200MM",
     name: "Mini Esguicho de Pré-Lavagem de Parede",
-    category: "Esguichos de Pré-Lavagem",
+    category: "Esguichos de Parede",
     image: "images/BFBDD_MINI_200MM.png",
     instalacao: "Parede",
     configuracao: "Com misturador",
     formato: "Mini",
     aplicacao: "Cozinhas",
-    description: "Mini Esguicho de Pré-Lavagem modelo BFBDD/MINI 200MM, de PAREDE COM MISTURADOR, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Foi desenvolvido especificamente para o trabalho pesado das cozinhas industriais, aumentando a produtividade dos funcionários e economizando tempo, água e dinheiro. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
+    description: "Mini Esguicho de Pré-Lavagem modelo BFBDD/MINI (Disponível nas versões 150 mm e 200 mm), de parede com misturador, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Foi desenvolvido especificamente para o trabalho pesado das cozinhas industriais, aumentando a produtividade dos funcionários e economizando tempo, água e dinheiro. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
+  },
+  {
+    id: "BFBDD_MINI_200MM_BANCADA",
+    name: "Mini Esguicho de Pré-Lavagem de Bancada",
+    category: "Esguichos de Bancada",
+    image: "images/BFBDD_MINI_200MM.png",
+    instalacao: "Bancada",
+    configuracao: "Com misturador",
+    formato: "Mini",
+    aplicacao: "Cozinhas",
+    description: "Mini Esguicho de Pré-Lavagem modelo BFBDD/MINI (Disponível nas versões 150 mm e 200 mm), de bancada com misturador, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Foi desenvolvido especificamente para o trabalho pesado das cozinhas industriais, aumentando a produtividade dos funcionários e economizando tempo, água e dinheiro. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   },
   {
     id: "SP300D",
     name: "Modelo SP300D",
     category: "Acessórios",
     image: "images/SP300D.png",
-    description: "Bica em latão cromado referência SP300D."
+    description: "Bica em latão cromado L.300 mm ou L.250 mm."
   },
   {
     id: "SP250A",
     name: "Modelo SP250A",
     category: "Acessórios",
     image: "images/SP250A.png",
-    description: "Bica em latão cromado referência SP250A."
+    description: "Bica em latão cromado 18 mm. L.300 mm ou L.250 mm."
   },
   {
     id: "RDTUBO",
@@ -171,7 +184,7 @@ const products = [
     name: "Modelo RDFLX0B",
     category: "Acessórios",
     image: "images/RDFLX0B.png",
-    description: "Flexível FG 1/2 CR 1/2 CR com proteção UV e trança de aço inoxidável."
+    description: "Flexível FG 1/2 CR 1/2 CR com proteção UV e trança de aço inoxidável. Disponível: 1 metro e meio ou 1 metro."
   },
   {
     id: "RDEVML",
@@ -192,7 +205,7 @@ const products = [
     name: "Modelo RDMOLXM",
     category: "Acessórios",
     image: "images/RDMOLXM.png",
-    description: "Mola e acessório de fixação modelo RDMOLXM."
+    description: "Mini mola de balanceamento em aço inox."
   },
   {
     id: "RIC220",
@@ -204,94 +217,94 @@ const products = [
   {
     id: "PDTR1A",
     name: "Modelo PDTR1A",
-    category: "Torneiras de Acionamento por Pedal",
+    category: "Torneiras Clínicas",
     image: "images/PDTR1A.png",
     description: "Pedal de acionamento hidráulico para torneiras de pedal. Ideal para cozinhas industriais, restaurantes, clínicas médicas e odontológicas."
   },
   {
     id: "MINIDMAPAREDE",
     name: "Mini Esguicho de Pré-Lavagem de Parede com Torneira Extra",
-    category: "Esguichos com Torneira Extra",
+    category: "Esguichos de Parede",
     image: "images/MINIDMAPAREDE.png",
     instalacao: "Parede",
     configuracao: "Com misturador",
     complemento: "Com torneira extra",
-    description: "Mini Esguicho de Pré-Lavagem modelo BFBDD2/MINI 200MM, de PAREDE COM MISTURADOR E TORNEIRA EXTRA, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria."
+    description: "Mini Esguicho de Pré-Lavagem modelo BFBDD2/MINI (Disponível nas versões 150 mm e 200 mm), de parede com misturador e torneira extra, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria."
   },
   {
     id: "MINIDMFB90B",
     name: "Mini Esguicho de Pré-Lavagem de Bancada",
-    category: "Esguichos de Pré-Lavagem",
+    category: "Esguichos de Bancada",
     image: "images/MINIDMFB90B.png",
     instalacao: "Bancada",
     configuracao: "Com misturador",
-    description: "Mini Esguicho de Pré-Lavagem de Bancada com misturador, latão cromado e aço inox."
+    description: "O Esguicho de Pré-Lavagem modelo DMFB90B, de bancada com misturador furo único. latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   },
   {
     id: "MODFRIUO",
     name: "Torneira Eletrônica com Bateria",
-    category: "Torneiras Industriais",
+    category: "Torneiras Especiais",
     image: "images/MODFRIUO.png",
     description: "Torneira eletrônica com bateria, mecanismo cerâmico, ideal para cozinhas industriais, restaurantes, clínicas médicas e odontológicas."
   },
   {
     id: "DBFB90",
     name: "Modelo DBFB90",
-    category: "Esguichos de Pré-Lavagem",
+    category: "Esguichos de Bancada",
     image: "images/DBFB90.png",
-    instalacao: "Parede",
+    instalacao: "Bancada",
     configuracao: "Com misturador",
-    description: "O Esguicho de Pré-Lavagem modelo DBFB90/150, de PAREDE COM MISTURADOR (150mm), latão cromado e aço inox provido de mecanismo cerâmica que utilizam água quente e fria."
+    description: "O Esguicho de Pré-Lavagem modelo DBFB90/150, de bancada com misturador (Disponível nas versões 150 mm e 200 mm), latão cromado e aço inox provido de mecanismo cerâmica que utilizam água quente e fria. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   },
   {
     id: "DBFB9D",
     name: "Modelo DBFB9D",
-    category: "Esguichos com Torneira Extra",
+    category: "Esguichos de Bancada",
     image: "images/DBFB9D.png",
     instalacao: "Bancada",
     configuracao: "Com misturador",
     complemento: "Com torneira extra",
-    description: "O Esguicho de Pré-Lavagem modelo DBFB9D, de BANCADA COM TORNEIRA EXTRA, COM MISTURADOR (200mm), latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria."
+    description: "O Esguicho de Pré-Lavagem modelo DBFB9D, de bancada com torneira extra, com misturador (Disponível nas versões 150 mm e 200 mm), latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   },
   {
     id: "DD28229",
     name: "Modelo DD2829",
-    category: "Torneiras Industriais",
+    category: "Torneiras Industriais Simples",
     image: "images/DD28229.png",
     instalacao: "Bancada",
     configuracao: "Sem misturador",
     aplicacao: "Cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas",
-    description: "Torneira industrial simples modelo DD2829, de BANCADA SEM MISTURADOR, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas."
+    description: "Torneira industrial simples modelo DD2829, de bancada sem misturador, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas. Bica: 250 mm ou 300 mm."
   },
   {
     id: "DD2828",
     name: "Modelo DD2828",
-    category: "Torneiras Industriais",
+    category: "Torneiras Industriais Simples",
     image: "images/DD2828.png",
     instalacao: "Parede",
     configuracao: "Sem misturador",
     aplicacao: "Cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas",
-    description: "Torneira industrial simples modelo DD2828, de PAREDE SEM MISTURADOR, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas."
+    description: "Torneira industrial simples modelo DD2828, de parede sem misturador, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas."
   },
   {
     id: "DMAMADI",
     name: "Modelo DMAMADI",
-    category: "Torneiras Industriais",
+    category: "Torneiras Industriais Simples",
     image: "images/DMAMADI.png",
     instalacao: "Parede",
     configuracao: "Sem misturador",
     aplicacao: "Cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas",
-    description: "Torneira industrial simples modelo DMAMADI, de PAREDE SEM MISTURADOR, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas."
+    description: "Torneira industrial simples modelo DMAMADI, de parede sem misturador, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas."
   },
   {
     id: "BFBD20",
     name: "Modelo BFBD20",
-    category: "Torneiras Industriais",
+    category: "Torneiras Industriais Simples",
     image: "images/BFBD20.png",
     instalacao: "Bancada",
     configuracao: "Com misturador",
     aplicacao: "Cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas",
-    description: "Torneira industrial simples modelo BFBD20, de BANCADA COM MISTURADOR (200mm), feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas."
+    description: "Torneira industrial simples modelo BFBD20, de bancada com misturador (Disponível nas versões 150 mm e 200 mm), feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas. Bica: 250 mm ou 300 mm."
   },
   {
     id: "MAP9251L",
@@ -301,7 +314,7 @@ const products = [
     instalacao: "Parede",
     configuracao: "Sem misturador",
     aplicacao: "Hospitais, clínicas, centro cirúrgicos, fábricas, clínicas médicas e odontológicas",
-    description: "Torneira clínica MODELO A, de PAREDE SEM MISTURADOR ALAVANCA CLÍNICA, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para hospitais, clínicas, centro cirúrgicos e fábricas, clínicas médicas e odontológicas."
+    description: "Torneira clínica MODELO A, de parede sem misturador alavanca clínica, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para hospitais, clínicas, centro cirúrgicos e fábricas, clínicas médicas e odontológicas. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   },
   {
     id: "MFBLS1",
@@ -311,7 +324,7 @@ const products = [
     instalacao: "Bancada",
     configuracao: "Com misturador",
     aplicacao: "Cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas e odontológicas",
-    description: "Torneira de BANCADA COM MISTURADOR ALAVANCA CLÍNICA FURO ÚNICO, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas e odontológicas."
+    description: "Torneira de bancada com misturador alavanca clínica furo único, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas e odontológicas. Entrada: 3/4\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   },
   {
     id: "MFBU2L",
@@ -321,46 +334,64 @@ const products = [
     instalacao: "Bancada",
     configuracao: "Com misturador",
     aplicacao: "Hospitais, clínicas, centro cirúrgicos, fábricas",
-    description: "Torneira clínica de BANCADA COM MISTURADOR ALAVANCA CLÍNICA FURO ÚNICO, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para hospitais, clínicas, centro cirúrgicos, fábricas."
+    description: "Torneira clínica de bancada com misturador alavanca clínica furo único, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para hospitais, clínicas, centro cirúrgicos, fábricas. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   },
   {
     id: "BFBDD2MINI",
     name: "Mini Esguicho de Pré-Lavagem de Parede",
-    category: "Esguichos de Pré-Lavagem",
+    category: "Esguichos de Parede",
     image: "images/BFBDD2MINI.png",
     instalacao: "Parede",
     configuracao: "Com misturador",
-    description: "Mini Esguicho de Pré-Lavagem modelo BFBDD2/MINI, de PAREDE COM MISTURADOR, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria."
+    description: "Mini Esguicho de Pré-Lavagem modelo BFBDD2/MINI, de parede com misturador, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
+  },
+  {
+    id: "BFBDD2MINI_BANCADA",
+    name: "Mini Esguicho de Pré-Lavagem de Bancada",
+    category: "Esguichos de Bancada",
+    image: "images/BFBDD2MINI.png",
+    instalacao: "Bancada",
+    configuracao: "Com misturador",
+    description: "Mini Esguicho de Pré-Lavagem modelo BFBDD2/MINI, de bancada com misturador, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   },
   {
     id: "BFBDD366MINI",
     name: "Mini Esguicho de Pré-Lavagem",
-    category: "Esguichos de Pré-Lavagem",
+    category: "Esguichos de Parede",
     image: "images/BFBDD366MINI.png",
     instalacao: "Parede",
     configuracao: "Com misturador",
-    description: "Mini Esguicho de Pré-Lavagem modelo BFBDD366/MINI, de PAREDE COM MISTURADOR, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria."
+    description: "Mini Esguicho de Pré-Lavagem modelo BFBDD366/MINI, de parede com misturador, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
+  },
+  {
+    id: "BFBDD366MINI_BANCADA",
+    name: "Mini Esguicho de Pré-Lavagem Bancada",
+    category: "Esguichos de Bancada",
+    image: "images/BFBDD366MINI.png",
+    instalacao: "Bancada",
+    configuracao: "Com misturador",
+    description: "Mini Esguicho de Pré-Lavagem modelo BFBDD366/MINI, de bancada com misturador, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   },
   {
     id: "BFBPX30150MM",
     name: "Esguicho de Pré-Lavagem de Parede",
-    category: "Esguichos de Pré-Lavagem",
+    category: "Torneiras Clínicas",
     image: "images/BFBPX30150MM.png",
     instalacao: "Parede",
     configuracao: "Com misturador",
-    description: "Esguicho de Pré-Lavagem modelo BFBPX30 150MM, de PAREDE COM MISTURADOR, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria."
+    description: "Esguicho de Pré-Lavagem modelo BFBPX30 (Disponível nas versões 150 mm e 200 mm), de parede com misturador, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   },
   {
     id: "AV10L3",
-    name: "Enrolador 3M",
-    category: "Acessórios",
+    name: "Ducha (Modelo AV10L3)",
+    category: "Higienização",
     image: "images/AV10L3.png",
-    description: "Grupo de lavagem protegido com enrolador 3 metros com ducha anti-derrapante. Higienizador de cozinha."
+    description: "Ducha registro em latão, água quente ou fria, vedação em cerâmica 1/4 de volta. Ducha para lavagem do forno com Flexível de 2 Metros As grandes instalações de alimentação de hotéis, hospitais, comunidades e refeitórios empresariais poderão usufruir de duchas para lavagem do forno funcionais, caracterizadas por uma linha inovadora."
   },
   {
     id: "AV10L2",
     name: "Enrolador 3 Metros",
-    category: "Acessórios",
+    category: "Higienização",
     image: "images/AV10L2–3METROS.png",
     description: "Grupo de lavagem protegido com enrolador 3 metros com ducha anti-derrapante. Higienizador de cozinha."
   },
@@ -369,17 +400,17 @@ const products = [
     name: "Canopla",
     category: "Acessórios",
     image: "images/CANOPLA.png",
-    description: "Canopla acessório de fixação e acabamento."
+    description: "Canopla 1/4 de volta água quente e fria"
   },
   {
     id: "MFBUOC",
     name: "Modelo MFBUOC",
-    category: "Torneiras Industriais",
+    category: "Torneiras Industriais Simples",
     image: "images/MFBUOC.png",
     instalacao: "Bancada",
     configuracao: "Com misturador",
     aplicacao: "Cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas e odontológicas",
-    description: "Torneira industrial simples modelo MFBUOC, de BANCADA COM MISTURADOR FURO ÚNICO, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas e odontológicas."
+    description: "Torneira industrial simples modelo MFBUOC, de bancada com misturador furo único, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas e odontológicas."
   },
   {
     id: "MODELOB",
@@ -389,7 +420,7 @@ const products = [
     instalacao: "Parede",
     configuracao: "Sem misturador",
     aplicacao: "Hospitais, clínicas, centro cirúrgicos, fábricas, clínicas médicas e odontológicas",
-    description: "Torneira clínica MODELO B, de PAREDE SEM MISTURADOR ALAVANCA CLÍNICA, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para hospitais, clínicas, centro cirúrgicos e fábricas, clínicas médicas e odontológicas."
+    description: "Torneira clínica MODELO B, de parede sem misturador alavanca clínica, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para hospitais, clínicas, centro cirúrgicos e fábricas, clínicas médicas e odontológicas. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
   },
   {
     id: "DUCHAMINIESGUICHO",
@@ -408,12 +439,12 @@ const products = [
   {
     id: "DMAMAD",
     name: "Modelo DMAMAD",
-    category: "Torneiras Industriais",
+    category: "Torneiras Industriais Simples",
     image: "images/DMAMAD.png",
     instalacao: "Bancada",
     configuracao: "Sem misturador",
     aplicacao: "Cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas",
-    description: "Torneira industrial simples modelo DMAMAD, de BANCADA SEM MISTURADOR, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas."
+    description: "Torneira industrial simples modelo DMAMAD, de bancada sem misturador, feita em material nobre, produto robusto, registro com 1/4 de volta com refil cerâmico com alavanca, ideal para cozinhas industriais, restaurante, bares, lanchonetes, padarias, clínicas médicas odontológicas. Disponível também de parede sem misturador."
   }
 ];
 
