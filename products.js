@@ -131,17 +131,6 @@ const products = [
   },
   {
     id: "BFBDD_MINI_200MM",
-    name: "Mini Esguicho de Pré-Lavagem de Parede",
-    category: "Esguichos de Parede",
-    image: "images/BFBDD_MINI_200MM.png",
-    instalacao: "Parede",
-    configuracao: "Com misturador",
-    formato: "Mini",
-    aplicacao: "Cozinhas",
-    description: "Mini Esguicho de Pré-Lavagem modelo BFBDD/MINI (Disponível nas versões 150 mm e 200 mm), de parede com misturador, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Foi desenvolvido especificamente para o trabalho pesado das cozinhas industriais, aumentando a produtividade dos funcionários e economizando tempo, água e dinheiro. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
-  },
-  {
-    id: "BFBDD_MINI_200MM_BANCADA",
     name: "Mini Esguicho de Pré-Lavagem de Bancada",
     category: "Esguichos de Bancada",
     image: "images/BFBDD_MINI_200MM.png",
@@ -356,15 +345,6 @@ const products = [
   },
   {
     id: "BFBDD366MINI",
-    name: "Mini Esguicho de Pré-Lavagem",
-    category: "Esguichos de Parede",
-    image: "images/BFBDD366MINI.png",
-    instalacao: "Parede",
-    configuracao: "Com misturador",
-    description: "Mini Esguicho de Pré-Lavagem modelo BFBDD366/MINI, de parede com misturador, latão cromado e aço e inox provido de mecanismo cerâmica que utilizam água quente e fria. Entrada: 1/2\" (padrão brasileiro) Faixa de pressão: mínimo de 0,3 bar ao máximo de 12."
-  },
-  {
-    id: "BFBDD366MINI_BANCADA",
     name: "Mini Esguicho de Pré-Lavagem Bancada",
     category: "Esguichos de Bancada",
     image: "images/BFBDD366MINI.png",
