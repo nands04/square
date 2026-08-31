@@ -1274,15 +1274,14 @@
     
     const state = {
       searchQuery: "",
-      selectedCategoryTab: (initialCategory && validCategories.includes(initialCategory)) ? initialCategory : "Todos",
-      sortBy: "default",
-      category: []
+      selectedCategoryTab: (initialCategory && validCategories.includes(initialCategory)) ? initialCategory : "",
+      sortBy: "default"
     };
 
     // Render Quick Category Tabs
     function renderCategoryTabs() {
       const container = document.getElementById('categoryTabsContainer');
-      const categories = ["Todos", "Torneiras Industriais Simples", "Torneiras Especiais", "Torneiras Clínicas", "Higienização", "Esguichos de Parede", "Esguichos de Bancada", "Acessórios"];
+      const categories = ["Torneiras Industriais Simples", "Torneiras Especiais", "Torneiras Clínicas", "Higienização", "Esguichos de Parede", "Esguichos de Bancada", "Acessórios"];
       
       container.innerHTML = categories.map(cat => `
         <button class="category-tab ${state.selectedCategoryTab === cat ? 'active' : ''}" data-cat="${cat}">
@@ -1311,10 +1310,10 @@
             <div class="filter-options-flex">
         `;
         group.options.forEach(opt => {
-          const isChecked = state[group.id].includes(opt);
+          const isChecked = state.selectedCategoryTab === opt;
           html += `
             <label class="filter-option-label">
-              <input type="checkbox" data-group="${group.id}" value="${opt}" ${isChecked ? 'checked' : ''}>
+              <input type="radio" name="sidebar_category" value="${opt}" ${isChecked ? 'checked' : ''}>
               <span class="filter-pill-tag">${opt}</span>
             </label>
           `;
@@ -1324,15 +1323,10 @@
 
       container.innerHTML = html;
 
-      container.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      container.querySelectorAll('input[type="radio"]').forEach(cb => {
         cb.addEventListener('change', (e) => {
-          const group = e.target.dataset.group;
-          const val = e.target.value;
-          if (e.target.checked) {
-            if (!state[group].includes(val)) state[group].push(val);
-          } else {
-            state[group] = state[group].filter(v => v !== val);
-          }
+          state.selectedCategoryTab = e.target.value;
+          renderCategoryTabs();
           renderProducts();
         });
       });
@@ -1344,8 +1338,13 @@
       const countEl = document.getElementById('resultsCount');
 
       let filtered = products.filter(p => {
+        // Must have a category selected or be searching
+        if (state.selectedCategoryTab === "" && state.searchQuery.trim() === "") {
+          return false;
+        }
+
         // Tab category match
-        if (state.selectedCategoryTab !== "Todos" && p.category !== state.selectedCategoryTab) {
+        if (state.selectedCategoryTab !== "" && p.category !== state.selectedCategoryTab) {
           return false;
         }
 
@@ -1362,8 +1361,7 @@
           }
         }
 
-        // Checkboxes filters
-        return (state.category.length === 0 || state.category.includes(p.category));
+        return true;
       });
 
       // Sorting
@@ -1376,14 +1374,24 @@
       countEl.innerHTML = `Mostrando <span>${filtered.length}</span> de ${products.length} soluções`;
 
       if (filtered.length === 0) {
-        grid.innerHTML = `
-          <div class="empty-results-box">
-            <h3 class="empty-results-title">Nenhum equipamento encontrado</h3>
-            <p class="empty-results-desc">Tente ajustar os termos de pesquisa ou remover os filtros aplicados.</p>
-            <button id="resetFromEmptyBtn" class="btn-header-cta" style="display:inline-flex;">Limpar Filtros</button>
-          </div>
-        `;
-        document.getElementById('resetFromEmptyBtn')?.addEventListener('click', resetAllFilters);
+        if (state.selectedCategoryTab === "" && state.searchQuery.trim() === "") {
+          grid.innerHTML = `
+            <div class="empty-results-box" style="padding: 4rem 1rem; border: none; background: transparent; text-align: center; width: 100%; grid-column: 1 / -1;">
+              <h3 class="empty-results-title" style="font-size: 1.5rem; color: var(--color-navy);">Nenhuma categoria selecionada</h3>
+              <p class="empty-results-desc" style="font-size: 1.1rem; color: var(--color-blue); max-width: 500px; margin: 0 auto;">Por favor, selecione uma categoria no menu lateral ou acima para visualizar os produtos disponíveis.</p>
+            </div>
+          `;
+          countEl.innerHTML = `Mostrando <span>0</span> soluções`;
+        } else {
+          grid.innerHTML = `
+            <div class="empty-results-box" style="width: 100%; grid-column: 1 / -1;">
+              <h3 class="empty-results-title">Nenhum equipamento encontrado</h3>
+              <p class="empty-results-desc">Tente ajustar os termos de pesquisa.</p>
+              <button id="resetFromEmptyBtn" class="btn-header-cta" style="display:inline-flex;">Limpar Busca</button>
+            </div>
+          `;
+          document.getElementById('resetFromEmptyBtn')?.addEventListener('click', resetAllFilters);
+        }
         return;
       }
 
@@ -1477,9 +1485,8 @@
     // Reset All Filters
     function resetAllFilters() {
       state.searchQuery = "";
-      state.selectedCategoryTab = "Todos";
+      state.selectedCategoryTab = "";
       state.sortBy = "default";
-      filterConfig.forEach(g => state[g.id] = []);
       document.getElementById('heroSearchInput').value = "";
       document.getElementById('sortSelect').value = "default";
       renderCategoryTabs();
