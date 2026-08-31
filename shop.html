@@ -1269,9 +1269,14 @@
       { id: "configuracao", title: "Misturador", options: ["Com misturador", "Sem misturador"] }
     ];
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialCategory = urlParams.get('category');
+    
+    const validCategories = ["Esguichos de Pré-Lavagem", "Esguichos com Torneira Extra", "Torneiras Industriais", "Torneiras Clínicas", "Torneiras de Acionamento por Pedal", "Acessórios"];
+    
     const state = {
       searchQuery: "",
-      selectedCategoryTab: "Todos",
+      selectedCategoryTab: (initialCategory && validCategories.includes(initialCategory)) ? initialCategory : "Todos",
       sortBy: "default",
       category: [],
       instalacao: [],
