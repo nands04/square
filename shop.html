@@ -1094,42 +1094,7 @@
     </nav>
   </aside>
 
-  <!-- ===== CATALOG HERO SECTION ===== -->
-  <section class="catalog-hero">
-    <div class="container">
-      <div class="hero-badge-eyebrow">EQUIPAMENTOS DE ALTA PERFORMANCE • FABRICAÇÃO ITALIANA</div>
-      <h1 class="catalog-hero-title">Soluções Profissionais para Lavagem e Higienização.</h1>
-      <p class="catalog-hero-subtitle">
-        Explore nossa linha completa de esguichos de pré-lavagem, torneiras industriais, modelos clínicos e equipamentos de acionamento por pedal projetados para uso intensivo.
-      </p>
 
-      <!-- Live Search Bar -->
-      <div class="hero-search-wrapper">
-        <svg class="hero-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" id="heroSearchInput" class="hero-search-input" placeholder="Pesquisar por modelo, código REF (ex: DBFP90), categoria ou aplicação..." />
-      </div>
-
-      <!-- Feature Highlights Pills -->
-      <div class="hero-highlights-grid">
-        <div class="highlight-pill-item">
-          <svg class="highlight-pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-          <span>Aço Inoxidável & Latão Cromado</span>
-        </div>
-        <div class="highlight-pill-item">
-          <svg class="highlight-pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          <span>Até 10 Anos de Garantia</span>
-        </div>
-        <div class="highlight-pill-item">
-          <svg class="highlight-pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-          <span>Peças de Reposição Pronta Entrega</span>
-        </div>
-        <div class="highlight-pill-item">
-          <svg class="highlight-pill-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
-          <span>Economia de Água Certificada</span>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ===== CATALOG MAIN SECTION ===== -->
   <section class="catalog-main-section">
@@ -1264,24 +1229,24 @@
   <script>
     // Filter Configuration
     const filterConfig = [
-      { id: "category", title: "Categoria", options: ["Torneiras Industriais Simples", "Torneiras Especiais", "Torneiras Clínicas", "Higienização", "Esguichos de Parede", "Esguichos de Bancada", "Acessórios"] }
+      { id: "category", title: "Categoria", options: ["Esguichos de Bancada", "Esguichos de Parede", "Torneiras Clínicas", "Acessórios", "Higienização", "Torneiras Especiais", "Torneiras Industriais Simples"] }
     ];
 
     const urlParams = new URLSearchParams(window.location.search);
     const initialCategory = urlParams.get('category');
     
-    const validCategories = ["Torneiras Industriais Simples", "Torneiras Especiais", "Torneiras Clínicas", "Higienização", "Esguichos de Parede", "Esguichos de Bancada", "Acessórios"];
+    const validCategories = ["Esguichos de Bancada", "Esguichos de Parede", "Torneiras Clínicas", "Acessórios", "Higienização", "Torneiras Especiais", "Torneiras Industriais Simples"];
     
     const state = {
       searchQuery: "",
-      selectedCategoryTab: (initialCategory && validCategories.includes(initialCategory)) ? initialCategory : "",
+      selectedCategoryTab: (initialCategory && validCategories.includes(initialCategory)) ? initialCategory : "Esguichos de Bancada",
       sortBy: "default"
     };
 
     // Render Quick Category Tabs
     function renderCategoryTabs() {
       const container = document.getElementById('categoryTabsContainer');
-      const categories = ["Torneiras Industriais Simples", "Torneiras Especiais", "Torneiras Clínicas", "Higienização", "Esguichos de Parede", "Esguichos de Bancada", "Acessórios"];
+      const categories = ["Esguichos de Bancada", "Esguichos de Parede", "Torneiras Clínicas", "Acessórios", "Higienização", "Torneiras Especiais", "Torneiras Industriais Simples"];
       
       container.innerHTML = categories.map(cat => `
         <button class="category-tab ${state.selectedCategoryTab === cat ? 'active' : ''}" data-cat="${cat}">
@@ -1487,7 +1452,8 @@
       state.searchQuery = "";
       state.selectedCategoryTab = "";
       state.sortBy = "default";
-      document.getElementById('heroSearchInput').value = "";
+      const heroSearchInput = document.getElementById('heroSearchInput');
+      if (heroSearchInput) heroSearchInput.value = "";
       document.getElementById('sortSelect').value = "default";
       renderCategoryTabs();
       renderFilterSidebar();
@@ -1495,10 +1461,13 @@
     }
 
     // Hero Live Search Event
-    document.getElementById('heroSearchInput').addEventListener('input', (e) => {
-      state.searchQuery = e.target.value;
-      renderProducts();
-    });
+    const heroSearchInput = document.getElementById('heroSearchInput');
+    if (heroSearchInput) {
+      heroSearchInput.addEventListener('input', (e) => {
+        state.searchQuery = e.target.value;
+        renderProducts();
+      });
+    }
 
     // Sort Select Event
     document.getElementById('sortSelect').addEventListener('change', (e) => {
