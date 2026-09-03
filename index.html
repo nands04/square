@@ -1794,10 +1794,13 @@
 
   /* === RESPONSIVE MOBILE === */
   @media (max-width: 1023px) {
-    .ind-section { padding: 6rem 5%; }
-    .ind-inner { gap: 3.5rem; }
+    .ind-section { padding: 5rem 5%; }
+    .ind-inner { gap: 3rem; }
+    .ind-media-wrap { order: 2; }
+    .ind-content { order: 1; align-items: center; text-align: center; }
     .ind-title { font-size: clamp(2.8rem, 9vw, 4rem); }
-    .ind-desc { max-width: 100%; }
+    .ind-desc { max-width: 100%; margin-bottom: 2.5rem; }
+    .ind-features { align-items: flex-start; display: inline-flex; margin-bottom: 2.5rem; }
     .ind-quality-seal { top: 16px; right: 16px; }
     .ind-quality-seal img { height: 36px; }
   }
