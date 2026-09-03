@@ -1529,7 +1529,458 @@
   </div>
 </section>
 
+<!-- =========================================================================
+     SEÇÃO: LINHA INDUSTRIAL — PREMIUM REBUILD
+     ========================================================================= -->
+<style>
+  /* === SECTION BASE === */
+  .ind-section {
+    background-color: #06192F;
+    padding: 9rem 5%;
+    overflow: hidden;
+    position: relative;
+  }
+  .ind-inner {
+    max-width: 1360px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  @media (min-width: 1024px) {
+    .ind-inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 8%;
+    }
+  }
 
+  /* === PLACEHOLDER CINEMATOGRÁFICO === */
+  .ind-media-wrap {
+    position: relative;
+    width: 100%;
+    /* Revelação por clip-path */
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 1.1s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  .ind-media-wrap.ind-revealed {
+    clip-path: inset(0% 0 0 0);
+  }
+  .ind-placeholder {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9/16;
+    background-color: #0B2240;
+    overflow: hidden;
+    /* Container pronto para receber vídeo com object-fit: cover */
+  }
+  @media (min-width: 1024px) {
+    .ind-placeholder { aspect-ratio: 4/5; }
+  }
+
+  /* Linha horizontal tênue no centro — detalhe de precisão industrial */
+  .ind-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(32,168,216,0.18), transparent);
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Cantos técnicos — inspirados em desenho industrial */
+  .ind-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    z-index: 2;
+    opacity: 0.45;
+  }
+  .ind-corner--tl { top: 20px; left: 20px; border-top: 1px solid #20A8D8; border-left: 1px solid #20A8D8; }
+  .ind-corner--tr { top: 20px; right: 20px; border-top: 1px solid #20A8D8; border-right: 1px solid #20A8D8; }
+  .ind-corner--bl { bottom: 20px; left: 20px; border-bottom: 1px solid #20A8D8; border-left: 1px solid #20A8D8; }
+  .ind-corner--br { bottom: 20px; right: 20px; border-bottom: 1px solid #20A8D8; border-right: 1px solid #20A8D8; }
+
+  /* Indicação discreta — minúscula, no canto inferior esquerdo */
+  .ind-placeholder-hint {
+    position: absolute;
+    bottom: 24px;
+    left: 28px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.18);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Área interna onde o vídeo será inserido */
+  .ind-video-slot {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ind-video-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.15);
+    opacity: 0;
+    transition: transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s, opacity 1.5s ease 0.1s;
+  }
+  .ind-media-wrap.ind-revealed .ind-video-element {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  /* === CONTEÚDO TEXTUAL === */
+  .ind-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  /* Eyebrow — efeito de digitação */
+  .ind-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #20A8D8;
+    margin-bottom: 2.5rem;
+    min-height: 1.2em;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    opacity: 0;
+    transition: opacity 0.01s;
+  }
+  .ind-eyebrow.ind-typing-start { opacity: 1; }
+  .ind-eyebrow-text { }
+  .ind-cursor {
+    display: inline-block;
+    width: 1px;
+    height: 0.85em;
+    background: #20A8D8;
+    margin-left: 2px;
+    vertical-align: middle;
+    opacity: 1;
+    animation: ind-blink 0.7s step-end infinite;
+  }
+  .ind-cursor.ind-cursor-fade {
+    animation: none;
+    opacity: 0;
+    transition: opacity 0.8s ease 0.6s;
+  }
+  @keyframes ind-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Título — grande, editorial */
+  .ind-title {
+    font-size: clamp(3rem, 5.5vw, 5rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0 0 2rem 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s cubic-bezier(0.2,0.8,0.2,1), transform 0.9s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .ind-title.ind-show { opacity: 1; transform: translateY(0); }
+
+  /* Separador fino */
+  .ind-divider {
+    width: 32px;
+    height: 1px;
+    background: rgba(32,168,216,0.4);
+    margin-bottom: 2rem;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  .ind-divider.ind-show { opacity: 1; }
+
+  /* Descrição */
+  .ind-desc {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.75;
+    margin-bottom: 3rem;
+    max-width: 38ch;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.8s cubic-bezier(0.2,0.8,0.2,1), transform 0.8s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .ind-desc.ind-show { opacity: 1; transform: translateY(0); }
+
+  /* Diferenciais */
+  .ind-features {
+    list-style: none;
+    margin: 0 0 3.5rem 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .ind-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 0.04em;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.6s cubic-bezier(0.2,0.8,0.2,1), transform 0.6s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .ind-feature-item.ind-show { opacity: 1; transform: translateX(0); }
+  .ind-feature-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #20A8D8;
+    flex-shrink: 0;
+  }
+
+  /* CTA minimalista */
+  .ind-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-decoration: none;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    transition: border-color 0.3s ease, color 0.3s ease;
+    opacity: 0;
+    transition: opacity 0.7s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+  .ind-cta.ind-show { opacity: 1; }
+  .ind-cta:hover { border-color: #20A8D8; color: #20A8D8; }
+  .ind-cta:hover .ind-arrow { transform: translateX(5px); }
+  .ind-arrow {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.2,0.8,0.2,1);
+  }
+
+  /* Selo de qualidade */
+  .ind-quality-seal {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 10;
+    pointer-events: none;
+    mix-blend-mode: normal;
+  }
+  .ind-quality-seal img {
+    height: 48px;
+    width: auto;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+    opacity: 0.95;
+    transition: height 0.3s ease;
+  }
+
+  /* === RESPONSIVE MOBILE === */
+  @media (max-width: 1023px) {
+    .ind-section { padding: 6rem 5%; }
+    .ind-inner { gap: 3.5rem; }
+    .ind-title { font-size: clamp(2.8rem, 9vw, 4rem); }
+    .ind-desc { max-width: 100%; }
+    .ind-quality-seal { top: 16px; right: 16px; }
+    .ind-quality-seal img { height: 36px; }
+  }
+</style>
+
+<section class="ind-section" id="linha-industrial" aria-label="Linha industrial de torneiras">
+  <div class="ind-inner">
+
+    <!-- COLUNA ESQUERDA: Placeholder Cinematográfico -->
+    <div class="ind-media-wrap" id="ind-media-wrap">
+      <div class="ind-placeholder">
+        <!-- Cantos técnicos -->
+        <span class="ind-corner ind-corner--tl" aria-hidden="true"></span>
+        <span class="ind-corner ind-corner--tr" aria-hidden="true"></span>
+        <span class="ind-corner ind-corner--bl" aria-hidden="true"></span>
+        <span class="ind-corner ind-corner--br" aria-hidden="true"></span>
+
+        <!-- Indicação discreta -->
+        <span class="ind-placeholder-hint" aria-hidden="true">mídia</span>
+
+        <!-- Selo de Qualidade -->
+        <div class="ind-quality-seal" aria-hidden="true">
+          <img src="images/made_in_italy_official.png" alt="Made in Italy">
+        </div>
+
+        <div class="ind-video-slot" aria-hidden="true">
+          <video class="ind-video-element" src="images/Cena_inicial_-_2026-09-03_202609022234.mp4" autoplay muted loop playsinline></video>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUNA DIREITA: Conteúdo Textual -->
+    <div class="ind-content" id="ind-content">
+
+      <!-- Eyebrow com digitação -->
+      <p class="ind-eyebrow" id="ind-eyebrow" aria-label="Linha Industrial de Alta Resistência">
+        <span class="ind-eyebrow-text" id="ind-eyebrow-text"></span>
+        <span class="ind-cursor" id="ind-cursor" aria-hidden="true"></span>
+      </p>
+
+      <!-- Título -->
+      <h2 class="ind-title" id="ind-title">
+        Projetada<br>para durar.
+      </h2>
+
+      <!-- Separador -->
+      <div class="ind-divider" id="ind-divider" aria-hidden="true"></div>
+
+      <!-- Descrição -->
+      <p class="ind-desc" id="ind-desc">
+        Desempenho, resistência e precisão para operações que exigem confiabilidade todos os dias.
+      </p>
+
+      <!-- Diferenciais -->
+      <ul class="ind-features" aria-label="Diferenciais">
+        <li class="ind-feature-item" id="ind-feat-0">
+          <span class="ind-feature-dot" aria-hidden="true"></span>
+          Acabamento cromado
+        </li>
+        <li class="ind-feature-item" id="ind-feat-1">
+          <span class="ind-feature-dot" aria-hidden="true"></span>
+          Fácil acionamento
+        </li>
+        <li class="ind-feature-item" id="ind-feat-2">
+          <span class="ind-feature-dot" aria-hidden="true"></span>
+          Alta resistência à corrosão
+        </li>
+      </ul>
+
+      <!-- CTA -->
+      <a href="shop.html" class="ind-cta" id="ind-cta" aria-label="Conheça a linha industrial">
+        CONHEÇA A LINHA
+        <span class="ind-arrow" aria-hidden="true">→</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  'use strict';
+
+  var IND_EYEBROW_FULL = 'LINHA INDUSTRIAL DE ALTA RESISTÊNCIA';
+  var IND_TYPING_SPEED = 52; // ms por letra
+  var IND_TRIGGERED = false;
+
+  function indShowEl(id, delay) {
+    setTimeout(function() {
+      var el = document.getElementById(id);
+      if (el) el.classList.add('ind-show');
+    }, delay);
+  }
+
+  function indTypeEyebrow(onDone) {
+    var textEl = document.getElementById('ind-eyebrow-text');
+    var cursorEl = document.getElementById('ind-cursor');
+    var eyebrowEl = document.getElementById('ind-eyebrow');
+    if (!textEl || !cursorEl || !eyebrowEl) { onDone && onDone(); return; }
+
+    eyebrowEl.classList.add('ind-typing-start');
+    var i = 0;
+    function typeNext() {
+      if (i <= IND_EYEBROW_FULL.length) {
+        textEl.textContent = IND_EYEBROW_FULL.slice(0, i);
+        i++;
+        setTimeout(typeNext, IND_TYPING_SPEED);
+      } else {
+        // Digitação completa: cursor pisca 1.2s depois desaparece
+        setTimeout(function() {
+          cursorEl.classList.add('ind-cursor-fade');
+          onDone && onDone();
+        }, 1200);
+      }
+    }
+    typeNext();
+  }
+
+  function indRunSequence() {
+    if (IND_TRIGGERED) return;
+    IND_TRIGGERED = true;
+
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (reducedMotion) {
+      // Mostrar tudo imediatamente
+      var eyebrowEl = document.getElementById('ind-eyebrow');
+      var textEl = document.getElementById('ind-eyebrow-text');
+      var cursorEl = document.getElementById('ind-cursor');
+      if (eyebrowEl) eyebrowEl.classList.add('ind-typing-start');
+      if (textEl) textEl.textContent = IND_EYEBROW_FULL;
+      if (cursorEl) cursorEl.style.display = 'none';
+      ['ind-title','ind-divider','ind-desc','ind-feat-0','ind-feat-1','ind-feat-2','ind-cta'].forEach(function(id) {
+        indShowEl(id, 0);
+      });
+      document.getElementById('ind-media-wrap') && document.getElementById('ind-media-wrap').classList.add('ind-revealed');
+      return;
+    }
+
+    // Revelar container de mídia
+    setTimeout(function() {
+      var mw = document.getElementById('ind-media-wrap');
+      if (mw) mw.classList.add('ind-revealed');
+    }, 100);
+
+    // Etapa 1: Digitação do eyebrow
+    indTypeEyebrow(function() {
+      // Etapa 2: Título
+      indShowEl('ind-title', 0);
+      // Etapa 3: Divider + Descrição
+      indShowEl('ind-divider', 300);
+      indShowEl('ind-desc', 420);
+      // Etapa 4: Diferenciais sequenciais
+      indShowEl('ind-feat-0', 750);
+      indShowEl('ind-feat-1', 950);
+      indShowEl('ind-feat-2', 1150);
+      // Etapa 5: CTA
+      indShowEl('ind-cta', 1500);
+    });
+  }
+
+  // IntersectionObserver — dispara uma única vez
+  var target = document.getElementById('linha-industrial');
+  if (target && 'IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          indRunSequence();
+          obs.unobserve(target);
+        }
+      });
+    }, { threshold: 0.15 });
+    obs.observe(target);
+  } else if (target) {
+    // Fallback: rodar direto
+    indRunSequence();
+  }
+})();
+</script>
 
 
 <div class="lg:p-10 p-5 py-16 bg-white text-navy" id="aplicacoes">
